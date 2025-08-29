@@ -1,0 +1,44 @@
+<%= form_for [:admin,model],:html => {:multipart => true} do |f| %>
+<% if model.errors.any? %>
+<div id="error_explanation" class="alert alert-danger">
+	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	<h2><%= pluralize(model.errors.count, "error") %> prohibited this request from being saved:</h2>
+	<ul>
+		<% model.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="form-group">
+	<%= f.label :title,:class=>'form-label' %>
+	<%= f.text_field :title,:class=>"form-control",:required=>"required" %>
+</div>
+<div class="form-group">
+	<%= f.label :photo,:class=>'form-label' %>
+	<div>
+		<% if model.photo? %>
+		<%= image_tag(model.photo.small_thumb) %>
+		<% end %>
+		<%= f.file_field :photo %>
+		<%= f.hidden_field :photo_cache %>
+	</div>
+</div>
+<div class="form-group">
+	<%= f.label :recommend_description %><br />
+	<%= f.text_area :recommend_description, :class=>'form-control', :rows=>5, :required=>'required' %>
+</div>
+<div class="form-group">
+	<%= f.label :models_comment %><br />
+	<%= f.text_area :models_comment, :class=>'form-control', :rows=>5, :required=>'required' %>
+</div>
+<div class="form-group">
+	<%= f.label :enable %>
+	<%= f.check_box :enable %>
+</div>
+	<div class="d-grid gap-2">
+	<%= f.submit :class=>"btn btn-primary" %>
+</div>
+<% end %>

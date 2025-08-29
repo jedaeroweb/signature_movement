@@ -1,0 +1,16 @@
+<div id="messages" class="row">
+  <div class="col-12">
+    <% if notice %>
+      <div class="alert alert-success" role="alert">
+        <button type="button" class="btn-close close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <p id="message-notice"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn-close close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <p id="message-alert"><%= alert %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

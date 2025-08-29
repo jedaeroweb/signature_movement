@@ -1,0 +1,53 @@
+<div class="row-fluid">
+	<h3 class="pull-left">관리자 목록</h3>
+</div>
+<table class="table table-bordered table-striped">
+	<colgroup>
+		<col style="width:80px;" />
+		<col style="width:100px;" />		
+		<col />
+		<col style="width:160px;" />
+		<col style="width:100px;" />
+		<col style="width:100px;" />
+		<col style="width:80px;" />
+	</colgroup>
+	<thead>
+		<tr>
+			<th><%=t(:label_number)%></th>
+			<th><%=t(:label_image)%></th>
+			<th><%=t(:label_login_id)%> / <%=t(:label_nick_name)%></th>
+			<th><%=t(:label_login_count)%></th>
+			<th><%=t(:label_lastlogin)%></th>
+			<th><%=t(:label_flag)%></th>
+			<th><%=t(:label_created_at)%></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% unless @admins.empty? %>
+		<% @admins.each do |admin| %>
+		<tr>
+			<td><%=admin.id %></td>
+			<td>
+				<% if admin.photo? %>
+				<%=image_tag admin.photo.medium_thumb %>
+				<% else %>
+				<%=t(:no_exist_image)%>
+				<% end %>
+			</td>
+			<td class="mw"><%=link_to admin.login_id,edit_admin_registration_path(admin) %> / <br /> <%=link_to admin.nickname,edit_admin_registration_path(admin) %></td>
+			<td><%=admin.sign_in_count %></td>
+			<td><%=admin.last_sign_in_at %></td>
+			<td><%=raw flagToString(admin.flag) %></td>
+			<td><%=admin.created_at.to_date %></td>
+		</tr>
+		<% end %>
+		<% else %>
+		<tr>
+			<td colspan="6"><%=t(:no_data)%></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<div class="row-fluid">
+	<%= paginate @admins %>
+</div>

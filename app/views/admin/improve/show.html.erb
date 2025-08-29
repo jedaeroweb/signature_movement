@@ -1,0 +1,26 @@
+<div class="sl_show">
+	<p>
+		<b><%=t(:title,scope:[:activerecord,:attributes,:improve]) %></b>
+		<%= @admin_improve.title %>
+	</p>
+	<p>
+		<b><%=t(:content,scope:[:activerecord,:attributes,:improve]) %></b>
+		<%= simple_format(@admin_improve.content) %>
+	</p>
+	<p>
+		<b><%=t(:enable,scope:[:activerecord,:attributes,:improve]) %></b>
+		<%=raw flagToString(@admin_improve.enable) %>
+	</p>
+	<p>
+  	<b><%=t(:label_created_at) %></b>
+  	<%= @admin_improve.created_at %>
+  </p>
+  <p>
+  	<b><%=t(:label_updated_at) %></b>
+  	<%= @admin_improve.created_at %>
+  </p>
+</div>
+<% if can? :update, @admin_improve %>
+<%= link_to t(:link_edit), edit_admin_improve_path(@admin_improve) %> |
+<% end %>
+<%= link_to t(:link_list), admin_improve_index_path %>

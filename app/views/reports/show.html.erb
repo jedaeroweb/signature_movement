@@ -1,0 +1,43 @@
+<% breadcrumb :report, @report %>
+<div id="report_show" class="sub_main">
+  <div class="row">
+  <div class="slboard_content col-12" itemscope itemprop="article" itemtype="http://schema.org/Article">
+    <div class="sl_content_header">
+      <h3 itemprop="name"><%= @report.title %></h3>
+      <p>
+        <%= t(:user_id, scope: [:activerecord, :attributes, :report]) %> :
+        <span itemprop="author"><%= link_to @report.user.name, user_path(@report.user) %></span>&nbsp;
+        <%= t(:label_created_at) %> : <span><%= get_dt_format(@report.created_at.to_date) %></span>
+        <span class="none" itemprop="dateCreated"><%= @report.created_at %></span>
+        <span class="none" itemprop="dateModified"><%= @report.updated_at %></span>
+      </p>
+    </div>
+    <div class="sl_content_main">
+      <div class="sl_content_text" itemprop="text"><%=raw @report.content %></div>
+      <div class="vote">
+        <% if user_signed_in? %>
+          <%= link_to like_report_path(@report), method: :put do %>
+            <span class="material-icons
+              <% if current_user.voted_for? @report %> already-vote
+              <% end %>">thumb_up</span> <span class="text"><%= @report.cached_votes_up %></span>
+          <% end %>
+        <% else %>
+          <%= link_to like_report_path(@report), { method: :put, :class => "confirm_login" } do %>
+            <span class="material-icons">thumb_up</span> <span class="text"><%= @report.cached_votes_up %></span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="row">
+    <div class="col-12">
+      <%= render partial: "comments/templete", locals: {commentable: @report, new_comment: @comment} %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="btn-group btn-group-lg col-12" role="group" style="margin-top:3rem">
+      <%=link_to t(:link_list),reports_path,{class: 'btn btn-secondary btn-large btn-block'} %>
+    </div>
+  </div>
+</div>

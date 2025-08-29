@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" data-bs-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <title><%=t(:application_name)%></title>
+  <meta name="description" content="<%=t(:application_name)%>">
+  <meta name="author" content="Sleeping-Lion">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= stylesheet_link_tag "admin/application", :media => "all", "data-turbolinks-track" => true %>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag -%>
+</head>
+<body id="anon_body">
+<div id="mom">
+  <div id="main">
+    <div class="sub-main">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+<%= render :partial => 'layouts/admin/footer' %>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"></div>
+<%= javascript_importmap_tags %>
+</body>
+</html>

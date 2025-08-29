@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" data-bs-theme="auto">
+<head>
+<meta charset="utf-8">
+<%= display_meta_tags :site => t(:application_name),
+                        :title => @title,
+                        :description => @meta_description,
+                        :keywords => @meta_keywords,
+                        :separator => t(:title_separator),
+                        :viewport => 'width=device-width, initial-scale=1, shrink-to-fit=no',
+                        :reverse => true %>
+<%= display_meta_tags og: {
+    title: @title,
+    description: @meta_description,
+    url: t(:site_full_url),
+    image: @meta_image
+  } %>
+  <meta name="author" content="Sleeping-Lion">
+  <link rel="canonical" href="<%= t(:site_full_url) %>">
+  <link rel="alternate" type="application/rss+xml" title="Anti-KB RSS Feed" href="<%= t(:site_full_url) %>/feed?format=rss">
+  <%= stylesheet_link_tag "front/application", :media => "all", "data-turbolinks-track" => true %>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag -%>
+</head>
+<body itemscope itemtype="<%= @page_itemtype %>" id="special-page"
+<% if params[:popup].present? %> class="popup_page"
+<% end %>>
+<div class="container">
+  <div class="row">
+    <h1 class="col-12 text-center"><%= link_to t(:home_title), root_path %></h1>
+  </div>
+  <%= yield %>
+</div>
+<%= javascript_importmap_tags %>
+</body>
+</html>

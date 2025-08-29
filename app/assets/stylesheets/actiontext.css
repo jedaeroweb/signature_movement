@@ -1,0 +1,119 @@
+/*
+ * Provides a drop-in pointer for the default Trix stylesheet that will format the toolbar and
+ * the trix-editor content (whether displayed or under editing). Feel free to incorporate this
+ * inclusion directly in any other asset bundle and remove this file.
+ *
+ *= require trix
+*/
+
+/*
+ * We need to override trix.css’s image gallery styles to accommodate the
+ * <action-text-attachment> element we wrap around attachments. Otherwise,
+ * images in galleries will be squished by the max-width: 33%; rule.
+*/
+.trix-content .attachment-gallery > action-text-attachment,
+.trix-content .attachment-gallery > .attachment {
+  flex: 1 0 33%;
+  padding: 0 0.5em;
+  max-width: 33%;
+}
+
+.trix-content .attachment-gallery.attachment-gallery--2 > action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--2 > .attachment, .trix-content .attachment-gallery.attachment-gallery--4 > action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--4 > .attachment {
+  flex-basis: 50%;
+  max-width: 50%;
+}
+
+/* app/assets/stylesheets/actiontext_custom.scss */
+
+/* 기반 라이트 테마 유지 */
+trix-editor {
+  background-color: #fff;
+  color: #212529;
+  border: 1px solid #ced4da;
+  border-radius: .375rem;
+  padding: .75rem;
+  min-height:15em
+}
+
+trix-toolbar {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+}
+
+/* 다크 모드 적용 (Bootstrap dark 테마 기준) */
+[data-bs-theme="dark"] {
+  trix-editor {
+    background-color: #212529;
+    color: #f8f9fa;
+    border: 1px solid #495057;
+  }
+
+  trix-editor:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
+  }
+
+  trix-toolbar {
+    background-color: #343a40;
+    border: 1px solid #495057;
+  }
+
+  trix-toolbar button {
+    color: #f8f9fa;
+  }
+
+  trix-toolbar button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* 링크와 인용 스타일도 조정 */
+trix-editor a {
+  color: #0d6efd;
+}
+
+[data-bs-theme="dark"] trix-editor a {
+  color: #66b2ff;
+}
+
+trix-editor blockquote {
+  border-left: 4px solid #dee2e6;
+  padding-left: 1rem;
+  color: #6c757d;
+}
+
+[data-bs-theme="dark"] trix-editor blockquote {
+  border-left-color: #495057;
+  color: #adb5bd;
+}
+
+/* 다크 모드: Action Text (Trix) + Bootstrap */
+[data-bs-theme="dark"] trix-toolbar .trix-button {
+  background: #fff !important;
+}
+[data-bs-theme="dark"] trix-toolbar .trix-button.trix-active {
+  background: #d1d9e9 !important;
+}
+
+/* 나머지 기존 스타일 유지 */
+[data-bs-theme="dark"] trix-editor {
+  background-color: #212529;
+  color: #f8f9fa;
+  border: 1px solid #495057;
+}
+[data-bs-theme="dark"] trix-editor:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
+}
+[data-bs-theme="dark"] trix-toolbar {
+  background-color: #343a40;
+  border: 1px solid #495057;
+}
+[data-bs-theme="dark"] trix-toolbar button {
+  color: #f8f9fa;
+}
+[data-bs-theme="dark"] trix-toolbar button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

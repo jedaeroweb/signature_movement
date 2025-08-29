@@ -1,0 +1,63 @@
+<header>
+  <div class="container">
+    <i id="mobile_menu" class="material-icons" style="font-size:35px;vertical-align:middle">view_headline</i>
+    <% unless current_page? root_path %>
+      <div id="top_menu" class="row">
+        <div class="col-12">
+          <ul>
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to edit_user_registration_path do %>
+                  <span id="username"><%= current_user.name %></span>님 환영합니다.
+                <% end %>
+              </li>
+              <li><%= link_to t(:logout), destroy_user_session_path, {method: 'delete' } %></li>
+            <% else %>
+              <li><%= link_to t(:login), new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <div class="row">
+        <h1 class="col-12 col-md-5"><%= link_to t(:home_title), root_path %></h1>
+      <nav class="col-12 col-md-7">
+        <ul class="nav nav-pills">
+          <li
+          <% if params[:controller] == 'reports' %>class="active"
+          <% end %>><%= link_to reports_path do %><%= t(:report, scope: [:activerecord, :models]) %>
+            <% end %></li>
+          <li
+          <% if params[:controller] == 'compliments' %>class="active"
+          <% end %>><%= link_to compliments_path do %><%= t(:compliment, scope: [:activerecord, :models]) %>
+            <% end %></li>
+          <li
+          <% if params[:controller] == 'faqs' %>class="active"
+          <% end %>><%= link_to faqs_path do %><%= t(:faq, scope: [:activerecord, :models]) %>
+            <% end %></li>
+          <li class="dropdown
+            <% if params[:controller] == 'proposes' || params[:controller] == 'models' || params[:controller] == 'improve' %> active
+            <% end %>">
+            <%= link_to '#', { class: 'dropdown-toggle',role:"button",'data-bs-toggle': "dropdown",'aria-expanded':"false"} do %>
+              <%= t(:menu_propose) %>
+            <% end %>
+            <ul class="dropdown-menu">
+              <li
+              <% if params[:controller] == 'proposes' %>class="active"
+              <% end %>><%= link_to proposes_path do %><%= t(:propose, scope: [:activerecord, :models]) %>
+                <% end %></li>
+              <li
+              <% if params[:controller] == 'models' %>class="active"
+              <% end %>><%= link_to models_path do %><%= t(:model, scope: [:activerecord, :models]) %>
+                <% end %></li>
+              <li
+              <% if params[:controller] == 'improve' %>class="active"
+              <% end %>><%= link_to new_improve_path do %><%= t(:improve, scope: [:activerecord, :models]) %>
+                <% end %></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

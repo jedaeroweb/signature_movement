@@ -1,0 +1,14 @@
+<div id="sns-login" class="row">
+  <h4 class="col-12 text-center">SNS계정으로 간편로그인</h4>
+  <div class="col-12">
+    <div class="card">
+    <div class="card-body text-center p-4">
+      <%=link_to '네이버로 계속하기',user_naver_omniauth_authorize_path,class:"naver-b-icon",title:"네이버로 회원가입없이 사용합니다" %>
+      <%=link_to '트위터로 계속하기',user_twitter_omniauth_authorize_path,class:"twitter-b-icon",title:"트위터로 회원가입없이 사용합니다" %>
+      <%=link_to '깃헙으로 계속하기',user_github_omniauth_authorize_path,class:"github-b-icon",title:"깃헙으로 회원가입없이 사용합니다" %>
+      <%=link_to '구글로 계속하기',user_google_oauth2_omniauth_authorize_path,class:"google-b-icon",title:"구글로 회원가입없이 사용합니다" %>
+      <!-- <%=link_to '애플로 계속하기',user_apple_omniauth_authorize_path,class:"apple-b-icon",title:"애플로 회원가입없이 사용합니다", method: :post %> -->
+    </div>
+    </div>
+  </div>
+</div>

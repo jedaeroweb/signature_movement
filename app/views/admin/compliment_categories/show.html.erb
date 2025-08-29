@@ -1,0 +1,22 @@
+<div class="sl_show">
+	<p>
+		<b><%=t(:title,scope:[:activerecord,:attributes,:compliment_category]) %></b>
+		<%= @admin_compliment_category.title %>
+	</p>
+	<p>
+		<b><%=t(:enable,scope:[:activerecord,:attributes,:compliment_category]) %></b>
+		<%=raw flagToString(@admin_compliment_category.enable) %>
+	</p>
+	<p>
+  	<b><%=t(:label_created_at) %></b>
+  	<%= @admin_compliment_category.created_at %>
+  </p>
+  <p>
+  	<b><%=t(:label_updated_at) %></b>
+  	<%= @admin_compliment_category.created_at %>
+  </p>
+</div>
+<% if can? :update, @admin_compliment_category %>
+<%= link_to t(:link_edit), edit_admin_compliment_category_path(@admin_compliment_category) %> |
+<% end %>
+<%= link_to t(:link_list), admin_compliment_categories_path %>

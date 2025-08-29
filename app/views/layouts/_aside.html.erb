@@ -1,0 +1,36 @@
+<aside class="d-none d-lg-block">
+  <div class="row">
+    <% if user_signed_in? %>
+      <div class="col-12 col-md-6 col-xl-12">
+        <article id="login_users">
+          <p>
+            <%= link_to edit_user_registration_path do %>
+              <span id="username"><%= current_user.name %></span>님 환영합니다.
+            <% end %>
+          </p>
+          <p id="logout_submit"><%= link_to t(:logout), destroy_user_session_path, :class => 'btn btn-secondary btn-block', :method => 'delete' %></p>
+        </article>
+      </div>
+    <% else %>
+      <div class="col-12 col-md-6 col-xl-12">
+        <article>
+          <p>서명에 참여해주세요</p>
+          <h2 class="d-grid gap-2"><%= link_to t(:login), new_user_session_path, :class => "btn btn-block btn-primary" %></h2>
+        </article>
+      </div>
+    <% end %>
+    <div class="col-12 col-md-6 col-xl-12">
+      <article>
+        <h3>KB 임직원의 진심</h3>
+        <div class="d-grid gap-2">
+        <%= link_to 'KB 임직원의 마음의 소리', '/kbsmind',{class: 'btn btn-large btn-success btn-modal', 'data-bs-toggle': "modal"} %>
+        </div>
+      </article>
+    </div>
+
+    <div id="aside-ad" class="col-12 col-md-4">
+      <iframe src="https://ads-partners.coupang.com/widgets.html?id=714009&template=carousel&trackingCode=AF6308864&subId=&width=300&height=700&tsource=" width="300" height="700" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
+    </div>
+
+  </div>
+</aside>

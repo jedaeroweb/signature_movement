@@ -1,0 +1,24 @@
+<div class="input-group">
+	<div class="input-group-btn">
+		<button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button"><%=search_type %>
+			&nbsp;
+			<span class="caret"></span>
+		</button>
+		<ul role="menu" class="dropdown-menu">
+			<li>
+				<a href="?search_type=title"><%=title %></a>
+			</li>
+			<li>
+				<a href="?search_type=sub_title"><%=sub_title %></a>
+			</li>
+		</ul>
+	</div>
+	<select name="search_type" style="display:none">
+		<option value="title" <% if params[:search_type].present? %><% if params[:search_type]=='title' %>selected="selected"<% end %><% else %>selected="selected"<% end %>><%=t(:label_title)%></option>
+		<option value="sub_title" <% if params[:search_type].present? %><% if params[:search_type]=='sub_title' %>selected="selected"<% end %><% end %>><%=t(:label_sub_title)%></option>
+	</select>
+	<input type="search" required="required" maxlength="60" placeholder="<%=t(:insert_search_word) %>" value="<%=params[:search_value] %>" class="form-control" name="search_value"/>
+	<span class="input-group-btn">
+		<%=button_tag t(:search),:type=>'submit',:class=>"btn btn-default" %>
+	</span>
+</div>

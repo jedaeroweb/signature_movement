@@ -1,0 +1,30 @@
+<div class="sl_show">
+	<p>
+		<b><%=t(:title,scope:[:activerecord,:attributes,:propose]) %></b>
+		<%= @admin_model.title %>
+	</p>
+	<p>
+		<b><%=t(:recommend_description,scope:[:activerecord,:attributes,:propose]) %></b>
+		<%= simple_format(@admin_model.recommend_description) %>
+	</p>
+	<p>
+		<b><%=t(:models_comment,scope:[:activerecord,:attributes,:propose]) %></b>
+		<%= simple_format(@admin_model.models_comment) %>
+	</p>
+	<p>
+		<b><%=t(:enable,scope:[:activerecord,:attributes,:propose]) %></b>
+		<%=raw flagToString(@admin_model.enable) %>
+	</p>
+	<p>
+  	<b><%=t(:label_created_at) %></b>
+  	<%= @admin_model.created_at %>
+  </p>
+  <p>
+  	<b><%=t(:label_updated_at) %></b>
+  	<%= @admin_model.created_at %>
+  </p>
+</div>
+<% if can? :update, @admin_model %>
+<%= link_to t(:link_edit), edit_admin_model_path(@admin_model) %> |
+<% end %>
+<%= link_to t(:link_list), admin_models_path %>

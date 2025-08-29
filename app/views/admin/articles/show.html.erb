@@ -1,0 +1,30 @@
+<div class="sl_show">
+	<p>
+		<b><%=t(:title,scope:[:activerecord,:attributes,:article]) %></b>
+		<%= @admin_article.title %>
+	</p>
+	<p>
+		<b><%=t(:description,scope:[:activerecord,:attributes,:article]) %></b>
+		<%= @admin_article.description %>
+	</p>
+	<p>
+		<b><%=t(:url,scope:[:activerecord,:attributes,:article]) %></b>
+		<%= @admin_article.url %>
+	</p>
+	<p>
+		<b><%=t(:enable,scope:[:activerecord,:attributes,:article]) %></b>
+		<%=raw flagToString(@admin_article.enable) %>
+	</p>
+	<p>
+  	<b><%=t(:label_created_at) %></b>
+  	<%= @admin_article.created_at %>
+  </p>
+  <p>
+  	<b><%=t(:label_updated_at) %></b>
+  	<%= @admin_article.created_at %>
+  </p>
+</div>
+<% if can? :update, @admin_article %>
+<%= link_to t(:link_edit), edit_admin_article_path(@admin_article) %> |
+<% end %>
+<%= link_to t(:link_list), admin_articles_path %>

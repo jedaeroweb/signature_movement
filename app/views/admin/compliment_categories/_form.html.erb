@@ -1,0 +1,26 @@
+<%= form_for [:admin,compliment_category] do |f| %>
+<% if compliment_category.errors.any? %>
+<div id="error_explanation" class="alert alert-danger">
+	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	<h2><%= pluralize(compliment_category.errors.count, "error") %> prohibited this request from being saved:</h2>
+	<ul>
+		<% compliment_category.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="form-group">
+	<%= f.label :title %>
+	<%= f.text_field :title,:class=>"form-control",:required=>"required" %>
+</div>
+<div class="form-group">
+	<%= f.label :enable %>
+	<%= f.check_box :enable %>
+</div>
+<div class="form-group actions">
+	<%= f.submit :class=>"btn btn-primary" %>
+</div>
+<% end %>

@@ -1,0 +1,7 @@
+# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+User-agent: *
+Allow:/
+Disallow: /admin
+Sitemap: https://www.anti-kb.site/sitemap.xml.gz
+
+#DaumWebMasterTool:721f49ffe5ed2b1c6211955fd63e4a845aca9438e5a16fa1b6e245294b654507:hAanBjeKjPXisHraBtijDw==

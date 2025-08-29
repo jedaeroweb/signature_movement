@@ -1,0 +1,13 @@
+<article class="col-12 col-md-6">
+	<h3><%=t(:report,scope:[:activerecord,:models]) %></h3>
+	<%=link_to t(:link_more),reports_path,:class=>'more' %>
+	<% unless @reports.empty? %>
+	<ul>
+		<% @reports.each do |report| %>
+		<li><%=report.user.name %> : <%=link_to report.title.truncate(17),report %> <span class="date d-md-none d-lg-block"><%=time_ago_in_words report.created_at.to_date %></span></li>
+		<% end %>
+	</ul>
+	<% else %>
+	<p><%=t(:no_data) %></p>
+	<% end %>
+</article>

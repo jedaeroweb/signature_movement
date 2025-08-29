@@ -1,0 +1,14 @@
+<article class="col-12 col-md-6">
+  <h3><%= t(:compliment, scope: [:activerecord, :models]) %></h3>
+  <%= link_to t(:link_more), compliments_path, :class => 'more' %>
+  <% unless @compliments.empty? %>
+    <ul>
+      <% @compliments.each do |compliment| %>
+        <li><%= compliment.user.name %> : <%= link_to compliment.title.truncate(17), compliment %>
+          <span class="date d-none d-sm-block"><%= time_ago_in_words compliment.created_at.to_date %></span></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p><%= t(:no_data) %></p>
+  <% end %>
+</article>

@@ -1,0 +1,58 @@
+<%
+	faq_all_class='nav-link title'
+	unless @categoryId.present?
+		faq_all_class+=' active'
+	end
+%>
+<section id="faq_main">
+	<div class="row">
+		<%= render :partial => 'layouts/ad' %>
+	<nav class="col-12">
+		<ul id="faqCategoryList" class="nav nav-pills">
+			<% unless @faq_categories.empty? %>
+				<li class="nav-item"><%=link_to t(:all),faqs_path,class: faq_all_class %></li>
+				<% @faq_categories.each do |faq_category|
+					faq_class='nav-link title'
+					if @categoryId.present?
+						if @categoryId==faq_category.id
+							faq_class+=' active'
+						end
+					end
+				%>
+					<li class="nav-item">
+				<%= link_to truncate(faq_category.title,:length => 20),faqs_path(:faq_category_id=>faq_category.id),{:class=>faq_class} %>
+			</li>
+			<% end %>
+  		<% else %>
+			<li><%=t(:no_data)%></li>
+			<% end %>
+		</ul>
+	</nav>
+	</div>
+	<div class="row">
+	<article class="col-12">
+		<dl id="faqList">
+			<% unless @faq_count.zero? %>
+			<% @faqs.each do |faq| %>
+			<dt <% if @faq %><% if @faq.id==faq.id %>class="on"<% end %><% end %> itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+				<%= link_to faq_path(faq),{:class=>'title',:itemprop=>'name'} do %>
+					<%=truncate(faq.title,:length => 80) %><span><i class="material-icons">add</i></span>
+					<% end %>
+			</dt>
+			<% if(@faq)%>
+			<% if(faq.id==@faq.id) %>
+					<dd itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><%=simple_format(@faq.content.to_s) %></dd>
+			<% end %>
+			<% end %>
+
+			<% end %>
+  			<% else %>
+  			<dt><%=t(:no_data)%></dt>
+			<% end %>
+		</dl>
+	</article>
+	<div class="col-12">
+		<%= paginate @faqs %>
+	</div>
+	</div>
+</section>

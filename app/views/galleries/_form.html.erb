@@ -1,0 +1,32 @@
+<%= form_for @gallery, :html => {:multipart => true,:class=>'slboard_form'} do |f| %>
+	<% if @gallery.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@gallery.errors.count, "error") %> prohibited this gallery from being saved:</h2>
+		<ul>
+			<% @gallery.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div class="form-group">
+		<%= f.label :gallery_category_id %><br />
+		<%= f.select :gallery_category_id, options_from_collection_for_select(@gallery_categories, 'id', 'title',@gallery_category_id) %>
+	</div>
+	<div class="form-group">
+		<%= f.label :title %><br />
+		<%= f.text_field :title, {:class=>'sl_input',:required=>'required'} %>
+	</div>
+	<div class="form-group">
+		<%= f.label :photo %><br />
+		<%= f.file_field :photo %>
+		<%= f.hidden_field :photo_cache %>
+	</div>
+	<div class="form-group">
+		<%= f.label :content %><br />
+		<%= f.text_area :content,{:class=>'sl_input',:required=>'required'} %>
+	</div>
+ 	<div class="form-group actions">
+		<%= f.submit :class=>"btn btn-primary" %>
+ 	</div>
+<% end %>

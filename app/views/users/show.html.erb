@@ -1,0 +1,44 @@
+<% breadcrumb :user, @user %>
+<section id="sl_user_show" class="sub_main">
+  <div class="row">
+    <div class="slboard_content col-12" itemscope itemtype="http://schema.org/Person">
+      <h3 itemprop="name"><%=  @user.name %></h3>
+      <div class="sl_content_main">
+        <p class="p-4 media rounded-3"><%= @user.description %></p>
+
+        <% if user_signed_in? %>
+    <%= link_to like_user_path(@user), method: :put do %>
+      <span class="material-icons
+        <% if current_user.voted_for? @user %> already-vote
+        <% end %>">thumb_up</span><span class="text"> <%= @user.cached_votes_up %></span>
+    <% end %>
+  <% else %>
+    <%= link_to like_user_path(@user), { method: :put, :class => "confirm_login" } do %>
+      <span class="material-icons">thumb_up</span><span class="text"> <%= @user.cached_votes_up %></span>
+    <% end %>
+  <% end %>
+
+  <% if @user.photo? %>
+    <%= link_to image_tag(@user.photo.medium_thumb.url, :alt => @user.name), @user.photo.large_thumb.url, :class => 'simple_image media-object', :title => @user.name, :itemprop => "image" %>
+  <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <%= render partial: "comments/templete", locals: {commentable: @user, new_comment: @comment} %>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div  id="sl_content_bottom_menu" class="col-12">
+    <%= link_to t(:link_list), users_path %>
+    <% if can? :update, @user and @user.id == current_user.id %>
+      &nbsp; | &nbsp;
+      <%= link_to t(:link_edit), edit_user_path(@user) %>
+    <% end %>
+    </div>
+  </div>
+</section>

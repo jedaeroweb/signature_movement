@@ -1,0 +1,473 @@
+ko:
+  application_name : '안티국민은행'
+  service_name : '안티국민은행'
+  meta_description : '안티국민은행 홈페이지입니다, KB가 망하는 그날까지!!'
+  meta_keywords : '안티국민은행,안티,kb,KB,국민은행,antikb,정보유출,불법대출,국민카드,금융,은행,대출,신용,신용대출,대출거부,사채,카드,카드론,이자,이승기,김연아'
+  meta_image : 'https://assets.sleepinglion.pe.kr/sl.jpg'
+  meta_description_faq : '국민은행의 추악한 진실에 대한 일반적인 질문과 답변'
+  meta_url : 'https://www.antikb.site'
+  title_separator : '-'
+  default_title : 'KB가 망하는 그날까지!!'
+  jedearoweb : '제대로웹'
+
+  korean : '한국어'
+  chineses : '중국어'
+  english : '영어'
+
+  theme: '모양'
+  light: '밝은'
+  dark: '어두운'
+  auto: '자동'
+
+  site_url: 'www.anti-kb.site'
+  site_full_url: 'https://www.anti-kb.site'
+  email_webmaster: 'admin@anti-kb.site'
+
+  home : '홈'
+  home_title : '망해라! KB(살인은행)!'
+  search : '검색'
+  ad : '광고'
+  login : '로그인'
+  logout : '로그아웃'
+  sign : '서명하기'
+  image : '이미지'
+  confirm : '확인'
+  status : '상태'
+  status_use : '사용중'
+  status_stop : '중지'
+  flag_true : '사용'
+  flag_false : '중지'
+  no_data : '글이 없습니다'
+  no_photo : '사진이 없습니다'
+  all : '전체'
+  all_category : '전체'
+  prev : '이전'
+  next : '다음'
+  choose_file: '파일선택'
+  browse: '찾기'
+  new_user : '회원가입'
+
+  login_page : '로그인 페이지'
+  login_title : '로그인'
+  login_p_id : '아이디를 입력하세요'
+  login_p_email : '이메일을 입력하세요'
+  login_p_password : '비밀번호를 입력하세요'
+  login_remember : '기억해줘'
+
+  home_main_title : 'KB(살인은행)이 망하는 그날까지!!'
+  home_main_description : '서명에 참여해주세요.<br class="d-block d-sm-none" /> 작은움직임이 살인은행이 망하게하는 힘이됩니다.'
+  remember_email : '이메일 기억하기'
+
+  menu_propose : '제안하기'
+
+  success_title : '축하합니다!!'
+  message_success_create : '이(가) 성공적으로  등록되었습니다.'
+  message_success_update : '이(가) 성공적으로  수정되었습니다.'
+  message_success_recommend : '추천되었습니다.'
+
+  email : '이메일'
+  password : '비밀번호'
+  remember_me : '이메일 기억하기'
+  label_number : '번호'
+  label_name : '작성자'
+  label_name : '작성자'
+  label_title : '제목'
+  label_count : '조회수'
+  label_comment : '댓글수'
+  label_compliment_category : '칭찬유형'
+  label_report_category : '피해유형'
+  label_bank : '은행'
+  label_manage : '관리'
+  label_recommend_count : '추천수'
+  label_created_at : '등록일시'
+  label_updated_at : '수정일시'
+
+  action_index : '목록'
+  action_show : '상세'
+  action_edit : '수정'
+  action_new : '생성'
+  link_delete_admin : '계정삭제 '
+  link_list : '목록으로'
+  link_new : '새로작성'
+  link_show : '상세보기'
+  link_edit : '수정'
+  link_delete : '삭제'
+  link_more : '더보기'
+  link_back : '뒤로'
+  link_home : '홈으로'
+
+  delete_confirm : '정말로삭제합니까?'
+  delete_cascade_confirm : "중대 경고!!\n이 항목을 삭제할 경우 이 항목뿐아니라 이 항목의 정보를 포함하는 모든 데이터가 삭제됩니다.\n그래도 진행하시겠습니까?"
+  delete_user_cascade_confirm : "정말로 탈퇴하겠습니까? \n 탈퇴할 경우 본인이 작성한 모든 내용 또한 연관삭제됩니다."
+
+
+
+  admin_menu :
+    menu_user : '사용자 관리'
+    menu_main_board : '메인메뉴 관리'
+    menu_etc_board : '기타메뉴 관리'
+
+  ckeditor:
+    page_title: "CKEditor Files Manager"
+    confirm_delete: "파일을 지웁니까?"
+    buttons:
+      cancel: "취소"
+      upload: "업로드"
+      delete: "삭제"
+
+  views :
+    pagination :
+      truncate : '&nbsp;...&nbsp;'
+      previous : '이전'
+      last : '마지막'
+      next : '다음'
+      first : '처음'
+
+  recaptcha:
+    errors:
+      incorrect-captcha-sol: 'recapcha Fail'
+
+  devise:
+    confirmations:
+      confirmed: 가입을 축하드립니다. 지금부터 로그인 가능합니다.
+      send_instructions: 가입 승인 절차에 관한 안내 메일을 곧 받아 보실 수 있습니다.
+      send_paranoid_instructions: 메일주소가 이미 등록되어 있으면, 잠시 후에 계정을 등록 하는 방법이 담긴 메일을 받을 수 있습니다.
+    failure:
+      already_authenticated: 이미 로그인되어 있습니다.
+      inactive: 계정이 아직 활성화되지 않았습니다.
+      invalid: 이메일 혹은 비밀번호가 틀립니다.
+      last_attempt:
+      locked: 계정이 잠겨있습니다.
+      not_found_in_database: 이메일 주소나 비밀번호가 틀립니다.
+      timeout: 로그아웃 되었습니다. 계속 하려면 다시 로그인 해야 합니다.
+      unauthenticated: 계속하려면 로그인해야 합니다.
+      unconfirmed: 계속하기 전에 계정확인(이메일)을 해야 합니다.
+    mailer:
+      confirmation_instructions:
+        subject: 계정확인(이메일)하는 방법
+      reset_password_instructions:
+        subject: 비밀번호 재설정하는 방법
+      unlock_instructions:
+        subject: 잠금해제하는 방법
+    omniauth_callbacks:
+      failure: '%{reason}과 같은 이유로 %{kind}로부터 인증받지 못했습니다.'
+      success: '%{kind} 계정에서 인증되었습니다.'
+    passwords:
+      no_token: 페스워드 리셋 이메일을 거치지않고 이 페이지에 접근 할 수 없습니다. 페스워드 리셋 이메일에서 오셨다면, 주소가 온전한지 확인해 주세요.
+      send_instructions: 잠시 후에 비밀번호를 재설정할 수 있는 메일을 받을 수 있습니다.
+      send_paranoid_instructions: 정상적으로 등록된 이메일 주소인 경우, 몇 분 안에 비밀번호 복구 링크주소를 이메일로 받으시게 됩니다.
+      updated: 비밀번호를 변경했습니다. 로그인 되었습니다.
+      updated_not_active: 비밀번호가 성공적으로 변경되었습니다.
+    registrations:
+      destroyed: 잘가세요! 계정이 성공적으로 제거 되었습니다. 다시 볼 수 있기를 바랍니다.
+      signed_up: 안녕하세요! 성공적으로 로그인되었습니다.
+      signed_up_but_inactive: 가입이 성공적으로 되었지만 아직 활성화 되지 않았기 때문에 로그인할 수는 없습니다.
+      signed_up_but_locked: 가입이 성공적으로 되었지만, 계정이 잠겨있어 로그인할 수는 없습니다.
+      signed_up_but_unconfirmed: 당신의 이메일로 인증링크가 포함된 메시지를 보냈습니다. 계정활성화를 위해 메일을 확인하세요.
+      update_needs_confirmation: '성공적으로 계정이 갱신되었습니다. 그러나 새 이메일 주소를 확인하여야 합니다. 변경된 메일을 확인하시고 확인 버튼을 눌러야 합니다. '
+      updated: 당신의 계정을 성공적으로 업데이트 하였습니다.
+    sessions:
+      signed_in: 성공적으로 로그인이 되었습니다.
+      signed_out: 정상적으로 로그아웃 되었습니다.
+    unlocks:
+      send_instructions: 잠시 후에 어떻게 계정을 해제(사용가능하게)할 수 있는지 설명된 이메일을 받을 수 있습니다.
+      send_paranoid_instructions: 계정을 가지고 계시면, 잠시 후에 어떻게 계정을 해제(사용가능하게)할 수 있는지 설명된 이메일을 받을 수 있습니다.
+      unlocked: 계정이 성공적으로 해제되었습니다. 이제, 로그인 할 수 있습니다.
+
+  date:
+    abbr_day_names:
+    - 일
+    - 월
+    - 화
+    - 수
+    - 목
+    - 금
+    - 토
+    abbr_month_names:
+    -
+    - 1월
+    - 2월
+    - 3월
+    - 4월
+    - 5월
+    - 6월
+    - 7월
+    - 8월
+    - 9월
+    - 10월
+    - 11월
+    - 12월
+    day_names:
+    - 일요일
+    - 월요일
+    - 화요일
+    - 수요일
+    - 목요일
+    - 금요일
+    - 토요일
+    formats:
+      default: ! '%Y년 %m월 %d일'
+      long: ! '%Y년 %m월 %d일 (%a)'
+      short: ! '%m/%d'
+    month_names:
+    -
+    - 1월
+    - 2월
+    - 3월
+    - 4월
+    - 5월
+    - 6월
+    - 7월
+    - 8월
+    - 9월
+    - 10월
+    - 11월
+    - 12월
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: 한시간 전
+        other: '%{count}시간 전'
+      about_x_months:
+        one: 한달 전
+        other:  '%{count}달 전'
+      about_x_years:
+        one: 1년 전
+        other:  몇 년 전
+      almost_x_years:
+        one: 1년 이내
+        other: ! '몇 년 전'
+      half_a_minute: 30초
+      less_than_x_minutes:
+        one: 일분 이내
+        other: ! '%{count}분 전'
+      less_than_x_seconds:
+        one: 일초 이내
+        other: ! '%{count}초 전'
+      over_x_years:
+        one: 1년 전
+        other: 몇 년 전
+      x_days:
+        one: 하루 전
+        other: ! '%{count}일 전'
+      x_minutes:
+        one: 일분 전
+        other: ! '%{count}분 전'
+      x_months:
+        one: 한달 전
+        other: ! '%{count}달 전'
+      x_seconds:
+        one: 일초 전
+        other: ! '%{count}초 전'
+    prompts:
+      day: 일
+      hour: 시
+      minute: 분
+      month: 월
+      second: 초
+      year: 년
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: 을(를) 반드시 확인해야 합니다
+      blank: 에 내용을 입력해 주세요
+      confirmation: 은(는) 서로 일치해야 합니다
+      empty: 에 내용을 입력해 주세요
+      equal_to: 은(는) %{count}과 같아야 합니다
+      even: 에 짝수를 입력해 주세요
+      exclusion: 은(는) 이미 예약되어 있는 값입니다
+      greater_than: 은(는) %{count}보다 커야 합니다
+      greater_than_or_equal_to: 은(는) %{count}보다 크거야 같아야 합니다
+      inclusion: 은(는) 목록에 포함되어 있는 값이 아닙니다
+      invalid: 은(는) 올바르지 않은 값입니다
+      less_than: 은(는) %{count}보다 작아야 합니다
+      less_than_or_equal_to: 은(는) %{count}과 작거나 같아야 합니다
+      not_a_number: 에 숫자를 입력해 주세요
+      not_an_integer: 에 정수를 입력해 주세요
+      odd: 에 홀수를 입력해 주세요
+      record_invalid: 데이터 검증에 실패하였습니다. %{errors}
+      taken: 은(는) 이미 존재합니다.
+      too_long: 은(는) %{count}자를 넘을 수 없습니다
+      too_short: 은(는) 적어도 %{count}자를 넘어야 합니다
+      wrong_length: 은(는) %{count}자여야 합니다
+      already_confirmed: 이(가) 이미 승인되었습니다. 다시 로그인 해보시길 바랍니다.
+      confirmation_period_expired: '%{period} 이내에 이메일 인증을 하셔야만 합니다. 다시 이메일 인증 요청을 보내시기 바랍니다.'
+      expired: 만료되었습니다 새로운 요청을 해야합니다.
+      not_found: 찾을 수 없습니다.
+      not_locked: 이(가) 잠기지 않았습니다.
+      not_saved: '%{count}개의 오류로 %{resource}가 저장되는 것이 금지 되었습니다.'
+    template:
+      body: ! '다음 항목에 문제가 발견되었습니다:'
+      header:
+        one: 한 개의 오류가 발생해 %{model}를 저장 할 수 없습니다
+        other: ! '%{count}개의 오류가 발생해 %{model}를 저장 할 수 없습니다'
+  helpers:
+    select:
+      prompt: 선택해주세요
+    submit:
+      create: 등록
+      submit: 제출
+      update: 수정
+  number:
+    currency:
+      format:
+        delimiter: ! ','
+        format: ! '%n%u'
+        precision: 0
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: 원
+    format:
+      delimiter: ! ','
+      precision: 3
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n%u'
+        units:
+          billion: 십억
+          million: 백만
+          quadrillion: 경
+          thousand: 천
+          trillion: 조
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n%u'
+        units:
+          byte: 바이트
+          gb: 기가바이트
+          kb: 킬로바이트
+          mb: 메가바이트
+          tb: 테라바이트
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ', '
+      two_words_connector: ! '와(과) '
+      words_connector: ! ', '
+  time:
+    am: 오전
+    formats:
+      default: ! '%Y/%m/%d %H:%M:%S'
+      long: ! '%Y년 %B월 %d일, %H시 %M분 %S초 %Z'
+      short: ! '%y/%m/%d %H:%M'
+    pm: 오후
+  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    models:
+      article : '관련기사'
+      bank : '칭찬은행'
+      notice : '공지사항'
+      report_category : '피해신고 분류'
+      report : '피해신고'
+      compliment_category : '경쟁사 칭찬 분류'
+      compliment : '경쟁사 칭찬'
+      propose : '망하게할 방법 제안'
+      faq_category : 'FAQ 분류'
+      faq : 'FAQ'
+      model : '광고모델 제안'
+      intro : '사이트 소개'
+      improve : '개선사항 제안'
+      user : 'KB가 망하게하기 서명'
+      sitemap : '사이트맵'
+    attributes :
+      admin :
+        email : '이메일'
+        password : '비밀번호'
+        enable : '사용여부'
+      article :
+        title : '제목'
+        url : '기사 주소'
+        description : '설명'
+        enable : '사용여부'
+      bank :
+        photo : '사진'
+        title : '제목'
+        compliments_count : '칭찬 수'
+        enable : '사용여부'
+      report_category :
+        title : '제목'
+        reports_count : '피해신고 갯수'
+        enable : '사용여부'
+      report :
+        user_id : '작성자'
+        report_category_id : '피해유형'
+        title : '제목'
+        enable : '사용여부'
+        content : '내용'
+      compliment_category :
+        title : '제목'
+        compliments_count : '칭찬하기 갯수'
+        enable : '사용여부'
+      compliment :
+        user_id : '작성자'
+        bank_id : '칭찬은행'
+        compliment_category_id : '칭찬유형'
+        title : '제목'
+        enable : '사용여부'
+        content : '내용'
+      propose :
+        title : '제목'
+        content : '내용'
+        enable : '사용여부'
+      faq_category :
+        title : '제목'
+        faqs_count : 'FAQ 갯수'
+        enable : '사용여부'
+      faq :
+        faq_category_id : 'FAQ분류'
+        title : '제목'
+        enable : '사용여부'
+      faq_content :
+        content : '내용'
+      notice :
+        title : '제목'
+        enable : '사용여부'
+      notice_content :
+        content : '내용'
+      model :
+        title : '제목'
+        photo : '사진'
+        recommend_description : '추천사'
+        models_comment : '추천받은 모델의 소감'
+        enable : '사용여부'
+      improve :
+        title : '제목'
+        content : '내용'
+        enable : '사용여부'
+      user :
+        name : '이름'
+        sign_in_count : '로그인 횟수'
+        email : '이메일'
+        photo : '사진'
+        description : 'KB에 한마디'
+        password : '비밀번호'
+        password_confirmation : '비밀번호 확인'
+        current_password : '현재 비밀번호'
+        reports_count : '피해신고 갯수'
+        compliments_count : '경쟁사칭찬 갯수'
+        url : 'SNS,홈페이지등'
+        enable : '사용여부'
+  recaptcha:
+    errors:
+      incorrect-captcha-sol: '자동작성방지 문자열이 맞지 않습니다. 두개의 단어를 공백으로 구분해서 입력해주세요'

@@ -1,0 +1,47 @@
+<section id="main_user">
+  <h2 class="text-hide">KB망하게 하기 서명 목록</h2>
+  <% unless @users.empty? %>
+    <% @users.each do |user| %>
+      <article class="users media shadow-sm rounded" itemscope itemtype="http://schema.org/Person">
+        <div class="media-left">
+          <% if user.photo? %>
+            <%= link_to image_tag(user.photo.small_thumb.url, :alt => user.name), user.photo.large_thumb.url, :class => 'simple_image media-object mr-3', :title => user.name, :itemprop => "image" %>
+          <% else %>
+            <div  class="media-object mr-3" >
+            <span class="material-icons">person</span>
+            </div>
+          <% end %>
+        </div>
+        <div class="media-body">
+          <h4 itemprop="name" class="media-heading"><%= link_to user.name, user_path(user) %></h4>
+          <p itemprop="description"><%= user.description %></p>
+
+          <div class="vote">
+            <% if user_signed_in? %>
+              <%= link_to like_user_path(user), method: :put do %>
+                <span class="material-icons
+                  <% if current_user.voted_for? user %> already-vote
+                  <% end %>">thumb_up</span><span class="text"> <%= user.cached_votes_up %></span>
+              <% end %>
+            <% else %>
+              <%= link_to like_user_path(user), { method: :put, :class => "confirm_login" } do %>
+                <span class="material-icons">thumb_up</span><span class="text"> <%= user.cached_votes_up %></span>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </article>
+    <% end %>
+  <% else %>
+    <p><%= t(:no_data) %></p>
+  <% end %>
+  <% if current_page?(root_path) %>
+    <%= link_to t(:link_more), users_path, :class => 'more none_more', :title => '망하게하기 서명 더보기' %>
+  <% end %>
+</section>
+<div id="sign_up">
+  <span class="badge bg-secondary"><%= @user_count %></span>명이 서명하였습니다.
+    <%= link_to sign_path do %>
+      <b><%= t(:sign) %></b>
+  <% end %>
+</div>

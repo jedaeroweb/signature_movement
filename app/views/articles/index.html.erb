@@ -1,0 +1,18 @@
+<div id="article_main">
+  <% unless @articles.empty? %>
+    <% @articles.each do |article| %>
+      <div>
+        <%= link_to article.title.truncate(40), article.url, { :target => '_blank' } %>
+      </div>
+    <% end %>
+  <% else %><p><%= t(:no_data) %></p>
+  <% end %>
+  <div id="sl_bottom_menu">
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <%= link_to t(:link_new), new_article_path %>
+      <% end %>
+    <% end %>
+    <%= paginate @articles %>
+  </div>
+</div>

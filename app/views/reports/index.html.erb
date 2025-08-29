@@ -1,0 +1,50 @@
+<% breadcrumb :reports %>
+<div class="sub_main row">
+  <article id="report_main" class="col-12">
+    <%= render :partial => 'layouts/ad' %>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <colgroup>
+          <col style="width:10%">
+          <col style="wdith:20%">
+          <col>
+          <col style="wdith:10%">
+          <col style="wdith:10%">
+          <col style="wdith:10%">
+        </colgroup>
+        <thead class="thead-default">
+        <tr>
+          <th class="text-center"><%= t(:user_id, scope: [:activerecord, :attributes, :report]) %></th>
+          <th><%= t(:report_category_id, scope: [:activerecord, :attributes, :report]) %></th>
+          <th><%= t(:title, scope: [:activerecord, :attributes, :report]) %></th>
+          <th class="text-end sl_count"><%= t(:label_count) %></th>
+          <th class="text-end sl_recommend"><%= t(:label_recommend_count) %></th>
+          <th class="text-end sl_registered_date"><%= t(:label_created_at) %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% unless @reports.empty? %>
+          <% @reports.each do |report| %>
+            <tr>
+              <td><%= report.user.name %></td>
+              <td><%= report.report_category.title %></td>
+              <td><%= link_to report.title.truncate(25), report %></td>
+              <td class="text-end sl_count"><%= report.default_view_count + report.impressionist_count(:filter => :ip_address) %></td>
+              <td class="text-end sl_count"><%= report.cached_votes_up %></td>
+              <td class="text-end sl_registered_date"><%= time_ago_in_words report.created_at.to_date %></td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="6"><%= t(:no_data) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= paginate @reports %>
+  </article>
+  <div class="col-12">
+    <%= link_to t(:link_new), new_report_path %>
+  </div>
+</div>

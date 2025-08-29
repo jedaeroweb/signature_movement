@@ -1,0 +1,94 @@
+<%
+  unless (params[:no_nav])
+    default_menu_class = 'nav-link'
+    article_menu_class = 'nav-link'
+    notice_menu_class = 'nav-link'
+
+    case params[:tab]
+    when 'article'
+      article_menu_class += ' active'
+    when 'notice'
+      notice_menu_class += ' active'
+    else
+      default_menu_class += ' active'
+    end
+%>
+  <section class="row">
+    <div id="main_main" class="col-12">
+      <%= render :partial => 'layouts/aside' %>
+      <% unless user_signed_in? %>
+        <div class="row">
+          <div class="col-12">
+            <div class="jumbotron rounded-3 p-5">
+              <h2><%= raw t(:home_main_title) %></h2>
+              <p class="lead"><%= raw t(:home_main_description) %></p>
+              <%= link_to sign_path do %>
+                <b><%= t(:sign) %></b>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="row">
+        <nav class="col-12">
+          <ul class="nav nav-tabs">
+            <li class="nav-item"><%= link_to('KB망하게 하기 서명', { :controller => 'home', :tab => 'default' }, :class => default_menu_class) %></li>
+            <li class="nav-item"><%= link_to('KB관련 기사', { :controller => 'home', :tab => 'article' }, :class => article_menu_class) %></li>
+            <li class="nav-item"><%= link_to('공지사항', { :controller => 'home', :tab => 'notice' }, :class => notice_menu_class) %></li>
+          </ul>
+        </nav>
+      </div>
+      <div id="main_layer">
+<% end %>
+<div class="row">
+  <div class="col-12">
+    <% if params[:tab].present? %>
+      <% if params[:tab] == 'default' %>
+        <%= render :partial => 'users/index' %>
+      <% end %>
+      <% if params[:tab] == 'article' %>
+        <%= render :partial => 'articles/index' %>
+      <% end %>
+      <% if params[:tab] == 'notice' %>
+        <%= render :partial => 'notices/index' %>
+      <% end %>
+    <% else %>
+      <%= render :partial => 'users/index' %>
+    <% end %>
+  </div>
+</div>
+<hr/>
+<div class="row">
+  <% if params[:tab].present? %>
+    <% if params[:tab] == 'default' %>
+      <%= render :partial => 'models/index' %>
+    <% end %>
+    <% if params[:tab] == 'article' %>
+      <article class="col-12 col-lg-6">
+        <h3>횡령,횡포엔 1등,업무엔 꼴등</h3>
+        <p style="margin-top:20px">엄마나~~ 역시 규모는 최고구만 직원이 2만 2천명이야??<br/> 그래서 능률은 다른은행에 비해 그
+          정도였구만=><%= link_to 'KB는 꼴찌', 'http://www.newspim.com/view.jsp?newsId=20131107000999', :target => '_blank' %>
+        </p>
+      </article>
+      <article class="col-12 col-lg-6">
+        <h3>KB가 망할날이 오는가보네요</h3>
+        <p>일본에서도 사고내고, 카자흐스탄에서는 최대부실 적자, 직원은 100억 횡령= 뭐 평상시에도 있던 일이지만 이번에 터지네요<br/>
+          <%= link_to '불법대출,비리 사과문', 'https://omoney.kbstar.com/quics?page=C018592&bbsMode=view&articleId=8580', :target => '_blank' %>
+        <p>카드 정보유출에 우리가 빠지면 섭섭하지요?~ 이놈들은 이제 사과문 올리는게 일이 되었구만<br/>
+          <%= link_to '고객정보유출 사과문', 'https://otalk.kbstar.com/quics?page=C019391&bbsMode=view&articleId=6709', :target => '_blank' %>
+        </p>
+      </article>
+    <% end %>
+    <% if params[:tab] == 'notice' %>
+      <%= render :partial => 'reports/index' %>
+      <%= render :partial => 'compliments/index' %>
+    <% end %>
+  <% else %>
+    <%= render :partial => 'models/index' %>
+  <% end %>
+</div>
+<% unless (params[:no_nav]) %>
+  </div>
+  </div>
+  </section>
+<% end %>

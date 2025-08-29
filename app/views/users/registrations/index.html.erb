@@ -1,0 +1,28 @@
+<section id="users_main">
+	<% if notice %>
+		<%= render :partial => 'layouts/notice',:locals=>{:notice=>notice} %>
+	<% end %>	
+	<div id="index_main">
+	<% unless @users.empty? %>		
+	<% @users.each do |user| %>
+	<article class="user_info" itemscope itemtype="http://schema.org/Person">
+		<% if user.photo? %>
+			<%=link_to image_tag(user.photo.small_thumb,:alt=>user.name),user.photo.large_thumb.url,:class=>'simple_image',:title=>user.name,:itemprop=>"image" %>		
+		<% else %>
+			<%=image_tag 'anon.png',:alt=>user.name,:itemprop=>"image" %>
+		<% end %>
+	<dl>
+		<dt itemprop="name"><%=user.name %></dt>
+		<dd itemprop="description"><%=user.description %></dd>
+	</dl>
+	</article>
+	<% end %>
+	<% else %>		
+	<div><%=t(:no_data)%></div>
+	<% end %>	
+	</div>
+	<div id="sl_bottom_menu">
+		<%= link_to "서명하기",new_user_registration_path %>
+		<div class="flickr_pagination"><%= paginate @users %></div>
+	</div>		
+</section>

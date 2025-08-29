@@ -1,0 +1,23 @@
+<div class="side_nav d-block d-md-none">
+  <h2 class="col-12"><%= t(:home_title) %></h2>
+  <% if user_signed_in? %>
+    <div class="col-12">
+      <p>
+        <%= link_to edit_user_registration_path do %>
+          <span id="username"><%= current_user.name %></span>님 환영합니다.
+        <% end %>
+      </p>
+      <p id="logout_submit"><%= link_to t(:logout), destroy_user_session_path %></p>
+    </div>
+  <% else %>
+    <div class="col-12">
+      <p>서명후 로그인가능합니다</p>
+      <h2><%= link_to t(:login), new_user_session_path %></h2>
+      <p>
+        <%= link_to "서명하기", new_user_registration_path %>
+        <br/>
+        <%= link_to "비밀번호 찾기", new_user_password_path %>
+      </p>
+    </div>
+  <% end %>
+</div>

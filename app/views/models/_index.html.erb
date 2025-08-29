@@ -1,0 +1,50 @@
+<article id="main_model" class="col-12">
+  <h3>KB에게 추천하는 새 KB모델</h3>
+  <% unless @models.empty? %>
+    <div id="carousel-model" class="carousel slide" data-ride="carousel" data-bs-slide="true">
+      <div class="carousel-indicators">
+        <% @models.each_with_index do |m_model, index| %>
+        <button type="button" data-bs-target="#carousel-model" data-bs-slide-to="<%= index %>" aria-current="true" aria-label="Slide <%= index %>" <% if index.zero? %>class="active"<% end %>></button>
+        <% end %>
+      </div>
+      <div class="carousel-inner">
+        <% @models.each_with_index do |m_model, index| %>
+          <div class="carousel-item
+            <% if index.zero? %> active
+            <% end %>">
+            <div class="media" itemscope itemtype="http://schema.org/Person">
+              <%= link_to model_path(m_model) do %>
+                <figure itemprop="image">
+                  <%= image_tag m_model.photo.small_thumb.url, :class => "mr-3" %>
+                </figure>
+              <% end %>
+              <div class="media-body">
+                <h4 class="media-heading" itemprop="name"><%= link_to m_model.title, model_path(m_model) %></h4>
+                <div itemprop="description">
+                  <%= link_to model_path(m_model) do %>
+                    <%= simple_format(m_model.description) %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-model" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel-model" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  <% else %>
+    <div>
+      <p>
+        <%= t(:no_data) %>
+      </p>
+    </div>
+  <% end %>
+  <%= link_to t(:link_more), models_path, :class => 'more' %>
+</article>

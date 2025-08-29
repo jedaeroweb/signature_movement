@@ -1,0 +1,1341 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+
+ */
+
+@charset "utf-8";
+
+@import "bootstrap";
+@import "../fancybox";
+
+@font-face {
+  font-family: 'Nanum Gothic';
+  src: local('☺'),url('NanumGothic-Regular.eot?#iefix') format('embedded-opentype'),url('NanumGothic-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src:  url('material-icon.woff2') format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+$default-bg : #eee;
+$default-color: $body-color;
+$secondary-bg :#fff;
+$color-mode-type: data;
+
+
+[data-bs-theme="light"] {
+  --bs-border-color : #ccc;
+}
+
+html,body {margin:0;padding:0; height:100%}
+body {background-color:$default-bg;color: $default-color; font-family: "Nanum Gothic", "나눔고딕", "Malgun Gothic", "맑은 고딕", "gulim","굴림","Dotum", "돋움", Arial, Helvetica, sans-serif}
+
+
+label {
+  vertical-align: middle;
+  cursor: pointer
+}
+
+a img {
+  border: none
+}
+
+input {
+  vertical-align: middle
+}
+
+fieldset {
+  border: none
+}
+
+legend {
+  display: none
+}
+
+a {
+  text-decoration: none;
+}
+
+a:active {
+  color: red
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a img {
+  border: none
+}
+
+h1 {
+  font-size: 180%
+}
+
+h2 {
+  font-size: 160%
+}
+
+h3 {
+  font-size: 140%
+}
+
+h4, h5, h6 {
+  font-size: 120%
+}
+
+/* Getting the new tags to behave */
+article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video {
+  display: block;
+}
+
+mark, rp, rt, ruby, summary, time {
+  display: inline;
+}
+
+/* layout */
+#mom {
+  clear: both;
+  float: left;
+  width: 100%;
+  padding: 0
+}
+
+.sub_main {
+  padding-bottom: 30px
+}
+
+.page-header {
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+.page-header h2, .page-header h1 {
+  float: left;
+  margin: 0.5rem 0;
+  padding: 0;
+  font-weight: bold;
+  color: $default-color;
+  font-size: 140%
+}
+
+.page-header .breadcrumb {
+  float: right;
+  margin: 0
+}
+
+.page-header .breadcrumb li {
+  margin-left: 5px;
+  margin-right: 5px
+}
+
+.page-header .breadcrumb li:first-child:after {
+  content: ' /'
+}
+
+.page-header nav {
+  float: right;
+  margin: 0
+}
+
+.page-header nav ol {
+  margin: 0;
+  padding-right: 0
+}
+
+.alert-success {
+  clear: both
+}
+
+.modal-header {
+  background: #37474f;
+  color: #fff
+}
+
+.modal-header * {
+  color: #eee
+}
+
+.modal-body, .modal-footer {
+  background: $default-bg
+}
+
+.thead-default th {
+  background-color: #868e96;
+  font-weight: 600;
+}
+
+header {
+  position: relative;
+  float: left;
+  width: 100%
+}
+
+footer {
+  clear: both;
+  position: relative;
+  text-align: center
+}
+
+
+.alert-success {
+  clear: both
+}
+
+.none {
+  display: none
+}
+
+.close {
+  position:absolute;
+  top:10px;
+  right:10px;
+}
+
+.login-box {
+  margin-left: auto;
+  margin-right: auto
+}
+
+#login-page {
+  min-height: 100%;
+  width: 728px
+}
+
+#special-page h1 {
+  margin-top: 20px;
+  padding-bottom: 15px
+}
+
+#special-page h1 a {
+  display: block
+}
+
+#messages .alert {
+  margin-top: 15px;
+  margin-bottom: 10px
+}
+
+/* header */
+
+header {
+  background: $secondary-bg;
+}
+
+header h1 {
+  position: relative;
+  float: left;
+  white-space: nowrap;
+}
+
+header h1 a {
+  float: left;
+  display: block;
+  text-decoration: none;
+}
+
+header h1 a:hover {
+  color: red;
+}
+
+header nav {
+  position: relative;
+  float: right;
+  z-index: 8
+}
+
+header nav li {
+  float: left;
+  list-style: none
+}
+
+header nav ul.nav-pills > li + li {
+  margin-left: 20px
+}
+
+header nav a {
+  float: left;
+  font-size: 1.3em;
+  text-decoration: none
+}
+
+header ul.dropdown-menu li {
+  float:none;
+  display:block;
+  padding: 0;
+}
+
+header ul.dropdown-menu li a {
+  float: none;
+  padding: 0.3rem 1.5rem;
+  display:block;
+  white-space: nowrap;
+}
+
+#mobile_menu {cursor:pointer;display:none;z-index:999}
+
+#top_menu {
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  float: left;
+  z-index: 9
+}
+
+#top_menu ul {
+  float: right;
+  margin: 0;
+  padding: 0;
+  list-style: none
+}
+
+#top_menu li {
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 0
+}
+
+#login-page h1 {
+}
+
+#login-page h1 a {
+  float: none;
+  margin: 0 auto
+}
+
+#sign_up {
+  margin-bottom: 30px
+}
+
+.no-display-title {
+  margin: 0;
+  padding: 0;
+  height: 1px;
+  text-indent: -9999px
+}
+
+aside article h3 {
+  margin: 0 0 10px;
+  padding: 0;
+  text-align: center
+}
+
+aside h2 a {
+  display: block;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 5px;
+  padding: 5px
+}
+
+aside h2 a span {
+  display: block;
+  width: 100%;
+  text-align: center
+}
+
+footer address {
+  margin: 0;
+  line-height: 100%
+}
+
+.table-responsive table th,.table-responsive table td {
+  white-space: nowrap;
+}
+
+#report_main table th,#report_main table td, #compliment_main table th,#compliment_main table td {
+  word-break: break-all;
+}
+
+#report_main table tr:last-child td, #compliment_main table tr:last-child td {
+  border-bottom: 1px solid var(--bs-border-color)
+}
+
+#report_main tbody tr:hover, #compliment_main tbody tr:hover {
+  background: $secondary-bg
+}
+
+
+#faqCategoryList {margin-bottom:2rem}
+#faqList dt {border-top:1px solid var(--bs-border-color);margin:0;padding:0;border-bottom:1px solid var(--bs-border-color);margin-bottom:10px}
+#faqList dt a {display:block;padding:20px;position:relative;background:#fff}
+#faqList dt.on a {background:#eee}
+#faqList dt a span {position:absolute;top:15px;right:10px;font-weight:bold}
+#faqList dd {background:$secondary-bg;padding:20px;margin-bottom:30px}
+
+
+#users_main {
+  clear: both
+}
+
+#section_main {
+  float: left;
+  width: 100%
+}
+
+.user .nav {
+  margin-bottom: 20px
+}
+
+.user .nav {
+  margin-bottom: 20px
+}
+
+#main_main a.more {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  text-decoration: none
+}
+
+#main_main a.more:hover {
+  text-decoration: underline
+}
+
+#main_main a.none_more {
+  top: -60px
+}
+
+#main_main .date {
+  float: right;
+  color: #999
+}
+
+#main_main .label {
+  font-size: 110%
+}
+
+#section_main_bottom article {
+  margin-bottom: 20px
+}
+
+#section_main_bottom {
+  clear: both;
+  padding-top: 1em;
+  padding-bottom: 1em
+}
+
+#section_main_bottom article {
+  position: relative;
+  float: left
+}
+
+#section_main_bottom article h3 {
+  float: left;
+  width: 100%;
+  margin: 0 0 0.7em;
+  padding: 0 0 0.7em;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc
+}
+
+#section_main_bottom article a.more {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  text-decoration: none;
+  color: #999
+}
+
+#section_main_bottom article a.more:hover {
+  color: #333;
+  text-decoration: underline
+}
+
+#section_main_bottom article ul {
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none
+}
+
+#section_main_bottom article li {
+  float: left;
+  width: 100%;
+  margin: 3px 0;
+  padding: 0
+}
+
+#section_main_bottom article span.date {
+  float: right;
+  color: #999
+}
+
+#section_main_bottom .article2 {
+  float: right;
+}
+
+#section_main .col-12 figure {
+  float: left;
+  margin: 0 20px 0 0;
+  padding: 0
+}
+
+#section_main .col-12 div {
+  float: left
+}
+
+#section_main .col-12 div h4 {
+  margin: 0 0 1.5em;
+  padding: 0;
+  font-weight: bold
+}
+
+.users {
+  border: 1px solid var(--bd-pre-bg);
+  margin-bottom: 5px;
+  padding: 1rem;
+}
+
+.users.media {
+  margin-top: 0;
+  margin-bottom: 15px
+}
+
+.users .vote {
+  text-align: right;
+}
+
+.users .vote a {
+  margin-left: 10px
+}
+
+.users .vote a:hover {
+  text-decoration: none
+}
+
+.users .vote a span {
+  vertical-align: top
+}
+
+#sign_up {
+  margin-top: 10px
+}
+
+#new_user .card, #edit_user .card, #new_session_form .card {
+  margin-bottom: 20px
+}
+
+.form-group {
+  margin-bottom:1.5rem
+}
+
+.comment_layer {
+  float: left;
+  width: 100%
+}
+
+.comment_form {
+  float: left;
+  width: 100%
+}
+
+.comment_form form {
+  float: left;
+  width: 100%
+}
+
+.comment_form textarea {
+  width: 90%;
+  margin: 0 10px 15px 0
+}
+
+.comment_form * {
+  float: left;
+  vertical-align: bottom;
+  min-height: 50px
+}
+
+.popup_page {
+  background: #eee
+}
+
+.popup_page h1 {
+  margin: 0 0 30px;
+  padding: 10px;
+  background: #ccc
+}
+
+/* propose */
+#propose_main .content_list, #model_main .media {
+  float: left;
+  margin: 20px 0;
+  padding: 2%;
+  width: 100%
+}
+
+#model_main .media-list {list-style:none}
+
+#propose_main .content_list_head {
+  border-bottom: 1px dotted #CCCCCC;
+  padding: 5px 0;
+  position: relative
+}
+
+#propose_main .content_list_title {
+  padding: 10px 0;
+  position: relative;
+}
+
+#propose_main .content_list_date {
+  color: #999;
+  float: right;
+}
+
+#propose_main .content_list_content {
+  padding: 20px;
+}
+
+#propose_main #propose_new {
+  padding: 40px;
+}
+
+#propose_main #propose_form label {
+  color: #333;
+}
+
+#main_model {
+  position: relative
+}
+
+#main_model .media a figure,#model_main .media a img {float:left;margin-right:2rem}
+
+#main_model .media-body,#model_main .media-body  {
+  float:left;
+}
+
+#main_model .carousel-inner a.nm {
+  margin-right: 0
+}
+
+#main_model .carousel-control {
+  width: 20px;
+  color: #999
+}
+
+#main_main .carousel-control-prev {
+  background: none;
+  top: 50px;
+  left: -20px;
+  z-index: 9;
+  width: 20px;
+  background: #ccc;
+  height: 150px
+}
+
+#main_main .carousel-control-next {
+  display:none;
+  background: none;
+  top: 50px;
+  right: -20px;
+  z-index: 9;
+  width: 20px;
+  background: #ccc;
+  height: 150px
+}
+
+#main_model .carousel-indicators li {
+  border:none;height: 20px
+}
+
+.carousel-indicators .active {background:#999}
+
+#main_model .media {
+  margin: 10px 0;
+  padding: 1% 2%;
+  height: 150px
+}
+
+#main_model .carousel-indicators {
+  top: 170px
+}
+
+#slboard_model_main ul.media-list {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin: 20px 0
+}
+
+#main_img {
+  float: left;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+#main_page #user_new {
+  float: none;
+  background: $secondary-bg;
+  width: 400px;
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 30px
+}
+
+#users_main .content_list {
+  padding: 20px 30px;
+  border: 1px solid #ccc;
+  margin: 0 0 20px
+}
+
+#sl_model_show article {
+  margin-bottom: 20px
+}
+
+#sl_model_show article h3 {
+  margin: 0 0 7px;
+  padding: 5px 10px
+}
+
+#sl_model_show article div {
+  background-color: var(--bs-secondary-bg);
+  margin: 0 0 7px;
+  padding: 15px 10px;
+  border-radius: 5px
+}
+
+.comment_list {
+  margin-top: 15px
+}
+
+.comment_list h5 {
+  margin: 5px 0 3px;
+  padding: 0;
+  color: #666
+}
+
+.comment_list .comment {
+  border-bottom: 1px dotted #ccc;
+  margin-bottom: 10px;
+  padding-bottom: 10px
+}
+
+aside article {
+  background: $secondary-bg;
+  border: none
+}
+
+/* footer */
+footer {
+  padding: 10px 0
+}
+
+footer ul {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0
+}
+
+#sl-ad {margin-bottom:1.5rem}
+
+
+#share ul {margin:20px 0;padding:0;list-style: none}
+#share li {display:inline-block;margin:0 10px;padding:0}
+.login-box,.sns-box {margin:3rem auto}
+#sl_login_form {margin-top:1rem;margin-bottom:2rem}
+
+.kakao-b-icon,.naver-b-icon,.google-b-icon,.apple-b-icon,.facebook-b-icon,.twitter-b-icon,.github-b-icon {width:60px;height:60px;border-radius:35px;display:inline-block;line-height:60px;text-align:center}
+.kakao-b-icon {
+  text-indent:-9999px;
+  background-image:url('btn_kakao.png');
+  background-position:center center;
+  background-repeat: no-repeat;
+  background-color:#fee500;
+}
+.naver-b-icon {
+  margin-left:15px;
+  text-indent:-9999px;
+  background-image:url('btn_naver.png');
+  background-position:center center;
+}
+.apple-b-icon {
+  text-indent:-9999px;
+  margin-left:15px;
+  background-image:url('btn_apple.png');
+  background-position:center center;
+  background-color:#000;
+  background-repeat: no-repeat;
+}
+.google-b-icon {
+  border:1px solid #ccc;
+  text-indent:-9999px;
+  margin-left:15px;
+  background-color:#fff;
+  background-image:url('btn_google.png');
+  background-position:center center;
+  background-repeat:no-repeat;
+}
+.facebook-b-icon {
+  border:1px solid #ccc;
+  text-indent:-9999px;
+  margin-left:15px;
+  background-color:#fff;
+  background-image:url('btn_facebook.png');
+  background-position:center center;
+  background-repeat:no-repeat;
+}
+.twitter-b-icon {
+  border:1px solid #ccc;
+  text-indent:-9999px;
+  margin-left:15px;
+  background-color:#fff;
+  background-image:url('btn_twitter.png');
+  background-position:center center;
+  background-repeat:no-repeat;
+}
+.github-b-icon {
+  margin-left:15px;
+  text-indent:-9999px;
+  background-image:url('btn_github.png');
+  background-position:center center;
+  background-color:#fff;
+}
+
+
+/* default */
+table td.sl_registered_date {
+  color: #999
+}
+
+.already-vote {
+  color: red
+}
+
+
+#main_layer .row {position: relative}
+
+/* content */
+.slboard_content {
+  margin-bottom: 10px;
+  padding-bottom: 10px
+}
+
+.sl_content_header {
+  position: relative;
+  float: left;
+  width: 100%;
+  margin: 5px 0 0;
+  padding: 10px 0;
+  background: #ccc
+}
+
+.sl_content_header h3 {
+  float: left;
+  margin: 0 0 0 20px;
+  padding: 0
+}
+
+.sl_content_header p {
+  float: right;
+  margin: 0 20px 0 0;
+  padding: 0;
+  color: #999;
+}
+
+.sl_content_main {
+  clear: both
+}
+
+.sl_content_text {
+  padding: 40px 0;
+  margin: 0;
+  line-height: 150%;
+}
+
+#sl_content {
+  width: 730px;
+  height: 300px
+}
+
+
+/* buttoms */
+#sl_bottom_menu {
+  float: left;
+  width: 100%;
+  padding: 10px 0;
+}
+
+#sl_content_bottom_menu {
+  float: left;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+  padding: 10px 0
+}
+
+.continue-sns {
+  margin-bottom:30px;
+}
+
+.continue-sns .sns-link,.no-sns-user-link
+{
+  background-color: var(--bs-secondary-color);
+  display:block;
+  height:90px;
+  margin-bottom:20px;
+  padding:10px;
+  line-height:70px;
+  text-indent:90px;
+  border:1px solid #ccc;
+  border-radius: 5px;
+  background-position: 20px center;
+  background-repeat: no-repeat;
+}
+
+.continue-sns .sns-link:hover,.no-sns-user-link:hover {
+  border-color:#333;
+  font-weight:bold;
+  text-decoration: none;
+}
+
+.continue-sns .sns-facebook {
+  background-image: asset-url('icon-facebook.png');
+}
+
+.continue-sns .sns-twitter {
+  background-image: asset-url('icon-twitter.png');
+}
+
+.continue-sns .sns-google_oauth2 {
+  background-image: asset-url('icon-google.png');
+}
+
+.continue-sns .sns-kakao {
+  display:none;
+}
+
+
+.jumbotron {margin:2rem 0}
+
+.jumbotron, .media {
+  background:$secondary-bg
+}
+
+#main_main nav {
+  margin-bottom:1.5rem
+}
+
+
+@media all and (max-width: 767px) {
+  #top_menu {display:none}
+  #mobile_menu {display:block;position:absolute;top:5px;right:10px;}
+
+  .carousel-indicators {display:none}
+  header {
+    border-bottom: 0;
+    margin: 0;
+  }
+  header h1 {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 1.6em
+  }
+  header h1 a {
+    display:inline;
+    background: none;
+    text-indent: 0;
+    font-weight: bold
+  }
+  header h1 a:hover, header h1 a:hover {
+    text-decoration: none
+  }
+
+  header nav {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0
+  }
+  header nav ul {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 5px
+  }
+  header nav ul li, header ul li a {
+    clear: both;
+    float: left;
+    width: 100%;
+    text-align: left;
+  }
+  header nav ul.nav-pills > li + li {
+    margin-left: 0
+  }
+  header nav ul li {
+    margin: 0;
+    padding: 0;
+  }
+  header nav ul li a {
+    display: block;
+    border-bottom: 1px solid var(--bs-border-color);
+    text-indent: 1em;
+    padding: 10px;
+    border-radius: 0;
+  }
+
+  header nav ul li a:hover {
+    text-decoration: none;
+  }
+  header nav ul li a:active {
+    color: red
+  }
+
+
+
+  #mom {
+    float: left;
+    clear: both;
+    width: 100%;
+    margin: 0
+  }
+  #main {
+    float: left;
+    margin: 0;
+    width: 100%;
+    padding: 3%;
+    border-radius: 5px;
+  }
+  #section_main_top a.more {
+    right: 30px
+  }
+  #login-page {
+    width: 100%
+  }
+  #login-page h1 {
+    margin-bottom: 8px
+  }
+  #login-page #sl-ad {
+    margin-bottom: 10px
+  }
+
+  .page-header {
+    margin-top: 1%
+  }
+  aside {
+    float: left;
+    width: 100%
+  }
+  aside form {
+    float: left
+  }
+  #ad_main {
+    float: right
+  }
+  #main_main .hero-unit a {
+    display: block
+  }
+  #section_main_top {
+    width: 100%
+  }
+  #section_main_top .nav li {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0
+  }
+  #section_main_top .nav li a {
+    border: none
+  }
+  #section_main article, #section_main .article3 {
+    width: 100%;
+    margin: 10px 0
+  }
+  #section_main article ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+  }
+  #section_main_top {
+    clear: both;
+    float: left
+  }
+  #section_main_bottom {
+    margin-bottom: 0
+  }
+  footer {
+    float: left;
+    background: var(--bs-secondary-bg);
+    border-radius: 5px;
+    width: 100%;
+    margin: 1% 0 0
+  }
+  footer address {
+    margin: 7px 0;
+    line-height: 170%;
+  }
+
+  .side_nav {
+    position: fixed;
+    top:0;
+    height: 100hv;
+    left:-500px;
+    width:80%;
+    max-width: 500px;
+    z-index:999;
+    padding:3% 5% 3% 3%;
+    background-color: $body-bg;
+  }
+
+  .jumbotron {margin:1rem 0}
+  .jumbotron.p-5 {padding:20px !important}
+  .table-responsive table {
+    overflow-y: scroll;
+    margin: 5px 0;
+  }
+
+  #new_session_form label.text-right {text-align:left !important}
+
+  #main_main .carousel-control-prev, #main_main .carousel-control-next { display:none}
+}
+
+@media all and (min-width: 768px) and (max-width: 992px) {
+  .container {
+    padding-left: 11px;
+    padding-right: 11px
+  }
+  #mom {
+    margin: -91px 0 -51px;
+    min-height: 100%;
+  }
+
+  #main {
+    padding-top: 91px;
+    padding-bottom: 51px
+  }
+  header {
+    height: 90px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  header h1 a {display:block;margin-top:1.5rem}
+
+  header nav ul {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 30px 0 0;
+    padding: 0
+  }
+  .sub_main {
+    padding: 20px 0 40px
+  }
+  footer {
+    clear: both;
+    position: relative;
+    width: 96%;
+    height: 50px;
+    margin: 0 2%;
+    text-align: center;
+    border-top: 1px solid $secondary-bg;
+  }
+}
+
+@media all and (min-width: 992px) {
+  #mom {
+    margin: -5em 0 -4em;
+    min-height: 100%;
+  }
+  #main {
+    position: relative;
+    padding-top: 5em;
+    padding-bottom: 4em
+  }
+  #main_main {
+    float: right;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 50px
+  }
+
+  header {
+    height: 5em;
+    padding:1.5rem;
+    background: $secondary-bg;
+    border-bottom: 1px solid var(--bs-secondary-bg);
+  }
+  header h1 {
+    position: relative;
+    z-index: 9;
+    padding: 0
+  }
+
+
+  header nav {
+    float: right;
+    z-index: 9;
+    margin: 20px 0 0
+  }
+  header nav ul {
+    margin: 10px 0 0 0;
+    padding: 0
+  }
+  .sub_main {
+    padding-bottom: 40px
+  }
+
+  .media .media-object .material-icons {font-size:35px}
+
+  .modal-dialog {
+    width: 728px
+  }
+  footer {
+    clear: both;
+    position: relative;
+    width: 100%;
+    height: 4em;
+    margin: 0;
+    text-align: center;
+    background: $secondary-bg;
+  }
+  /* aside */
+
+  aside article {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 5px
+  }
+  aside article p {
+    text-align: center
+  }
+  #ad_main {
+    clear: both
+  }
+
+  footer ul li a, footer address {
+    font-size: 12px;
+    font-weight: normal;
+  }
+}
+
+
+
+@media all and (min-width: 992px) and (max-width: 1200px) {
+  .jumbotron {margin-top:1rem;margin-bottom:1.5rem}
+  #aside-ad {display:none}
+  header nav ul {float:right}
+  aside article {
+    min-height:8rem
+  }
+}
+
+@media all and (min-width: 1200px) {
+  body {
+    font-size: 16px
+  }
+  aside {
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    width: 300px;
+    margin: 0
+  }
+
+  header nav ul {float: right}
+
+  .jumbotron {margin-top:0;margin-bottom:1.5rem}
+  .sub_main {
+    padding-bottom: 50px;
+  }
+  .modal-dialog {
+    width: 750px
+  }
+  #main_main {
+    position: relative;
+    padding-left: 335px
+  }
+  footer ul li a, footer address {
+    font-size: 14px
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1499px) {
+}
+
+@media (min-width: 1500px) {
+  body {
+    font-size: 18px
+  }
+
+  #top_menu {top:20px}
+
+  #main_main .carousel-control-next {
+    display:flex;
+  }
+
+  .container {
+    width: 1500px
+  }
+  .modal-dialog {
+    width: 992px
+  }
+  .jumbotron {
+    text-align: center
+  }
+}
+
+
+@include color-mode(dark) {
+  body {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+  }
+
+  #faqList dt.on a {background:#ccc}
+  .page-header h1, .page-header h2 {color: var(--bs-body-color)}
+  header,footer,.jumbotron,.media,.card-body,aside article,#faqList dt a.title,.modal-body, .modal-footer,.sl_content_header,.thead-default th,#faqList dd,#faqList dt a.title {background-color:var(--bs-secondary-bg)}
+}
+
+@include color-mode(light) {
+  a {
+    color: #666
+  }
+  a:hover {
+    color: #333
+  }
+  a:visited {
+    color: #999
+  }
+  a:active {
+    color: #000
+  }
+
+  .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link,.nav-tabs {border-color:#ccc}
+  .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {border-bottom-color:#f1f1f1}
+  a.btn-primary,a.btn-primary:visited {color:#fff}
+  aside a,aside a:visited {color:#fff}
+}

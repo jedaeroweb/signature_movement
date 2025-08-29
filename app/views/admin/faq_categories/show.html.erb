@@ -1,0 +1,26 @@
+<div class="sl_show">
+	<p>
+		<b><%=t(:title,scope:[:activerecord,:attributes,:faq_category]) %></b>
+		<%= @faq_category.title %>
+	</p>
+	<p>
+		<b><%=t(:faqs_count,scope:[:activerecord,:attributes,:faq_category]) %></b>
+		<%= @faq_category.faqs_count %>
+	</p>
+	<p>
+		<b><%=t(:enable,scope:[:activerecord,:attributes,:faq_category]) %></b>
+		<%=raw flagToString(@faq_category.enable) %>
+	</p>
+	<p>
+  	<b><%=t(:label_created_at) %></b>
+  	<%= @faq_category.created_at %>
+  </p>
+  <p>
+  	<b><%=t(:label_updated_at) %></b>
+  	<%= @faq_category.created_at %>
+  </p>
+</div>
+<% if can? :update, @faq_category %>
+<%= link_to t(:link_edit), edit_admin_faq_category_path(@faq_category) %> |
+<% end %>
+<%= link_to t(:link_list), admin_faq_categories_path %>

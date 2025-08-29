@@ -1,0 +1,63 @@
+<section id="gallery_main" class="sub_main">
+	<p id="notice"><%= notice %></p>
+	<ol class="sl_tab_menu">
+		<% if(@gallery_categories.length>0) %>			
+		<% @gallery_categories.each do |gallery_category| %>
+		<li <% if(@categoryId==gallery_category.id) %>class="active"<% end %>><%= link_to truncate(gallery_category.title,:length => 20),galleries_path(:gallery_category_id=>gallery_category.id) %></li>
+		<% end %>
+  	<% else %>	
+		<li>분류가 없습니다.</li>
+		<% end %>
+	</ol>		
+	<div id="sl_gallery">
+		<% if(@gallery) %>
+		<div id="sl_gallery_left">
+			<%=link_to @gallery.photo.url,{:title=>@gallery.title,:class=>'simple_image'} do %>
+				<%= image_tag(@gallery.photo.large_thumb) %>
+				<span id="gallery<%=@gallery.id %>_img<%=@gallery.id %>_span" class="image_caption"><%=@gallery.title %></span>
+			<% end %>
+		</div>
+		<div id="sl_gallery_right">
+			<div><%=simple_format @gallery.content %></div>
+			<% if user_signed_in? %>
+			<% if current_user.admin? %>
+			<div id="sl_gallery_menu">				
+				<%= link_to '수정', edit_gallery_path(@gallery) %> &nbsp; | &nbsp; 
+				<%= link_to '삭제', @gallery, method: :delete, data: { confirm: '정말로 삭제합니까?' } %>
+			</div>				
+			<% end %>
+			<% end %>
+		</div>
+		<% end %>
+		<div id="sl_gallery_slide">
+		<a class="prev browse left"></a>
+			<div class="scrollable">
+				<% if @galleries.length>0 %>
+				<div class="items">
+					<% @galleries.each_slice(6) do |gallery| %>
+					<ul class="item">
+						<% gallery.each_with_index do |gallery,index| %>
+						<li><%=link_to image_tag(gallery.photo.medium_thumb),galleries_path(:gallery_category_id=>gallery.gallery_category_id,:id=>gallery) %></li>
+						<% end %>
+					</ul>
+				<% end %>
+				</div>
+			<% else %>
+			<ul>
+				<li>글이 없습니다</li>
+			</ul>
+			<% end %>
+			</div>
+			<a class="next browse right"></a>
+		</div>
+	</div>
+	<div id="sl_bottom_menu">
+	<% if user_signed_in? %>
+	<% if current_user.admin? %>		
+		<%= link_to "글쓰기",new_gallery_path(:gallery_category_id=>@categoryId) %>
+	<% end %>
+	<% end %>
+		<div class="flickr_pagination"><%= paginate @galleries %></div>		
+	</div>
+	<%= render :partial => 'layouts/ad' %>
+</section>

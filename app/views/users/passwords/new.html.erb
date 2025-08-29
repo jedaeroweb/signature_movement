@@ -1,0 +1,26 @@
+<section id="sl_find_password" class="row">
+  <div class="col-12 col-lg-8 col-xl-6 col-xxl-5 login-box">
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post}) do |f| %>
+      <%= devise_error_messages! %>
+    <div class="card">
+      <div class="card-header">
+        <h2>비밀번호 찾기</h2>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email,:class=>'form-control input-lg',:required=>'required' %>
+        </div>
+      </div>
+    </div>
+      <div class="form-group">
+        <%= f.submit '비밀번호 찾기',:class=>'btn btn-lg btn-block btn-primary' %>
+      </div>
+    <% end %>
+    <%= render :partial => 'users/shared/links' %>
+  </div>
+</section>
+
+
+
+

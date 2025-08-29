@@ -1,0 +1,16 @@
+<article>
+  <h3 class="text-hide">공지사항</h3>
+  <div>
+    <% unless @notices.empty? %>
+      <ul>
+        <% @notices.each do |notice| %>
+          <li><%= notice.user.name %> : <%= link_to(notice.title, notice) %>
+            <span class="date d-none d-sm-block"><%= time_ago_in_words notice.created_at.to_date %></span></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p><%= t(:no_data) %></p>
+    <% end %>
+    <%= link_to t(:link_more), notices_path, :class => 'more none_more', :title => '공지사항 더보기' %>
+  </div>
+</article>

@@ -1,0 +1,16 @@
+<div id="notice_show">
+	<article class="slboard_content" itemscope itemprop="article" itemtype="http://schema.org/Article">
+		<div class="sl_content_header">
+			<h3 itemprop="name"><%= @notice.title %></h3>
+			<p>작성자 :<%= @notice.user.name %>&nbsp;&nbsp;&nbsp; 작성일 : <%= @notice.created_at %></p>
+		</div>
+		<div class="sl_content_main">
+			<div class="sl_content_text" itemprop="text"><%= simple_format(@notice.content) %></div>
+		</div>
+	</article>
+	<div class="row">
+		<div class="btn-group btn-group-lg col-12" role="group" style="margin-top:3rem">
+			<%=link_to t(:link_list),notices_path,{class: 'btn btn-secondary btn-large btn-block'} %>
+		</div>
+	</div>
+</div>

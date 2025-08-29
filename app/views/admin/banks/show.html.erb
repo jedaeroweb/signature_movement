@@ -1,0 +1,33 @@
+<div class="sl_show">
+	<p>
+		<b><%=t(:title,scope:[:activerecord,:attributes,:bank]) %></b>
+		<%= @admin_bank.title %>
+	</p>
+	<p>
+	<% if @admin_bank.photo? %>
+	<%= link_to admin_bank_path(@admin_bank) do %><%=image_tag @admin_bank.photo.small_thumb %><% end %>
+	<% else %>
+	<%=t(:no_photo) %>
+	<% end %>
+	</p>
+	<p>
+  	<b><%=t(:compliments_count,scope:[:activerecord,:attributes,:bank]) %></b>
+  	<%= @admin_bank.compliments_count %>
+  </p>
+	<p>
+		<b><%=t(:enable,scope:[:activerecord,:attributes,:bank]) %></b>
+		<%=raw flagToString(@admin_bank.enable) %>
+	</p>
+	<p>
+  	<b><%=t(:label_created_at) %></b>
+  	<%= @admin_bank.created_at %>
+  </p>
+  <p>
+  	<b><%=t(:label_updated_at) %></b>
+  	<%= @admin_bank.created_at %>
+  </p>
+</div>
+<% if can? :update, @admin_bank %>
+<%= link_to t(:link_edit), edit_admin_bank_path(@admin_bank) %> |
+<% end %>
+<%= link_to t(:link_list), admin_banks_path %>

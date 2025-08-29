@@ -1,0 +1,36 @@
+<%= form_for [:admin,faq] do |f| %>
+<% if faq.errors.any? %>
+<div id="error_explanation" class="alert alert-danger">
+	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	<h2><%= pluralize(faq.errors.count, "error") %> prohibited this request from being saved:</h2>
+	<ul>
+		<% faq.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="form-group">
+	<%= f.label :faq_category_id %>
+	<%= f.select :faq_category_id,options_from_collection_for_select(FaqCategory.where(:enable=>true).all, 'id', 'title',faq.faq_category_id),{},{:class=>"form-control"} %>
+</div>
+<div class="form-group">
+	<%= f.label :title %>
+	<%= f.text_field :title,:class=>"form-control",:required=>"required" %>
+</div>
+<%= f.fields_for :faq_content do |c| %>
+<div class="form-group">
+	<%= c.label :content %>
+	<%= c.text_area :content,:id=>"sl_content", :class=>'form-control', :required=>"required",:rows=>10,:cols=>50 %>
+</div>
+<% end %>
+<div class="form-group">
+	<%= f.label :enable %>
+	<%= f.check_box :enable %>
+</div>
+<div class="form-group actions">
+	<%= f.submit :class=>"btn btn-primary" %>
+</div>
+<% end %>

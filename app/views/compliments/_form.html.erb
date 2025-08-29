@@ -1,0 +1,38 @@
+<%= form_with(model: compliment, local: true) do |form| %>
+  <% if compliment.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
+      <h2><%= pluralize(compliment.errors.count, "error") %> prohibited this request from being saved:</h2>
+      <ul>
+        <% compliment.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="card">
+    <div class="card-body">
+      <div class="form-group">
+        <%= form.label :bank_id, :class => 'form-label' %>
+        <%= form.select :bank_id, options_from_collection_for_select(Bank.where(:enable => true).all, 'id', 'title', @compliment.bank_id), {}, { :class => "form-control input-lg" } %>
+      </div>
+      <div class="form-group">
+        <%= form.label :compliment_category_id, :class => 'form-label' %>
+        <%= form.select :compliment_category_id, options_from_collection_for_select(ComplimentCategory.where(:enable => true).all, 'id', 'title', @compliment.compliment_category_id), {}, { :class => "form-control input-lg" } %>
+      </div>
+      <div class="form-group">
+        <%= form.label :title, :class => 'form-label' %>
+        <%= form.text_field :title, :class => 'form-control input-lg', :required => 'required' %>
+      </div>
+      <div class="form-group">
+        <h3><%= form.label :content %></h3>
+        <%= form.rich_text_area :content %>
+      </div>
+    </div>
+  </div>
+  <div class="d-grid gap-2 mt-3">
+    <%= form.submit :class => "btn btn-primary btn-block btn-lg" %>
+  </div>
+<% end %>

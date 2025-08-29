@@ -1,0 +1,24 @@
+<section id="sl_delete_user" class="sub_main row">
+  <div class="col-12 col-lg-8 col-xl-6 col-xxl-5 login-box">
+    <%= form_for(@user, :html => {:method => :delete}) do |f| %>
+      <div class="card">
+        <div class="card-header">
+          <h2>사용자 삭제</h2>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email,:class=>'form-control input-lg',:required=>'required' %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.submit '비밀번호 찾기',:class=>'btn btn-lg btn-block btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+
+
+

@@ -1,0 +1,29 @@
+<%= form_for @faq, :html => { :class => 'col-12' } do |f| %>
+  <% if @faq.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@faq.errors.count, "error") %> prohibited this faq from being saved:</h2>
+      <ul>
+        <% @faq.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :faq_category_id %><br/>
+    <%= f.select :faq_category_id, options_from_collection_for_select(@faq_categories, 'id', 'title', @faq_category_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :title %><br/>
+    <%= f.text_field :title, :class => 'sl_input', :required => 'required' %>
+  </div>
+  <%= f.fields_for :faq_content do |c| %>
+    <div class="form-group">
+      <%= c.label :content %><br/>
+      <%= c.text_area :content, :class => 'sl_input', :required => 'required' %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit :class => "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<footer>
+	<div class="container">
+		<div class="row">
+			<address class="col-12 col-lg-9">
+				<a href="https://www.jedaeroweb.co.kr" target="_blank"><%=t(:jedearoweb) %></a>
+				&nbsp;&nbsp; CopyLeft. 2020, jedaeroweb. All wrongs reserved.</address>
+			<div class="col-12 col-lg-3 dropdown">
+					<%= link_to '#', { class: 'dropdown-toggle d-flex align-items-center gap-2',
+														 role: "button",
+														 'data-bs-toggle': "dropdown",
+														 'aria-expanded': "false" } do %>
+						<span><%=t(:theme) %></span>
+						<span class="current-theme-icon"></span>
+					<% end %>
+					<ul class="dropdown-menu">
+						<li>
+							<button class="dropdown-item d-flex align-items-center gap-2" data-bs-theme-value="light">
+								<span class="icon">☀️</span>
+								<%=t(:light) %>
+							</button>
+						</li>
+						<li>
+							<button class="dropdown-item d-flex align-items-center gap-2" data-bs-theme-value="dark">
+								<span class="icon">🌙</span>
+								<%=t(:dark) %>
+							</button>
+						</li>
+						<li>
+							<button class="dropdown-item d-flex align-items-center gap-2" data-bs-theme-value="auto">
+								<span class="icon">🌓</span>
+								<%=t(:auto) %>
+							</button>
+						</li>
+					</ul>
+		</div>
+	</div>
+	</div>
+</footer>

@@ -1,0 +1,43 @@
+<footer>
+  <div class="container">
+    <ul class="row">
+      <li class="col-4 text-center"><%= link_to t(:intro, scope: [:activerecord, :models]), intro_index_path %></li>
+      <li class="col-4 text-center"><%= link_to t(:sitemap, scope: [:activerecord, :models]), sitemap_index_path %></li>
+      <li class="col-4 dropdown text-center  d-flex justify-content-center">
+        <%= link_to '#', { class: 'dropdown-toggle d-flex align-items-center gap-2',
+                           role: "button",
+                           'data-bs-toggle': "dropdown",
+                           'aria-expanded': "false" } do %>
+          <span><%=t(:theme) %></span>
+          <span class="current-theme-icon"></span>
+        <% end %>
+        <ul class="dropdown-menu">
+          <li>
+            <button class="dropdown-item d-flex align-items-center gap-2" data-bs-theme-value="light">
+              <span class="icon">☀️</span>
+              <%=t(:light) %>
+            </button>
+          </li>
+          <li>
+            <button class="dropdown-item d-flex align-items-center gap-2" data-bs-theme-value="dark">
+              <span class="icon">🌙</span>
+              <%=t(:dark) %>
+            </button>
+          </li>
+          <li>
+            <button class="dropdown-item d-flex align-items-center gap-2" data-bs-theme-value="auto">
+              <span class="icon">🌓</span>
+              <%=t(:auto) %>
+            </button>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <div class="row">
+      <address class="col-12 text-center">
+        <a href="https://www.jedaeroweb.co.kr" target="_blank"><%=t(:jedearoweb) %></a><br class="d-block d-md-none" />
+        &nbsp;&nbsp; CopyLeft. 2013, jedaeroweb. All wrongs reserved.
+      </address>
+    </div>
+  </div>
+</footer>

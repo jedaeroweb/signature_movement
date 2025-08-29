@@ -1,0 +1,77 @@
+<div class="row">
+	<h3 class="col-xs-12 col-sm-6"><%= @controller_name %> <%= actionNameChange controller.action_name %></h3>
+	<div class="col-xs-12 col-sm-6">
+
+	</div>
+</div>
+<div class="table-responsive">
+	<table class="table table-bordered table-striped">
+		<colgroup>
+			<col style="width:80px" />
+			<col />
+			<col />
+			<col />
+			<col />
+			<col />
+			<col />
+			<% if can?(:update, Compliment) || can?(:delete, Compliment) %>
+			<col <%= raw manage_width(Compliment) %> />
+			<% end %>
+		</colgroup>
+		<thead>
+			<tr>
+				<th><%= t(:label_number) %></th>
+				<th><%=t(:compliment_category_id,scope:[:activerecord,:attributes,:compliment]) %></th>
+				<th><%=t(:bank_id,scope:[:activerecord,:attributes,:compliment]) %></th>
+				<th><%=t(:title,scope:[:activerecord,:attributes,:compliment]) %></th>
+				<th><%=t(:label_count) %></th>
+				<th><%=t(:enable,scope:[:activerecord,:attributes,:compliment]) %></th>
+				<th><%= t(:label_created_at) %></th>
+				<% if can?(:update, Compliment) || can?(:delete, Compliment) %>
+				<th class="text-center"><%= t(:label_manage) %></th>
+				<% end %>
+			</tr>
+		</thead>
+		<tbody>
+			<% unless @admin_compliments.empty? %>
+			<% @admin_compliments.each do |compliment| %>
+			<tr>
+				<td><%= link_to compliment.id,admin_compliment_path(compliment) %></td>
+				<td><%= link_to compliment.compliment_category.title,admin_compliment_path(compliment) %></td>
+				<td><%= link_to compliment.bank.title,admin_compliment_path(compliment) %></td>
+				<td><%= link_to compliment.title,admin_compliment_path(compliment) %></td>
+				<td><%= compliment.default_view_count+compliment.impressionist_count(:filter=>:ip_address) %></td>
+				<td><%= raw flagToString(compliment.enable) %></td>
+				<td><%= compliment.created_at.to_date %></td>
+				<% if can?(:update, compliment) || can?(:delete, compliment) %>
+				<td class="text-center"> <% if can? :update, compliment %>
+				<%= link_to edit_admin_compliment_path(compliment),:class=>"btn btn-secondary" do %> <i class="glyphicon glyphicon-pencil"></i> <%= t(:link_edit) %>
+				<% end %>
+				<% end %>
+				<% if can? :delete, compliment %>
+				<%= link_to admin_compliment_path(compliment), :method => :delete, :data => { :confirm => t(:delete_confirm) },:class=>"btn btn-danger" do %> <i class="glyphicon glyphicon-trash"></i> <%= t(:link_delete) %>
+				<% end %>
+				<% end %> </td>
+				<% end %>
+			</tr>
+			<% end %>
+			<% else %>
+			<tr>
+				<td colspan="6"><%= t(:no_data)%></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<div class="row">
+	<div class="col-xs-6 col-sm-3 col-md-2">
+		<% if can? :create, Compliment %>
+		<%= link_to new_admin_compliment_path,:class=>"btn btn-primary" do %>
+		<i class="glyphicon glyphicon-plus"></i> <%= t(:link_new) %>
+		<% end %>
+		<% end %>
+	</div>
+	<nav class="col-xs-12 col-sm-9 col-md-10">
+		<%= paginate @admin_compliments %>
+	</nav>
+</div>

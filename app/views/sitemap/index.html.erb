@@ -1,0 +1,23 @@
+<% breadcrumb :sitemap %>
+<section id="section_sitemap" class="row">
+  <h2 class="col-12 no-display-title">><%= t(:sitemap, scope: [:activerecord, :models]) %></h2>
+  <article class="col-12">
+    <h3>메인메뉴</h3>
+    <ul>
+      <li><%= link_to t(:report, scope: [:activerecord, :models]), reports_path %></li>
+      <li><%= link_to t(:compliment, scope: [:activerecord, :models]), compliments_path %></li>
+      <li><%= link_to t(:faq, scope: [:activerecord, :models]), faqs_path %></li>
+      <li><%= link_to t(:propose, scope: [:activerecord, :models]), proposes_path %></li>
+      <li><%= link_to t(:model, scope: [:activerecord, :models]), models_path %></li>
+      <li><%= link_to t(:improve, scope: [:activerecord, :models]), new_improve_path %></a></li>
+    </ul>
+  </article>
+  <article class="col-12">
+    <h3>하단 메뉴</h3>
+    <ul>
+      <li><%= link_to t(:intro, scope: [:activerecord, :models]), intro_index_path %></li>
+      <li>email:<%= mail_to t(:email_webmaster) %></li>
+      <li><%= link_to t(:sitemap, scope: [:activerecord, :models]), sitemap_index_path %></li>
+    </ul>
+  </article>
+</section>

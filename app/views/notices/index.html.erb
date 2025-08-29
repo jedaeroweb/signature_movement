@@ -1,0 +1,44 @@
+<% breadcrumb :notices %>
+<%= render :partial => 'layouts/ad' %>
+<div id="notice_main" class="table-responsive">
+	<table class="table table-striped">
+		<colgroup>
+			<col style="width:10%" />
+			<col />
+			<col style="wdith:20%" />
+      <col style="wdith:150px" />
+		</colgroup>
+		<thead class="thead-default">
+			<tr>
+				<th><%=t(:label_name) %></th>
+				<th><%=t(:label_title) %></th>
+				<th class="text-end"><%=t(:label_count) %></th>
+				<th class="text-end"><%=t(:label_created_at) %></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% unless @notices.empty? %>
+			<% @notices.each do |notice| %>
+			<tr>
+				<td><%= notice.user.name %></td>
+				<td><%= link_to notice.title, notice  %></td>
+				<td class="text-end"><%=notice.impressionist_count(:filter=>:ip_address) %></td>
+        <td class="text-end text-secondary"><%=time_ago_in_words notice.created_at.to_date %></td>
+			</tr>
+			<% end %>
+			<% else %>
+			<tr>
+				<td colspan="4"><%=t(:no_data) %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<div id="sl_bottom_menu">
+	<% if user_signed_in? %>
+	<% if current_user.admin? %>
+		<%= link_to t(:link_new), new_notice_path %>
+	<% end %>
+	<% end %>
+	<%= paginate @notices %>
+	</div>
+</div>

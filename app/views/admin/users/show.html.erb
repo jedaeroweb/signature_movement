@@ -1,0 +1,22 @@
+<div class="sl_show">
+	<p>
+		<b><%=t(:name,scope:[:activerecord,:attributes,:user]) %></b>
+		<%= @admin_user.name %>
+	</p>
+	<p>
+		<b><%=t(:enable,scope:[:activerecord,:attributes,:user]) %></b>
+		<%=raw flagToString(@admin_user.enable) %>
+	</p>
+	<p>
+  	<b><%=t(:label_created_at) %></b>
+  	<%= @admin_user.created_at %>
+  </p>
+  <p>
+  	<b><%=t(:label_updated_at) %></b>
+  	<%= @admin_user.created_at %>
+  </p>
+</div>
+<% if can? :update, @admin_user %>
+<%= link_to t(:link_edit), edit_admin_user_path(@admin_user) %> |
+<% end %>
+<%= link_to t(:link_list), admin_users_path %>

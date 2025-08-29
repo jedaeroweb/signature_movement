@@ -1,0 +1,23 @@
+<% breadcrumb :model,@model %>
+<section id="sl_model_show" class="sub_main row">
+	<h2 class="col-12"><%= @model.title %></h2>
+	<p class="col-12">작성자 :<%= @model.user.name %>&nbsp;&nbsp;&nbsp; 작성일 : <%= @model.created_at %></p>
+	<div class="slboard_content col-12">
+		<figure>
+			<%=image_tag @model.photo.medium_thumb.url,:alt=>@model.title %>
+		</figure>
+    <article>
+				<h3>추천사</h3>
+				<div class="sl_content_text" itemprop="text"><%=simple_format sanitize(@model.description.to_s.gsub(/\n/, '<br />'), :tags => %w(br img a)) %></div>
+			</article>
+			<article>
+				<h3>추천받은 모델의 소감</h3>
+				<div class="sl_content_text" itemprop="text"><%=simple_format sanitize(@model.content.to_s.gsub(/\n/, '<br />'), :tags => %w(br img a)) %></div>
+			</article>
+		<div class="row">
+			<div class="btn-group btn-group-lg col-12" role="group" style="margin-top:3rem">
+				<%=link_to t(:link_list),models_path,{class: 'btn btn-secondary btn-large btn-block'} %>
+			</div>
+		</div>
+		</div>
+</section>

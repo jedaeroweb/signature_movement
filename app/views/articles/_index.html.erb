@@ -1,0 +1,16 @@
+<article>
+  <h3 class="text-hide">KB관련 기사</h3>
+  <div>
+    <% unless @articles.empty? %>
+      <ul>
+        <% @articles.each do |article| %>
+          <li><%= link_to(article.title, article.url, { :target => '_blank' }) %>
+            <span class="date d-none d-sm-block"><%= time_ago_in_words article.created_at.to_date %></span></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p><%= t(:no_data) %></p>
+    <% end %>
+    <%= link_to t(:link_more), articles_path, :class => 'more none_more', :title => 'KB관련 기사 더보기' %>
+  </div>
+</article>

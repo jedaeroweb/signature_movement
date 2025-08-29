@@ -1,0 +1,82 @@
+<div class="row">
+	<h3 class="col-xs-12 col-sm-6"><%= @controller_name %> <%= actionNameChange controller.action_name %></h3>
+	<div class="col-xs-12 col-sm-6">
+
+	</div>
+</div>
+<div class="table-responsive">
+	<table class="table table-bordered table-striped">
+		<colgroup>
+			<col style="width:80px" />
+			<col style="width:100px" />
+			<col />
+			<col style="width:80px" />
+			<col style="width:80px" />
+			<col style="width:100px" />
+			<% if can?(:update, Bank) || can?(:delete, Bank) %>
+			<col <%= raw manage_width(Bank) %> />
+			<% end %>
+		</colgroup>
+		<thead>
+			<tr>
+				<th><%=t(:label_number) %></th>
+				<th><%=t(:photo,scope:[:activerecord,:attributes,:bank]) %></th>
+				<th><%=t(:title,scope:[:activerecord,:attributes,:bank]) %></th>
+				<th><%=t(:compliments_count,scope:[:activerecord,:attributes,:bank]) %></th>
+				<th><%=t(:enable,scope:[:activerecord,:attributes,:bank]) %></th>
+				<th><%=t(:label_created_at) %></th>
+				<% if can?(:update, Bank) || can?(:delete, Bank) %>
+				<th><%= t(:label_manage) %></th>
+				<% end %>
+			</tr>
+		</thead>
+		<tbody>
+			<% unless @admin_banks.empty? %>
+			<% @admin_banks.each do |bank| %>
+			<tr>
+				<td><%= link_to bank.id,admin_bank_path(bank) %></td>
+				<td>
+					<% if bank.photo? %>
+					<%= link_to admin_bank_path(bank) do %><%=image_tag bank.photo.small_thumb %><% end %>
+					<% else %>
+					<%=t(:no_photo) %>
+					<% end %>
+				</td>
+				<td><%= link_to bank.title,admin_bank_path(bank) %></td>
+				<td><%= link_to bank.compliments_count,admin_bank_path(bank) %></td>
+				<td><%= raw flagToString(bank.enable) %></td>
+				<td><%= bank.created_at.to_date %></td>
+				<% if can?(:update, bank) || can?(:delete, bank) %>
+				<td>
+				<% if can? :update, bank %>
+				<%= link_to edit_admin_bank_path(bank),:class=>"btn btn-secondary" do %> <i class="glyphicon glyphicon-pencil"></i> <%= t(:link_edit) %>
+				<% end %>
+				<% end %>
+				<% if can? :delete, bank %>
+				<%= link_to admin_bank_path(bank), :method => :delete, :data => { :confirm => t(:delete_confirm) },:class=>"btn btn-danger" do %> <i class="glyphicon glyphicon-trash"></i> <%= t(:link_delete) %>
+				<% end %>
+				<% end %>
+				</td>
+				<% end %>
+			</tr>
+			<% end %>
+			<% else %>
+			<tr>
+				<td colspan="6"><%= t(:no_data)%></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<div class="row">
+	<div class="col-xs-6 col-sm-3 col-md-2">
+		<% if can? :create, Bank %>
+		<%= link_to new_admin_bank_path,:class=>"btn btn-primary" do %>
+		<i class="glyphicon glyphicon-plus"></i> <%= t(:link_new) %>
+		<% end %>
+		<% end %>
+	</div>
+	<nav class="col-xs-12 col-sm-9 col-md-10">
+		<%= paginate @admin_banks %>
+	</nav>
+</div>
