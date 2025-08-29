@@ -1,6 +1,6 @@
 # config valid for current version and patch releases of Capistrano
 set :application, "anti-kb"
-set :repo_url, "git@github.com:sleepinglion/signature_movement.git"
+set :repo_url, "git@github.com:jedaeroweb/signature_movement.git"
 set :branch, 'master'
 set :deploy_to, '/home/deploy/anti-kb'
 
