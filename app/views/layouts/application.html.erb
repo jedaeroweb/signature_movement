@@ -24,7 +24,7 @@
 <%= csrf_meta_tags %>
 <%= csp_meta_tag -%>
 </head>
-<body itemscope itemtype="<%= @page_itemtype %>">
+<body itemscope itemtype="<%= @page_itemtype %>"  data-controller="modal">
 <%= render :partial => 'layouts/header' %>
 <div id="mom">
   <div id="main" class="container">
@@ -37,7 +37,7 @@
 </div>
 <%= render :partial => 'layouts/footer' %>
 <%= render :partial => 'layouts/aside_mobile' %>
-<div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"></div>
+<div class="modal modal-lg fade" id="myModal" tabindex="-1" role="dialog"  data-hello-target="modal"></div>
 <%= javascript_importmap_tags %>
 </body>
 </html>

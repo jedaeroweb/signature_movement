@@ -36,10 +36,12 @@
               </div>
               <div class="form-group row">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <div class="form-check">
-                    <%= f.check_box :remember_me %>
-                    <%= f.label :remember_me %>
-                  </div>
+                  <%= f.check_box :remember_me, data: {
+                    controller: "login",
+                    action: "change->login#handleRememberMe"
+                  }
+                  %>
+                  <%= f.label :remember_me %>
                 </div>
               </div>
             </div>

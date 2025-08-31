@@ -1,32 +1,4 @@
 var ready=function(){
-    $('.btn-modal').click(btn_modal_click);
-
-    function btn_modal_click(event) {
-        event.preventDefault();
-
-        var url = $(this).attr('href');
-        url += (url.indexOf('?') === -1 ? '?popup=true' : '&popup=true');
-
-        $('#myModal').load(url, function () {
-            let myModal = new bootstrap.Modal(document.getElementById('myModal'));
-            myModal.show();
-        });
-
-        return false;
-    }
-
-    // 페이지 로드 시 체크박스 해제
-    $("#user_remember_me").prop("checked", false);
-
-    $("#user_remember_me").change(function(){
-        if ($(this).is(':checked')) {
-            const confirmed = confirm("1달간 로그인이 유지 됩니다. 공공장소 PC에서 사용 주의\n  로그인 정보 기억하시겠습니까?");
-            if (!confirmed) {
-                $(this).prop('checked', false); // 취소 시 체크 해제
-            }
-        }
-    });
-
     var mobile_menu=1;
     var csrf_token=$('meta[name="csrf-token"]').attr('content');
 

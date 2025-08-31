@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html lang="<%= I18n.locale %>" data-bs-theme="auto">
+<html lang="<%=I18n.locale %>">
 <head>
   <meta charset="utf-8">
-  <title><%=t(:application_name)%></title>
-  <meta name="description" content="<%=t(:application_name)%>">
+  <title><%=t(:service_name)%></title>
+  <meta name="description" content="<%=t(:service_name)%>">
   <meta name="author" content="Sleeping-Lion">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <%= stylesheet_link_tag "admin/application", :media => "all", "data-turbolinks-track" => true %>
   <%= favicon_link_tag 'favicon.ico' %>
   <%= csrf_meta_tags %>
-  <%= csp_meta_tag -%>
+  <%= csp_meta_tag %>
 </head>
 <body id="anon_body">
 <div id="mom">
-  <div id="main">
+  <%= render :partial => 'layouts/admin/login_header' %>
+  <main id="main" class="container">
     <div class="sub-main">
+      <%= render :partial => 'layouts/notice', :locals => { :notice => notice, :alert => alert } %>
       <%= yield %>
     </div>
-  </div>
+  </main>
 </div>
-<%= render :partial => 'layouts/admin/footer' %>
+<%= render :partial => 'layouts/admin/login_footer' %>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"></div>
 <%= javascript_importmap_tags %>
 </body>

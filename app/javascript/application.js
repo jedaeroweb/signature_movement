@@ -8,8 +8,6 @@ import jQuery from "jquery";
 // jQuery를 전역 변수로 설정
 window.$ = window.jQuery = jQuery;
 
-import * as bootstrap from 'bootstrap';
-window.Modal = bootstrap.Modal;
-
 import 'common'
+import "controllers"
 import 'index'

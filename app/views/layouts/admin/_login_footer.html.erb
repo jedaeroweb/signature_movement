@@ -14,14 +14,15 @@
     ko_class+=' active'
   end
 
+  puts session[:locale]
 %>
-<footer class="row">
-  <div class="col-12 text-center">
+<footer>
+  <div class="container">
     <ul class="row justify-content-center">
       <li class="col-6 text-center text-xl-start">
         <address class="col-12 text-center">
-            <a href="https://www.jedaeroweb.co.kr" target="_blank"><%=t(:jedearoweb) %></a>
-            &nbsp;&nbsp; CopyLeft. 2020, jedaeroweb. All wrongs reserved.
+          <a href="https://www.jedaeroweb.co.kr" target="_blank"><%=t(:jedearoweb) %></a>
+          &nbsp;&nbsp; CopyLeft. 2020, jedaeroweb. All wrongs reserved.
         </address>
       </li>
       <!--  <li class="col-6 col-lg-4 dropdown">
