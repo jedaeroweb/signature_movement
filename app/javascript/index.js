@@ -7,26 +7,6 @@ var ready=function(){
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
 
-    function vote_click(){
-        if($(this).find('span.already-vote').length) {
-            alert('이미 투표하셨습니다.');
-            return false;
-        }
-
-        var vote_link=$(this);
-        // alert(vote_link.attr('href')+'.json')
-
-        $.post(vote_link.attr('href')+'.json',{'_method':'put','authenticity_token':csrf_token},function(data){
-            if(data.vote_up) {
-                vote_link.find('span:first').addClass('already-vote');
-                vote_link.find('span.text').text(' '+data.vote_up);
-            } else {
-
-            }
-        },'json');
-        return false;
-    }
-
     function confirm_login_click(){
         if(confirm("로그인후에 사용가능합니다.\n지금 로그인 하시겠습니까?")) {
             location.href='/users/login';
@@ -36,30 +16,6 @@ var ready=function(){
         return false;
     }
 
-    // $('#sign_now').popover();
-
-    $('#main_main nav li a').click(function(){
-        var param='no_layout=true&no_nav=true';
-        var tab=$.uri.setUri($(this).attr('href')).param("tab");
-
-        if(tab) {
-            param+='&tab='+tab;
-        }
-
-        var this_link=$(this);
-        $('#main_layer').load('/home?'+param,function(){
-            $('#main_main nav li a').removeClass('active');
-            this_link.addClass('active');
-            $('.vote a:not(".confirm_login")').click(vote_click);
-            $('.confirm_login').click(confirm_login_click);
-        });
-
-        if (history && history.pushState) {
-            history.pushState('','tab_'+tab,'/?tab='+tab);
-        }
-
-        return false;
-    });
 
     $('.vote a:not(".confirm_login")').click(vote_click);
     $('.confirm_login').click(confirm_login_click);

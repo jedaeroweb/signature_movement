@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource  except: [:index, :show, :create, :new_comment]
-  before_action :set_user, only: [:edit, :sign, :update, :destroy, :upvote, :downvote, :create_comment, :new_comment, :delete_confirm]
+  before_action :set_user, only: [:edit, :sign, :update, :destroy, :create_comment, :new_comment, :delete_confirm]
 
   def initialize(*params)
     super(*params)
@@ -185,6 +185,7 @@ class UsersController < ApplicationController
 
   def upvote
     respond_to do |format|
+      @user = User.find(params[:id])
       if @user.liked_by current_user
         format.html { redirect_to user_path(@user), :notice => t(:message_success_recommend)}
         format.json { render :json => {vote_up: @user.cached_votes_up}}
@@ -197,6 +198,7 @@ class UsersController < ApplicationController
 
   def downvote
     respond_to do |format|
+      @user = User.find(params[:id])
       if @user.downvote_from current_user
         format.html { redirect_to user_path(@user), :notice => t(:message_success_recommend)}
         format.json { render :json => @user.cached_votes_down }

@@ -5,7 +5,7 @@
       <h3 itemprop="name"><%=  @user.name %></h3>
       <div class="sl_content_main">
         <p class="p-4 media rounded-3"><%= @user.description %></p>
-
+        <div class="vote" data-controller="vote">
         <% if user_signed_in? %>
     <%= link_to like_user_path(@user), method: :put do %>
       <span class="material-icons
@@ -13,11 +13,11 @@
         <% end %>">thumb_up</span><span class="text"> <%= @user.cached_votes_up %></span>
     <% end %>
   <% else %>
-    <%= link_to like_user_path(@user), { method: :put, :class => "confirm_login" } do %>
-      <span class="material-icons">thumb_up</span><span class="text"> <%= @user.cached_votes_up %></span>
+    <%= link_to like_user_path(@user), { method: :put, :class => "confirm_login",  'data-action'=>"vote#vote" } do %>
+      <span class="material-icons" data-vote-target="icon">thumb_up</span><span class="text" data-vote-target="count"> <%= @user.cached_votes_up %></span>
     <% end %>
   <% end %>
-
+        </div>
   <% if @user.photo? %>
     <%= link_to image_tag(@user.photo.medium_thumb.url, :alt => @user.name), @user.photo.large_thumb.url, :class => 'simple_image media-object', :title => @user.name, :itemprop => "image" %>
   <% end %>

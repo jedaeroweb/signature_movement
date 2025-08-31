@@ -92,6 +92,6 @@ class Admin::ReportsController < Admin::AdminController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def admin_report_params
-    params.require(:report).permit(:report_category_id, :title, :content).merge(user_id: current_user.id)
+    params.require(:report).permit(:report_category_id, :title, :content, :enable).merge(user_id: current_user.id)
   end
 end
