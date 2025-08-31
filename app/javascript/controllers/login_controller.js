@@ -2,10 +2,18 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+    static targets = ["noSnsLogin","snsLogin","noSnsIdParent"]
     connect() {
         // 페이지 로드 시 체크박스 해제
         this.element.checked = false
     }
+
+    toggle() {
+        this.noSnsLoginTarget.classList.remove('d-none')
+        this.snsLoginTarget.classList.add('d-none')
+        this.noSnsIdParentTarget.classList.add('d-none')
+    }
+
 
     handleRememberMe(event) {
         if (this.element.checked) {

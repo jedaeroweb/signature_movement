@@ -7,12 +7,6 @@ var ready=function(){
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
 
-    $('#no-sns-id').click(function(){
-        $("#no-sns-login").show();
-        $("#sns-login,#no-sns-id").hide();
-        $("#no-sns-id").parent().hide();
-    });
-
     function vote_click(){
         if($(this).find('span.already-vote').length) {
             alert('이미 투표하셨습니다.');

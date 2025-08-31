@@ -61,6 +61,8 @@ html,body {margin:0;padding:0; height:100%}
 body {background-color:$default-bg;color: $default-color; font-family: "Nanum Gothic", "나눔고딕", "Malgun Gothic", "맑은 고딕", "gulim","굴림","Dotum", "돋움", Arial, Helvetica, sans-serif}
 
 
+
+
 label {
   vertical-align: middle;
   cursor: pointer
@@ -1158,7 +1160,7 @@ table td.sl_registered_date {
     clear: both;
     position: relative;
     width: 96%;
-    height: 50px;
+    height: 100px;
     margin: 0 2%;
     text-align: center;
     border-top: 1px solid $secondary-bg;
@@ -1179,7 +1181,7 @@ table td.sl_registered_date {
     float: right;
     width: 100%;
     padding-top: 30px;
-    padding-bottom: 50px
+    padding-bottom: 60px;
   }
 
   header {
