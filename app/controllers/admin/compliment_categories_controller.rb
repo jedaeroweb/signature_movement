@@ -1,12 +1,5 @@
 class Admin::ComplimentCategoriesController < Admin::AdminController
-  before_action :set_admin_compliment_category, only: [:show, :edit, :update, :destroy]
-
-  def initialize(*params)
-    super(*params)
-
-    @category = t(:menu_main_board,scope:[:admin_menu])
-    @controller_name = t('activerecord.models.compliment_category')
-  end
+  before_action :set_compliment_category, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/compliment_categories
   # GET /admin/compliment_categories.json
@@ -48,11 +41,11 @@ class Admin::ComplimentCategoriesController < Admin::AdminController
   # POST /admin/compliment_categories
   # POST /admin/compliment_categories.json
   def create
-    @admin_compliment_category = ComplimentCategory.new(admin_compliment_category_params)
+    @admin_compliment_category = ComplimentCategory.new(compliment_category_params)
 
     respond_to do |format|
       if @admin_compliment_category.save
-        format.html { redirect_to admin_compliment_category_path(@admin_compliment_category), notice: @controller_name +t(:message_success_create)}
+        format.html { redirect_to admin_compliment_category_path(@admin_compliment_category), notice: t(:bank, scope: [:activerecord, :models]) +t(:message_success_create)}
         format.json { render :json => @admin_compliment_category, :status => :created, :location => @admin_compliment_category }
       else
         format.html { render :action => "new" }
@@ -65,8 +58,8 @@ class Admin::ComplimentCategoriesController < Admin::AdminController
   # PUT /admin/compliment_categories/1.json
   def update
     respond_to do |format|
-      if @admin_compliment_category.update(admin_compliment_category_params)
-        format.html { redirect_to admin_compliment_category_path(@admin_compliment_category), notice: @controller_name +t(:message_success_update)}
+      if @admin_compliment_category.update(compliment_category_params)
+        format.html { redirect_to admin_compliment_category_path(@admin_compliment_category), notice: t(:bank, scope: [:activerecord, :models]) +t(:message_success_update)}
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
@@ -88,12 +81,12 @@ class Admin::ComplimentCategoriesController < Admin::AdminController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_admin_compliment_category
+  def set_compliment_category
     @admin_compliment_category = ComplimentCategory.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def admin_compliment_category_params
+  def compliment_category_params
     params.require(:compliment_category).permit(:compliment_category_id,:title,:enable)
   end
 end

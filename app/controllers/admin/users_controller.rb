@@ -1,13 +1,6 @@
 class Admin::UsersController < Admin::AdminController
   before_action :set_admin_user, only: [:show, :edit, :update, :destroy]
 
-  def initialize(*params)
-    super(*params)
-
-    @category = t(:menu_user,scope:[:admin_menu])
-    @controller_name = t('activerecord.models.user')
-  end
-
   # GET /admin_users
   # GET /admin_users.json
   def index
@@ -48,11 +41,11 @@ class Admin::UsersController < Admin::AdminController
   # POST /admin_users
   # POST /admin_users.json
   def create
-    @admin_user = User.new(admin_user_params)
+    @admin_user = User.new(user_params)
 
     respond_to do |format|
       if @admin_user.save
-        format.html { redirect_to admin_user_path(@admin_user), notice: @controller_name +t(:message_success_create) }
+        format.html { redirect_to admin_user_path(@admin_user), notice: t(:user, scope: [:activerecord, :models]) +t(:message_success_create) }
         format.json { render json: @admin_user, status: :created, location: @admin_user }
       else
         format.html { render action: "new" }
@@ -65,8 +58,8 @@ class Admin::UsersController < Admin::AdminController
   # PUT /admin_users/1.json
   def update
     respond_to do |format|
-      if @admin_user.update(admin_user_params)
-        format.html { redirect_to admin_user_path(@admin_user), notice: @controller_name +t(:message_success_update) }
+      if @admin_user.update(user_params)
+        format.html { redirect_to admin_user_path(@admin_user), notice: t(:user, scope: [:activerecord, :models]) +t(:message_success_update) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -93,7 +86,7 @@ class Admin::UsersController < Admin::AdminController
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def admin_user_params
+  def user_params
     params.require(:user).permit(:id, :name, :email, :password, :description, :photo)
   end
 end

@@ -1,12 +1,5 @@
 class Admin::ReportCategoriesController < Admin::AdminController
-  before_action :set_admin_report_category, only: [:show, :edit, :update, :destroy]
-
-  def initialize(*params)
-    super(*params)
-
-    @category = t(:menu_main_board,scope:[:admin_menu])
-    @controller_name = t('activerecord.models.report_category')
-  end
+  before_action :set_report_category, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/report_categories
   # GET /admin/report_categories.json
@@ -48,11 +41,11 @@ class Admin::ReportCategoriesController < Admin::AdminController
   # POST /admin/report_categories
   # POST /admin/report_categories.json
   def create
-    @admin_report_category = ReportCategory.new(admin_report_category_params)
+    @admin_report_category = ReportCategory.new(report_category_params)
 
     respond_to do |format|
       if @admin_report_category.save
-        format.html { redirect_to admin_report_category_path(@admin_report_category), notice: @controller_name +t(:message_success_create)}
+        format.html { redirect_to admin_report_category_path(@admin_report_category), notice: t(:report_category, scope: [:activerecord, :models]) +t(:message_success_create)}
         format.json { render :json => @admin_report_category, :status => :created, :location => @admin_report_category }
       else
         format.html { render :action => "new" }
@@ -65,8 +58,8 @@ class Admin::ReportCategoriesController < Admin::AdminController
   # PUT /admin/report_categories/1.json
   def update
     respond_to do |format|
-      if @admin_report_category.update(admin_report_category_params)
-        format.html { redirect_to admin_report_category_path(@admin_report_category), notice: @controller_name +t(:message_success_update)}
+      if @admin_report_category.update(report_category_params)
+        format.html { redirect_to admin_report_category_path(@admin_report_category), notice: t(:report_category, scope: [:activerecord, :models]) +t(:message_success_update)}
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
@@ -88,12 +81,12 @@ class Admin::ReportCategoriesController < Admin::AdminController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_admin_report_category
+  def set_report_category
     @admin_report_category = ReportCategory.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def admin_report_category_params
+  def report_category_params
     params.require(:report_category).permit(:report_category_id,:title,:enable)
   end
 end

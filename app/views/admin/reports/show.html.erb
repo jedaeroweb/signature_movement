@@ -8,6 +8,10 @@
 		<%= @admin_report.title %>
 	</p>
 	<p>
+		<b><%=t(:content,scope:[:activerecord,:attributes,:propose]) %></b>
+		<%= simple_format(@admin_report.content) %>
+	</p>
+	<p>
 		<b><%=t(:enable,scope:[:activerecord,:attributes,:report]) %></b>
 		<%=raw flagToString(@admin_report.enable) %>
 	</p>

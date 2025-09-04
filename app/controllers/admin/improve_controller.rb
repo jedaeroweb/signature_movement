@@ -1,12 +1,5 @@
 class Admin::ImproveController < Admin::AdminController
-  before_action :set_admin_improve, only: [:show, :edit, :update, :destroy]
-
-  def initialize(*params)
-    super(*params)
-
-    @category = t(:menu_etc_board,scope:[:admin_menu])
-    @controller_name = t('activerecord.models.improve')
-  end
+  before_action :set_improve, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/improve
   # GET /admin/improve.json
@@ -48,11 +41,11 @@ class Admin::ImproveController < Admin::AdminController
   # POST /admin/improve
   # POST /admin/improve.json
   def create
-    @admin_improve = Improve.new(admin_improve_params)
+    @admin_improve = Improve.new(improve_params)
 
     respond_to do |format|
       if @admin_improve.save
-        format.html { redirect_to admin_improve_path(@admin_improve), notice: @controller_name + t(:message_success_create) }
+        format.html { redirect_to admin_improve_path(@admin_improve), notice: t(:improve, scope: [:activerecord, :models])  + t(:message_success_create) }
         format.json { render json: @admin_improve, status: :created, location: @admin_improve }
       else
         format.html { render action: "new" }
@@ -65,8 +58,8 @@ class Admin::ImproveController < Admin::AdminController
   # PUT /admin/improve/1.json
   def update
     respond_to do |format|
-      if @admin_improve.update(admin_improve_params)
-        format.html { redirect_to admin_improve_path(@admin_improve), notice: @controller_name + t(:message_success_update) }
+      if @admin_improve.update(improve_params)
+        format.html { redirect_to admin_improve_path(@admin_improve), notice: t(:improve, scope: [:activerecord, :models])  + t(:message_success_update) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -88,12 +81,12 @@ class Admin::ImproveController < Admin::AdminController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_admin_improve
+  def set_improve
     @admin_improve = Improve.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def admin_improve_params
+  def improve_params
     params.require(:improve).permit(:title, :content, :enable)
   end
 end

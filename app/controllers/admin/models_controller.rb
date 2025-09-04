@@ -1,12 +1,5 @@
 class Admin::ModelsController < Admin::AdminController
-  before_action :set_admin_model, only: [:show, :edit, :update, :destroy]
-
-  def initialize(*params)
-    super(*params)
-
-    @category = t(:menu_etc_board,scope:[:admin_menu])
-    @controller_name = t('activerecord.models.model')
-  end
+  before_action :set_model, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/models
   # GET /admin/models.json
@@ -48,11 +41,11 @@ class Admin::ModelsController < Admin::AdminController
   # POST /admin/models
   # POST /admin/models.json
   def create
-    @admin_model = Model.new(admin_model_params)
+    @admin_model = Model.new(model_params)
 
     respond_to do |format|
       if @admin_model.save
-        format.html { redirect_to admin_model_path(@admin_model), notice: @controller_name + t(:message_success_create)}
+        format.html { redirect_to admin_model_path(@admin_model), notice: t(:model, scope: [:activerecord, :models]) + t(:message_success_create)}
         format.json { render json: @admin_model, status: :created, location: @admin_model }
       else
         format.html { render action: "new" }
@@ -65,8 +58,8 @@ class Admin::ModelsController < Admin::AdminController
   # PUT /admin/models/1.json
   def update
     respond_to do |format|
-      if @admin_model.update(admin_model_params)
-        format.html { redirect_to admin_model_path(@admin_model), notice: @controller_name + t(:message_success_update)}
+      if @admin_model.update(model_params)
+        format.html { redirect_to admin_model_path(@admin_model), notice: t(:model, scope: [:activerecord, :models]) + t(:message_success_update)}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -88,12 +81,12 @@ class Admin::ModelsController < Admin::AdminController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_admin_model
+  def set_model
     @admin_model = Model.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def admin_model_params
+  def model_params
     params.require(:model).permit(:title,:photo,:recommend_description, :models_comment, :enable).merge(user_id: current_admin.id)
   end
 end

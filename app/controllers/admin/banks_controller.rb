@@ -1,12 +1,5 @@
 class Admin::BanksController < Admin::AdminController
-  before_action :set_admin_bank, only: [:show, :edit, :update, :destroy]
-
-  def initialize(*params)
-    super(*params)
-
-    @category = t(:menu_etc_board,scope:[:admin_menu])
-    @controller_name = t('activerecord.models.bank')
-  end
+  before_action :set_bank, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/models
   # GET /admin/models.json
@@ -48,11 +41,11 @@ class Admin::BanksController < Admin::AdminController
   # POST /admin/models
   # POST /admin/models.json
   def create
-    @admin_bank = Bank.new(admin_bank_params)
+    @admin_bank = Bank.new(bank_params)
 
     respond_to do |format|
       if @admin_bank.save
-        format.html { redirect_to admin_bank_path(@admin_bank), notice: @controller_name + t(:message_success_create)}
+        format.html { redirect_to admin_bank_path(@admin_bank), notice: t(:bank, scope: [:activerecord, :models]) + t(:message_success_create)}
         format.json { render json: @admin_bank, status: :created, location: @admin_bank }
       else
         format.html { render action: "new" }
@@ -65,8 +58,8 @@ class Admin::BanksController < Admin::AdminController
   # PUT /admin/models/1.json
   def update
     respond_to do |format|
-      if @admin_bank.update(admin_bank_params)
-        format.html { redirect_to admin_bank_path(@admin_bank), notice: @controller_name + t(:message_success_update)}
+      if @admin_bank.update(bank_params)
+        format.html { redirect_to admin_bank_path(@admin_bank), notice: t(:bank, scope: [:activerecord, :models]) + t(:message_success_update)}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -88,12 +81,12 @@ class Admin::BanksController < Admin::AdminController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_admin_bank
+  def set_bank
     @admin_bank = Bank.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def admin_bank_params
+  def bank_params
     params.require(:bank).permit(:title, :enable)
   end
 end

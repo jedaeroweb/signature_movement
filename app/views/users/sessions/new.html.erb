@@ -1,14 +1,6 @@
 <div class="container">
   <div class="row">
     <section class="col-12 col-lg-8 login-box" data-controller="login">
-      <% if flash.count > 0 %>
-        <div id="sl_message" class="alert alert-danger col-xs-10 col-xs-offset-1" role="alert">
-          <button type="button" class="btn-close close" data-bs-dismiss="alert" aria-label="Close"></button>
-          <% flash.each do |name, msg| %>
-            <%= content_tag :p, msg, id: "flash_#{name}" %>
-          <% end %>
-        </div>
-      <% end %>
       <%=render 'users/sns' %>
 
       <div class="text-center" style="margin-top:30px;padding-top:30px;border-top:1px solid #ccc" data-login-target="noSnsIdParent">

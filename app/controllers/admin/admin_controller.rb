@@ -1,10 +1,6 @@
 class Admin::AdminController < ApplicationController
-    #load_and_authorize_resource except: [:create]
+    before_action :require_admin
     load_and_authorize_resource
-
-    def current_ability
-        @current_ability ||= AdminAbility.new(current_admin)
-    end
 
     def resource_name
         :admin
@@ -19,8 +15,12 @@ class Admin::AdminController < ApplicationController
     end
 
     rescue_from CanCan::AccessDenied do |_exception|
-        if current_admin
-            render file: "#{Rails.root}/public/403.html", status: 403, layout: false
+        if current_user
+            if current_user.admin?
+                render file: "#{Rails.root}/public/403.html", status: 403, layout: false
+            else
+                redirect_to root_path
+            end
         else
             redirect_to new_admin_session_path
         end
@@ -35,6 +35,15 @@ class Admin::AdminController < ApplicationController
             else
                 'admin/application'
             end
+        end
+    end
+
+
+    private
+
+    def require_admin
+        unless current_user&.admin?
+            redirect_to new_admin_session_path, alert: "관리자 로그인이 필요합니다."
         end
     end
 end

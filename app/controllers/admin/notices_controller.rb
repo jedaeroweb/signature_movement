@@ -1,12 +1,5 @@
 class Admin::NoticesController < Admin::AdminController
-  before_action :set_admin_notice, only: [:show, :edit, :update, :destroy]
-
-  def initialize(*params)
-    super(*params)
-
-    @category = t(:menu_etc_board,scope:[:admin_menu])
-    @controller_name = t('activerecord.models.notice')
-  end
+  before_action :set_notice, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/notices
   # GET /admin/notices.json
@@ -24,10 +17,6 @@ class Admin::NoticesController < Admin::AdminController
   # GET /admin/notices/1
   # GET /admin/notices/1.json
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @admin_notice }
-    end
   end
 
   # GET /admin/notices/new
@@ -48,11 +37,11 @@ class Admin::NoticesController < Admin::AdminController
   # POST /admin/notices
   # POST /admin/notices.json
   def create
-    @admin_notice = Notice.new(admin_notice_params)
+    @admin_notice = Notice.new(notice_params)
 
     respond_to do |format|
       if @admin_notice.save
-        format.html { redirect_to admin_notice_path(@admin_notice), :notice=> @controller_name +t(:message_success_create)}
+        format.html { redirect_to admin_notice_path(@admin_notice), :notice=> t(:notice, scope: [:activerecord, :models]) +t(:message_success_create)}
         format.json { render json: @admin_notice, status: :created, location: @admin_notice }
       else
         format.html { render action: "new" }
@@ -65,8 +54,8 @@ class Admin::NoticesController < Admin::AdminController
   # PUT /admin/notices/1.json
   def update
     respond_to do |format|
-      if @admin_notice.update(admin_notice_params)
-        format.html { redirect_to admin_notice_path(@admin_notice), :notice=> @controller_name +t(:message_success_update)}
+      if @admin_notice.update(notice_params)
+        format.html { redirect_to admin_notice_path(@admin_notice), :notice=> t(:notice, scope: [:activerecord, :models]) +t(:message_success_update)}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -88,12 +77,12 @@ class Admin::NoticesController < Admin::AdminController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_admin_notice
+  def set_notice
     @admin_notice = Notice.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def admin_notice_params
+  def notice_params
     params.require(:notice).permit(:id, :title, :content, :enable).merge(user_id: current_admin.id)
   end
 end

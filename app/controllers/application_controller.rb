@@ -54,4 +54,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password,
                                                                       :password_confirmation, :current_password, :photo, :photo_cache, :remove_photor) }
   end
+
+  protected
+
+  def admin_signed_in?
+    user_signed_in? && current_user.admin?
+  end
+
+  def current_admin
+    @current_admin ||= current_user if user_signed_in? && current_user.admin?
+  end
+
+  helper_method :admin_signed_in?, :current_admin
 end

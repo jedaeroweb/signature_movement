@@ -1,12 +1,5 @@
 class Admin::FaqsController < Admin::AdminController
-  before_action :set_admin_faq, only: [:show, :edit, :update, :destroy]
-
-  def initialize(*params)
-    super(*params)
-
-    @category = t(:menu_main_board,scope:[:admin_menu])
-    @controller_name = t('activerecord.models.faq')
-  end
+  before_action :set_faq, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/faqs
   # GET /admin/faqs.json
@@ -62,11 +55,11 @@ class Admin::FaqsController < Admin::AdminController
   # POST /admin/faqs
   # POST /admin/faqs.json
   def create
-    @admin_faq = Faq.new(admin_faq_params)
+    @admin_faq = Faq.new(faq_params)
 
     respond_to do |format|
       if @admin_faq.save
-        format.html { redirect_to admin_faq_path(@admin_faq), :notice=> @controller_name +t(:message_success_create)}
+        format.html { redirect_to admin_faq_path(@admin_faq), :notice=> t(:faq, scope: [:activerecord, :models]) +t(:message_success_create)}
         format.json { render json: @admin_faq, status: :created, location: @admin_faq }
       else
         format.html { render action: "new" }
@@ -81,8 +74,8 @@ class Admin::FaqsController < Admin::AdminController
     @admin_faq = Faq.find(params[:id])
 
     respond_to do |format|
-      if @admin_faq.update(admin_faq_params)
-        format.html { redirect_to admin_faq_path(@admin_faq), :notice=> @controller_name +t(:message_success_update)}
+      if @admin_faq.update(faq_params)
+        format.html { redirect_to admin_faq_path(@admin_faq), :notice=> t(:faq, scope: [:activerecord, :models]) +t(:message_success_update)}
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -104,12 +97,12 @@ class Admin::FaqsController < Admin::AdminController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_admin_faq
+  def set_faq
     @admin_faq = Faq.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def admin_faq_params
+  def faq_params
     params.require(:faq).permit(:id,:faq_category_id,:title, :enable, faq_content_attributes: [:id,:content])
   end
 end

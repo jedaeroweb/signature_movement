@@ -1,11 +1,13 @@
-class Admin < ApplicationRecord
-    self.table_name = 'users'
-    devise :database_authenticatable, :registerable, :validatable, :timeoutable, :rememberable
-    validates_length_of :login_id, within: 4..40
-    default_scope {where(:admin => true)}
-    has_one :admin_picture, dependent: :destroy
 
-    def timeout_in
-        1.day
-    end
+class Admin < User
+  default_scope { where(admin: true) }
+
+  def self.model_name
+    User.model_name
+  end
+
+  # admin임을 보장
+  def admin?
+    true
+  end
 end

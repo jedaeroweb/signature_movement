@@ -1,12 +1,5 @@
 class Admin::FaqCategoriesController < Admin::AdminController
-  before_action :set_admin_faq_category, only: [:show, :edit, :update, :destroy]
-
-  def initialize(*params)
-    super(*params)
-
-    @category = t(:menu_main_board,scope:[:admin_menu])
-    @controller_name = t('activerecord.models.faq_category')
-  end
+  before_action :set_faq_category, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/faq_categories
   # GET /admin/faq_categories.json
@@ -48,11 +41,11 @@ class Admin::FaqCategoriesController < Admin::AdminController
   # POST /admin/faq_categories
   # POST /admin/faq_categories.json
   def create
-    @admin_faq_category = FaqCategory.new(admin_faq_category_params)
+    @admin_faq_category = FaqCategory.new(faq_category_params)
 
     respond_to do |format|
       if @admin_faq_category.save
-        format.html { redirect_to admin_faq_category_path(@admin_faq_category), notice: @controller_name + t(:message_success_create)}
+        format.html { redirect_to admin_faq_category_path(@admin_faq_category), notice: t(:faq_category, scope: [:activerecord, :models]) + t(:message_success_create)}
         format.json { render json: @admin_faq_category, status: :created, location: @admin_faq_category }
       else
         format.html { render action: "new" }
@@ -65,8 +58,8 @@ class Admin::FaqCategoriesController < Admin::AdminController
   # PUT /admin/faq_categories/1.json
   def update
     respond_to do |format|
-      if @admin_faq_category.update(admin_faq_category_params)
-        format.html { redirect_to admin_faq_category_path(@admin_faq_category), notice: @controller_name + t(:message_success_update)}
+      if @admin_faq_category.update(faq_category_params)
+        format.html { redirect_to admin_faq_category_path(@admin_faq_category), notice: t(:faq_category, scope: [:activerecord, :models]) + t(:message_success_update)}
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -88,12 +81,12 @@ class Admin::FaqCategoriesController < Admin::AdminController
 
     private
     # Use callbacks to share common setup or constraints between actions.
-    def set_admin_faq_category
+    def set_faq_category
       @admin_faq_category = FaqCategory.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def admin_faq_category_params
+    def faq_category_params
       params.require(:faq_category).permit(:id,:faq_category_id,:title)
     end
 end

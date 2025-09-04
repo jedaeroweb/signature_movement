@@ -5,7 +5,7 @@
 	</p>
 	<p>
 		<b><%=t(:content,scope:[:activerecord,:attributes,:propose]) %></b>
-		<%= simple_format(@admin_notice.notice_content.content) %>
+		<%= simple_format(@admin_notice.content) %>
 	</p>
 	<p>
 		<b><%=t(:enable,scope:[:activerecord,:attributes,:notice]) %></b>

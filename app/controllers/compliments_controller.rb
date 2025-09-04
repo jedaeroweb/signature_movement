@@ -1,4 +1,4 @@
-class ComplimentsController < BoardController
+class ComplimentsController < ApplicationController
   load_and_authorize_resource  except: [:index, :show, :create]
   impressionist :actions=>[:show]
   before_action :set_compliment, only: [:show, :edit, :update, :destroy, :upvote, :downvote]

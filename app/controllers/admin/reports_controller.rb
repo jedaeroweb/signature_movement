@@ -1,12 +1,5 @@
 class Admin::ReportsController < Admin::AdminController
-  before_action :set_admin_report, only: [:show, :edit, :update, :destroy]
-
-  def initialize(*params)
-    super(*params)
-
-    @category = t(:menu_main_board,scope:[:admin_menu])
-    @controller_name = t('activerecord.models.report')
-  end
+  before_action :set_report, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/reports
   # GET /admin/reports.json
@@ -46,11 +39,11 @@ class Admin::ReportsController < Admin::AdminController
   # POST /admin/reports
   # POST /admin/reports.json
   def create
-    @admin_report = Report.new(admin_report_params)
+    @admin_report = Report.new(report_params)
 
     respond_to do |format|
       if @admin_report.save
-        format.html { redirect_to admin_reports_url, notice: @controller_name + t(:message_success_create) }
+        format.html { redirect_to admin_reports_url, notice: t(:report, scope: [:activerecord, :models]) + t(:message_success_create) }
         format.json { render json: @admin_report, status: :created, location: @admin_report }
       else
         format.html { render action: "new" }
@@ -63,8 +56,8 @@ class Admin::ReportsController < Admin::AdminController
   # PUT /admin/reports/1.json
   def update
     respond_to do |format|
-      if @admin_report.update(admin_report_params)
-        format.html { redirect_to admin_reports_url, notice: @controller_name + t(:message_success_update) }
+      if @admin_report.update(report_params)
+        format.html { redirect_to admin_reports_url, notice: t(:report, scope: [:activerecord, :models]) + t(:message_success_update) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -86,12 +79,12 @@ class Admin::ReportsController < Admin::AdminController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_admin_report
+  def set_report
     @admin_report = Report.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def admin_report_params
-    params.require(:report).permit(:report_category_id, :title, :content, :enable).merge(user_id: current_user.id)
+  def report_params
+    params.require(:report).permit(:report_category_id, :title, :content).merge(user_id: current_user.id)
   end
 end

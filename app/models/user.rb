@@ -25,6 +25,10 @@ class User < ApplicationRecord
     super || false
   end
 
+  def admin?
+    admin
+  end
+
   private
   
   def default_values

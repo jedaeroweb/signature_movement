@@ -1,4 +1,4 @@
-class ReportsController < BoardController
+class ReportsController < ApplicationController
   load_and_authorize_resource  except: [:index, :show, :create]
   impressionist :actions=>[:show]
   before_action :set_report, only: [:show, :edit, :update, :destroy, :upvote, :downvote]

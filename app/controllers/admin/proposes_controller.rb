@@ -1,12 +1,5 @@
 class Admin::ProposesController < Admin::AdminController
-  before_action :set_admin_propose, only: [:show, :edit, :update, :destroy]
-
-  def initialize(*params)
-    super(*params)
-
-    @category = t(:menu_etc_board,scope:[:admin_menu])
-    @controller_name = t('activerecord.models.propose')
-  end
+  before_action :set_propose, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/proposes
   # GET /admin/proposes.json
@@ -50,11 +43,11 @@ class Admin::ProposesController < Admin::AdminController
   # POST /admin/proposes
   # POST /admin/proposes.json
   def create
-    @admin_propose = Propose.new(admin_propose_params)
+    @admin_propose = Propose.new(propose_params)
 
     respond_to do |format|
       if @admin_propose.save
-        format.html { redirect_to admin_proposes_url, notice: @controller_name + t(:message_success_create) }
+        format.html { redirect_to admin_proposes_url, notice: t(:propose, scope: [:activerecord, :models])  + t(:message_success_create) }
         format.json { render json: @admin_propose, status: :created, location: @admin_propose }
       else
         format.html { render action: "new" }
@@ -67,8 +60,8 @@ class Admin::ProposesController < Admin::AdminController
   # PUT /admin/proposes/1.json
   def update
     respond_to do |format|
-      if @admin_propose.update(admin_propose_params)
-        format.html { redirect_to admin_proposes_url, notice: @controller_name + t(:message_success_update) }
+      if @admin_propose.update(propose_params)
+        format.html { redirect_to admin_proposes_url, notice: t(:propose, scope: [:activerecord, :models])  + t(:message_success_update) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -90,12 +83,12 @@ class Admin::ProposesController < Admin::AdminController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_admin_propose
+  def set_propose
     @admin_propose = Propose.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def admin_propose_params
+  def propose_params
     params.require(:propose).permit(:title, :content, :enable).merge(user_id: current_admin.id)
   end
 end

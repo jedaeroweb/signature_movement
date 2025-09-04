@@ -1,2 +1,0 @@
-class AdminHome < ApplicationRecord
-end

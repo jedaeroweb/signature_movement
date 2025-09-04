@@ -1,4 +1,4 @@
-<%= form_for [:admin,compliment] do |f| %>
+<%= form_with(model: [:admin,compliment], local: true) do |form| %>
 <% if compliment.errors.any? %>
 <div id="error_explanation" class="alert alert-danger">
 	<a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -13,26 +13,26 @@
 </div>
 <% end %>
 <div class="form-group">
-	<%= f.label :bank_id %>
-	<%= f.select :bank_id, options_from_collection_for_select(Bank.where(:enable=>true).all, 'id', 'title',compliment.bank_id),{},{:class=>"form-control"} %>
+	<%= form.label :bank_id %>
+	<%= form.select :bank_id, options_from_collection_for_select(Bank.where(:enable=>true).all, 'id', 'title',compliment.bank_id),{},{:class=>"form-control"} %>
 </div>
 <div class="form-group">
-	<%= f.label :compliment_category_id %>
-	<%= f.select :compliment_category_id, options_from_collection_for_select(ComplimentCategory.where(:enable=>true).all, 'id', 'title',compliment.compliment_category_id),{},{:class=>"form-control"} %>
+	<%= form.label :compliment_category_id %>
+	<%= form.select :compliment_category_id, options_from_collection_for_select(ComplimentCategory.where(:enable=>true).all, 'id', 'title',compliment.compliment_category_id),{},{:class=>"form-control"} %>
 </div>
 <div class="form-group">
-	<%= f.label :title %>
-	<%= f.text_field :title,:class=>"form-control",:required=>"required" %>
+	<%= form.label :title %>
+	<%= form.text_field :title,:class=>"form-control",:required=>"required" %>
 </div>
 	<div class="form-group">
-		<h3><%= f.label :content %></h3>
-		<%= f.rich_text_area :content %>
+		<%= form.label :content %>
+		<%= form.rich_text_area :content %>
 	</div>
 <div class="form-group">
-	<%= f.label :enable %>
-	<%= f.check_box :enable %>
+	<%= form.label :enable %>
+	<%= form.check_box :enable %>
 </div>
-<div class="form-group actions">
-	<%= f.submit :class=>"btn btn-primary" %>
-</div>
+	<div class="d-grid gap-2 mt-3">
+		<%= form.submit :class => "btn btn-primary btn-block btn-lg" %>
+	</div>
 <% end %>

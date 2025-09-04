@@ -394,7 +394,6 @@ ko:
       notice :
         title : '제목'
         enable : '사용여부'
-      notice_content :
         content : '내용'
       model :
         title : '제목'
