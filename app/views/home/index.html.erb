@@ -61,7 +61,7 @@
 <div class="row">
   <% if params[:tab].present? %>
     <% if params[:tab] == 'default' %>
-      <%= render :partial => 'models/index' %>
+      <%= render :partial => 'ad_models/index' %>
     <% end %>
     <% if params[:tab] == 'article' %>
       <article class="col-12 col-lg-6">
@@ -84,7 +84,7 @@
       <%= render :partial => 'compliments/index' %>
     <% end %>
   <% else %>
-      <%= render :partial => 'models/index' %>
+      <%= render :partial => 'ad_models/index' %>
   <% end %>
 </div>
 <% unless (params[:no_nav]) %>

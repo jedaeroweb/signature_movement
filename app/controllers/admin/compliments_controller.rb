@@ -45,7 +45,7 @@ class Admin::ComplimentsController < Admin::AdminController
 
     respond_to do |format|
       if @admin_compliment.save
-        format.html { redirect_to admin_compliment_path(@admin_compliment), notice: t(:compliment, scope: [:activerecord, :models]) + t(:message_success_create)}
+        format.html { redirect_to admin_compliment_path(@admin_compliment), notice: t(:compliment, scope: [:activerecord, :ad_models]) + t(:message_success_create)}
         format.json { render json: @admin_compliment, status: :created, location: @admin_compliment }
       else
         format.html { render action: "new" }
@@ -59,7 +59,7 @@ class Admin::ComplimentsController < Admin::AdminController
   def update
     respond_to do |format|
       if @admin_compliment.update(compliment_params)
-        format.html { redirect_to admin_compliment_path(@admin_compliment), notice: t(:compliment, scope: [:activerecord, :models]) + t(:message_success_update)}
+        format.html { redirect_to admin_compliment_path(@admin_compliment), notice: t(:compliment, scope: [:activerecord, :ad_models]) + t(:message_success_update)}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

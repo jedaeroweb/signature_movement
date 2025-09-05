@@ -31,10 +31,10 @@
         <% end %>
       </li>
       <li class="nav-item
-            <% if ['admin/models'].include?(params[:controller]) %> active
+            <% if ['admin/ad_models'].include?(params[:controller]) %> active
             <% end %>">
-        <%= link_to admin_models_path, :class => "nav-link" do %>
-          <i class="material-icons">local_cafe</i><span><%= t(:model, scope: [:activerecord, :models]) %></span>
+        <%= link_to admin_ad_models_path, :class => "nav-link" do %>
+          <i class="material-icons">local_cafe</i><span><%= t(:ad_model, scope: [:activerecord, :models]) %></span>
         <% end %>
       </li>
       <li class="nav-item

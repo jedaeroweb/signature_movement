@@ -30,7 +30,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(resource_params)
 
     #if Rails.env.production?
-    #  result = verify_recaptcha(:model => resource) && resource.save
+    #  result = verify_recaptcha(:ad_model => resource) && resource.save
     #else
     result = resource.save
     #end

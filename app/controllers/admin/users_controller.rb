@@ -45,7 +45,7 @@ class Admin::UsersController < Admin::AdminController
 
     respond_to do |format|
       if @admin_user.save
-        format.html { redirect_to admin_user_path(@admin_user), notice: t(:user, scope: [:activerecord, :models]) +t(:message_success_create) }
+        format.html { redirect_to admin_user_path(@admin_user), notice: t(:user, scope: [:activerecord, :ad_models]) +t(:message_success_create) }
         format.json { render json: @admin_user, status: :created, location: @admin_user }
       else
         format.html { render action: "new" }
@@ -59,7 +59,7 @@ class Admin::UsersController < Admin::AdminController
   def update
     respond_to do |format|
       if @admin_user.update(user_params)
-        format.html { redirect_to admin_user_path(@admin_user), notice: t(:user, scope: [:activerecord, :models]) +t(:message_success_update) }
+        format.html { redirect_to admin_user_path(@admin_user), notice: t(:user, scope: [:activerecord, :ad_models]) +t(:message_success_update) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

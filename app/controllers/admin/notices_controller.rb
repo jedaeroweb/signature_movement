@@ -41,7 +41,7 @@ class Admin::NoticesController < Admin::AdminController
 
     respond_to do |format|
       if @admin_notice.save
-        format.html { redirect_to admin_notice_path(@admin_notice), :notice=> t(:notice, scope: [:activerecord, :models]) +t(:message_success_create)}
+        format.html { redirect_to admin_notice_path(@admin_notice), :notice=> t(:notice, scope: [:activerecord, :ad_models]) +t(:message_success_create)}
         format.json { render json: @admin_notice, status: :created, location: @admin_notice }
       else
         format.html { render action: "new" }
@@ -55,7 +55,7 @@ class Admin::NoticesController < Admin::AdminController
   def update
     respond_to do |format|
       if @admin_notice.update(notice_params)
-        format.html { redirect_to admin_notice_path(@admin_notice), :notice=> t(:notice, scope: [:activerecord, :models]) +t(:message_success_update)}
+        format.html { redirect_to admin_notice_path(@admin_notice), :notice=> t(:notice, scope: [:activerecord, :ad_models]) +t(:message_success_update)}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

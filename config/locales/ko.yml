@@ -336,7 +336,7 @@ ko:
       propose : '망하게할 방법 제안'
       faq_category : 'FAQ 분류'
       faq : 'FAQ'
-      model : '광고모델 제안'
+      ad_model : '광고모델 제안'
       intro : '사이트 소개'
       improve : '개선사항 제안'
       user : 'KB가 망하게하기 서명'
@@ -395,11 +395,11 @@ ko:
         title : '제목'
         enable : '사용여부'
         content : '내용'
-      model :
+      ad_model :
         title : '제목'
         photo : '사진'
-        recommend_description : '추천사'
-        models_comment : '추천받은 모델의 소감'
+        description : '추천사'
+        content : '추천받은 모델의 소감'
         enable : '사용여부'
       improve :
         title : '제목'

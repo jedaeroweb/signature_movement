@@ -1,6 +1,6 @@
-class CreateModels < ActiveRecord::Migration[6.0]
+class CreateAdModels < ActiveRecord::Migration[6.0]
   def change
-    create_table :models do |t|
+    create_table :ad_models do |t|
       t.references :user,:null=>false
       t.string :title, :null=>false, :limit=>60
       t.string :photo, :null=>false

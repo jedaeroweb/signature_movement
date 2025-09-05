@@ -4,12 +4,12 @@
 		<%= @admin_model.title %>
 	</p>
 	<p>
-		<b><%=t(:recommend_description,scope:[:activerecord,:attributes,:propose]) %></b>
-		<%= simple_format(@admin_model.recommend_description) %>
+		<b><%=t(:description,scope:[:activerecord,:attributes,:propose]) %></b>
+		<%= simple_format(@admin_model.description) %>
 	</p>
 	<p>
-		<b><%=t(:models_comment,scope:[:activerecord,:attributes,:propose]) %></b>
-		<%= simple_format(@admin_model.models_comment) %>
+		<b><%=t(:content,scope:[:activerecord,:attributes,:propose]) %></b>
+		<%= simple_format(@admin_model.content) %>
 	</p>
 	<p>
 		<b><%=t(:enable,scope:[:activerecord,:attributes,:propose]) %></b>
@@ -25,6 +25,6 @@
   </p>
 </div>
 <% if can? :update, @admin_model %>
-<%= link_to t(:link_edit), edit_admin_model_path(@admin_model) %> |
+<%= link_to t(:link_edit), edit_admin_ad_model_path(@admin_model) %> |
 <% end %>
-<%= link_to t(:link_list), admin_models_path %>
+<%= link_to t(:link_list), admin_ad_models_path %>

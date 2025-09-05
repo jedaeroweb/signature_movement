@@ -36,7 +36,7 @@
           <% end %>><%= link_to faqs_path do %><%= t(:faq, scope: [:activerecord, :models]) %>
             <% end %></li>
           <li class="dropdown
-            <% if params[:controller] == 'proposes' || params[:controller] == 'models' || params[:controller] == 'improve' %> active
+            <% if params[:controller] == 'proposes' || params[:controller] == 'ad_models' || params[:controller] == 'improve' %> active
             <% end %>">
             <%= link_to '#', { class: 'dropdown-toggle',role:"button",'data-bs-toggle': "dropdown",'aria-expanded':"false"} do %>
               <%= t(:menu_propose) %>
@@ -47,8 +47,8 @@
               <% end %>><%= link_to proposes_path do %><%= t(:propose, scope: [:activerecord, :models]) %>
                 <% end %></li>
               <li
-              <% if params[:controller] == 'models' %>class="active"
-              <% end %>><%= link_to models_path do %><%= t(:model, scope: [:activerecord, :models]) %>
+              <% if params[:controller] == 'ad_models' %>class="active"
+              <% end %>><%= link_to ad_models_path do %><%= t(:ad_model, scope: [:activerecord, :models]) %>
                 <% end %></li>
               <li
               <% if params[:controller] == 'improve' %>class="active"

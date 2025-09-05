@@ -1,10 +1,10 @@
-<%= form_for [:admin,model],:html => {:multipart => true} do |f| %>
-<% if model.errors.any? %>
+<%= form_with model: [:admin, ad_model], multipart: true, data: { turbo_frame: "_top" } do |f| %>
+	<% if ad_model.errors.any? %>
 <div id="error_explanation" class="alert alert-danger">
 	<a href="#" class="close" data-dismiss="alert">&times;</a>
-	<h2><%= pluralize(model.errors.count, "error") %> prohibited this request from being saved:</h2>
+	<h2><%= pluralize(ad_model.errors.count, "error") %> prohibited this request from being saved:</h2>
 	<ul>
-		<% model.errors.full_messages.each do |msg| %>
+		<% ad_model.errors.full_messages.each do |msg| %>
 		<li>
 			<%= msg %>
 		</li>
@@ -19,20 +19,20 @@
 <div class="form-group">
 	<%= f.label :photo,:class=>'form-label' %>
 	<div>
-		<% if model.photo? %>
-		<%= image_tag(model.photo.small_thumb) %>
+		<% if ad_model.photo? %>
+		<%= image_tag(ad_model.photo.small_thumb) %>
 		<% end %>
 		<%= f.file_field :photo %>
 		<%= f.hidden_field :photo_cache %>
 	</div>
 </div>
 <div class="form-group">
-	<%= f.label :recommend_description %><br />
-	<%= f.text_area :recommend_description, :class=>'form-control', :rows=>5, :required=>'required' %>
+	<%= f.label :description %><br />
+	<%= f.text_area :description, :class=>'form-control', :rows=>5, :required=>'required' %>
 </div>
 <div class="form-group">
-	<%= f.label :models_comment %><br />
-	<%= f.text_area :models_comment, :class=>'form-control', :rows=>5, :required=>'required' %>
+	<%= f.label :content %><br />
+	<%= f.text_area :content, :class=>'form-control', :rows=>5, :required=>'required' %>
 </div>
 <div class="form-group">
 	<%= f.label :enable %>

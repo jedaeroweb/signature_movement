@@ -45,13 +45,13 @@ crumb :proposes do
   link t('activerecord.models.propose'), proposes_path
 end
 
-crumb :models do
-  link t('activerecord.models.model'), models_path
+crumb :ad_models do
+  link t('activerecord.models.model'), ad_models_path
 end
 
-crumb :model do |model|
-  link model.title, model_path(model)
-  parent :models
+crumb :ad_model do |model|
+  link model.title, ad_model_path(model)
+  parent :ad_models
 end
 
 crumb :faqs do

@@ -1,5 +1,7 @@
 <div id="report_new" class="sub_main row">
-  <%= render 'form', report: @report %>
+  <div class="col-12">
+    <%= render 'form', report: @report %>
+  </div>
   <div class="col-12">
     <%= link_to t(:link_list), reports_path %>
   </div>

@@ -1,8 +1,8 @@
 class Admin::BanksController < Admin::AdminController
   before_action :set_bank, only: [:show, :edit, :update, :destroy]
 
-  # GET /admin/models
-  # GET /admin/models.json
+  # GET /admin/ad_models
+  # GET /admin/ad_models.json
   def index
     params[:per_page] = 10 unless params[:per_page].present?
 
@@ -14,8 +14,8 @@ class Admin::BanksController < Admin::AdminController
     end
   end
 
-  # GET /admin/models/1
-  # GET /admin/models/1.json
+  # GET /admin/ad_models/1
+  # GET /admin/ad_models/1.json
   def show
     respond_to do |format|
       format.html # show.html.erb
@@ -23,8 +23,8 @@ class Admin::BanksController < Admin::AdminController
     end
   end
 
-  # GET /admin/models/new
-  # GET /admin/models/new.json
+  # GET /admin/ad_models/new
+  # GET /admin/ad_models/new.json
   def new
     @admin_bank = Bank.new
 
@@ -34,18 +34,18 @@ class Admin::BanksController < Admin::AdminController
     end
   end
 
-  # GET /admin/models/1/edit
+  # GET /admin/ad_models/1/edit
   def edit
   end
 
-  # POST /admin/models
-  # POST /admin/models.json
+  # POST /admin/ad_models
+  # POST /admin/ad_models.json
   def create
     @admin_bank = Bank.new(bank_params)
 
     respond_to do |format|
       if @admin_bank.save
-        format.html { redirect_to admin_bank_path(@admin_bank), notice: t(:bank, scope: [:activerecord, :models]) + t(:message_success_create)}
+        format.html { redirect_to admin_bank_path(@admin_bank), notice: t(:bank, scope: [:activerecord, :ad_models]) + t(:message_success_create)}
         format.json { render json: @admin_bank, status: :created, location: @admin_bank }
       else
         format.html { render action: "new" }
@@ -54,12 +54,12 @@ class Admin::BanksController < Admin::AdminController
     end
   end
 
-  # PUT /admin/models/1
-  # PUT /admin/models/1.json
+  # PUT /admin/ad_models/1
+  # PUT /admin/ad_models/1.json
   def update
     respond_to do |format|
       if @admin_bank.update(bank_params)
-        format.html { redirect_to admin_bank_path(@admin_bank), notice: t(:bank, scope: [:activerecord, :models]) + t(:message_success_update)}
+        format.html { redirect_to admin_bank_path(@admin_bank), notice: t(:bank, scope: [:activerecord, :ad_models]) + t(:message_success_update)}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -68,8 +68,8 @@ class Admin::BanksController < Admin::AdminController
     end
   end
 
-  # DELETE /admin/models/1
-  # DELETE /admin/models/1.json
+  # DELETE /admin/ad_models/1
+  # DELETE /admin/ad_models/1.json
   def destroy
     @admin_bank.destroy
 

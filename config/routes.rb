@@ -47,7 +47,7 @@ SignatureMovement::Application.routes.draw do
 
   scope 'admin', module: 'admin', as: 'admin' do
     root to: 'home#index'
-    resources :users, :articles, :improve, :faq_categories, :faqs, :proposes, :compliment_categories, :compliments, :report_categories, :reports, :notices, :models, :banks
+    resources :users, :articles, :improve, :faq_categories, :faqs, :proposes, :compliment_categories, :compliments, :report_categories, :reports, :notices, :ad_models, :banks
   end
 
   resources :users do
@@ -71,10 +71,10 @@ SignatureMovement::Application.routes.draw do
     end
   end
 
-  resources :models do
+  resources :ad_models do
     member do
-      put 'like', to: 'models#upvote'
-      put 'dislike', to: 'models#downvote'
+      put 'like', to: 'ad_models#upvote'
+      put 'dislike', to: 'ad_models#downvote'
     end
   end
 

@@ -1,8 +1,8 @@
-<%= form_with(model: report, local: true) do |form| %>
+<%= form_with(ad_model: report, local: true) do |form| %>
   <% if report.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-      <a href="#" class="close" data-dismiss="alert">&times;</a>
-      <h2><%= pluralize(report.errors.count, "error") %> prohibited this request from being saved:</h2>
+    <div id="error_explanation" class="alert alert-danger" role="alert">
+      <button type="button" class="btn-close close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <h2><%= pluralize(report.errors.count, "개의 문제") %>로 진행할 수 없습니다.</h2>
       <ul>
         <% report.errors.full_messages.each do |msg| %>
           <li>

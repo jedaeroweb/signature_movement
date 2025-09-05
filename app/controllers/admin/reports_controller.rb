@@ -43,7 +43,7 @@ class Admin::ReportsController < Admin::AdminController
 
     respond_to do |format|
       if @admin_report.save
-        format.html { redirect_to admin_reports_url, notice: t(:report, scope: [:activerecord, :models]) + t(:message_success_create) }
+        format.html { redirect_to admin_reports_url, notice: t(:report, scope: [:activerecord, :ad_models]) + t(:message_success_create) }
         format.json { render json: @admin_report, status: :created, location: @admin_report }
       else
         format.html { render action: "new" }
@@ -57,7 +57,7 @@ class Admin::ReportsController < Admin::AdminController
   def update
     respond_to do |format|
       if @admin_report.update(report_params)
-        format.html { redirect_to admin_reports_url, notice: t(:report, scope: [:activerecord, :models]) + t(:message_success_update) }
+        format.html { redirect_to admin_reports_url, notice: t(:report, scope: [:activerecord, :ad_models]) + t(:message_success_update) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

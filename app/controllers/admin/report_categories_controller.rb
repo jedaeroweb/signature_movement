@@ -45,7 +45,7 @@ class Admin::ReportCategoriesController < Admin::AdminController
 
     respond_to do |format|
       if @admin_report_category.save
-        format.html { redirect_to admin_report_category_path(@admin_report_category), notice: t(:report_category, scope: [:activerecord, :models]) +t(:message_success_create)}
+        format.html { redirect_to admin_report_category_path(@admin_report_category), notice: t(:report_category, scope: [:activerecord, :ad_models]) +t(:message_success_create)}
         format.json { render :json => @admin_report_category, :status => :created, :location => @admin_report_category }
       else
         format.html { render :action => "new" }
@@ -59,7 +59,7 @@ class Admin::ReportCategoriesController < Admin::AdminController
   def update
     respond_to do |format|
       if @admin_report_category.update(report_category_params)
-        format.html { redirect_to admin_report_category_path(@admin_report_category), notice: t(:report_category, scope: [:activerecord, :models]) +t(:message_success_update)}
+        format.html { redirect_to admin_report_category_path(@admin_report_category), notice: t(:report_category, scope: [:activerecord, :ad_models]) +t(:message_success_update)}
         format.json { head :ok }
       else
         format.html { render :action => "edit" }

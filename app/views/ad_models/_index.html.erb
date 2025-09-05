@@ -1,27 +1,27 @@
 <article id="main_model" class="col-12">
   <h3>KB에게 추천하는 새 KB모델</h3>
-  <% unless @models.empty? %>
+  <% unless @ad_models.empty? %>
     <div id="carousel-model" class="carousel slide" data-ride="carousel" data-bs-slide="true">
       <div class="carousel-indicators">
-        <% @models.each_with_index do |m_model, index| %>
+        <% @ad_models.each_with_index do |m_model, index| %>
         <button type="button" data-bs-target="#carousel-model" data-bs-slide-to="<%= index %>" aria-current="true" aria-label="Slide <%= index %>" <% if index.zero? %>class="active"<% end %>></button>
         <% end %>
       </div>
       <div class="carousel-inner">
-        <% @models.each_with_index do |m_model, index| %>
+        <% @ad_models.each_with_index do |m_model, index| %>
           <div class="carousel-item
             <% if index.zero? %> active
             <% end %>">
             <div class="media" itemscope itemtype="http://schema.org/Person">
-              <%= link_to model_path(m_model) do %>
+              <%= link_to ad_model_path(m_model) do %>
                 <figure itemprop="image">
                   <%= image_tag m_model.photo.small_thumb.url, :class => "mr-3" %>
                 </figure>
               <% end %>
               <div class="media-body">
-                <h4 class="media-heading" itemprop="name"><%= link_to m_model.title, model_path(m_model) %></h4>
+                <h4 class="media-heading" itemprop="name"><%= link_to m_model.title, ad_model_path(m_model) %></h4>
                 <div itemprop="description">
-                  <%= link_to model_path(m_model) do %>
+                  <%= link_to ad_model_path(m_model) do %>
                     <%= simple_format(m_model.description) %>
                   <% end %>
                 </div>
@@ -46,5 +46,5 @@
       </p>
     </div>
   <% end %>
-  <%= link_to t(:link_more), models_path, :class => 'more' %>
+  <%= link_to t(:link_more), ad_models_path, :class => 'more' %>
 </article>

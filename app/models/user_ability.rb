@@ -10,7 +10,7 @@ class UserAbility
     else # Non-admin user
       cannot :manage, :all
       can :create, [User]
-      can :manage, [User, Propose, Model, Report, Compliment] if user
+      can :manage, [User, Propose, AdModel, Report, Compliment] if user
     end
     end
 

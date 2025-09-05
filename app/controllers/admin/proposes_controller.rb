@@ -47,7 +47,7 @@ class Admin::ProposesController < Admin::AdminController
 
     respond_to do |format|
       if @admin_propose.save
-        format.html { redirect_to admin_proposes_url, notice: t(:propose, scope: [:activerecord, :models])  + t(:message_success_create) }
+        format.html { redirect_to admin_proposes_url, notice: t(:propose, scope: [:activerecord, :ad_models])  + t(:message_success_create) }
         format.json { render json: @admin_propose, status: :created, location: @admin_propose }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class Admin::ProposesController < Admin::AdminController
   def update
     respond_to do |format|
       if @admin_propose.update(propose_params)
-        format.html { redirect_to admin_proposes_url, notice: t(:propose, scope: [:activerecord, :models])  + t(:message_success_update) }
+        format.html { redirect_to admin_proposes_url, notice: t(:propose, scope: [:activerecord, :ad_models])  + t(:message_success_update) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

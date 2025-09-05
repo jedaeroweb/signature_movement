@@ -59,7 +59,7 @@ class Admin::FaqsController < Admin::AdminController
 
     respond_to do |format|
       if @admin_faq.save
-        format.html { redirect_to admin_faq_path(@admin_faq), :notice=> t(:faq, scope: [:activerecord, :models]) +t(:message_success_create)}
+        format.html { redirect_to admin_faq_path(@admin_faq), :notice=> t(:faq, scope: [:activerecord, :ad_models]) +t(:message_success_create)}
         format.json { render json: @admin_faq, status: :created, location: @admin_faq }
       else
         format.html { render action: "new" }
@@ -75,7 +75,7 @@ class Admin::FaqsController < Admin::AdminController
 
     respond_to do |format|
       if @admin_faq.update(faq_params)
-        format.html { redirect_to admin_faq_path(@admin_faq), :notice=> t(:faq, scope: [:activerecord, :models]) +t(:message_success_update)}
+        format.html { redirect_to admin_faq_path(@admin_faq), :notice=> t(:faq, scope: [:activerecord, :ad_models]) +t(:message_success_update)}
         format.json { head :ok }
       else
         format.html { render action: "edit" }

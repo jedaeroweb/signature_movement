@@ -47,7 +47,7 @@ class ImproveController < ApplicationController
     @improve = Improve.new(improve_params)
 
     if Rails.env.production?
-      result=verify_recaptcha(:model => @improve, :message => "Oh! It's error with reCAPTCHA!") && @improve.save
+      result= verify_recaptcha(:ad_model => @improve, :message => "Oh! It's error with reCAPTCHA!") && @improve.save
     else
       result=@improve.save
     end

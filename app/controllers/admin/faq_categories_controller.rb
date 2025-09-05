@@ -45,7 +45,7 @@ class Admin::FaqCategoriesController < Admin::AdminController
 
     respond_to do |format|
       if @admin_faq_category.save
-        format.html { redirect_to admin_faq_category_path(@admin_faq_category), notice: t(:faq_category, scope: [:activerecord, :models]) + t(:message_success_create)}
+        format.html { redirect_to admin_faq_category_path(@admin_faq_category), notice: t(:faq_category, scope: [:activerecord, :ad_models]) + t(:message_success_create)}
         format.json { render json: @admin_faq_category, status: :created, location: @admin_faq_category }
       else
         format.html { render action: "new" }
@@ -59,7 +59,7 @@ class Admin::FaqCategoriesController < Admin::AdminController
   def update
     respond_to do |format|
       if @admin_faq_category.update(faq_category_params)
-        format.html { redirect_to admin_faq_category_path(@admin_faq_category), notice: t(:faq_category, scope: [:activerecord, :models]) + t(:message_success_update)}
+        format.html { redirect_to admin_faq_category_path(@admin_faq_category), notice: t(:faq_category, scope: [:activerecord, :ad_models]) + t(:message_success_update)}
         format.json { head :ok }
       else
         format.html { render action: "edit" }

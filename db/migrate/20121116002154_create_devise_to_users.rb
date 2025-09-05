@@ -39,7 +39,7 @@ class CreateDeviseToUsers < ActiveRecord::Migration[6.1]
       t.integer :reports_count, null: false, default: 0
       t.integer :compliments_count, null: false, default: 0
 
-      # Uncomment below if timestamps were not included in your original model.
+      # Uncomment below if timestamps were not included in your original ad_model.
       t.timestamps null: false
     end
 

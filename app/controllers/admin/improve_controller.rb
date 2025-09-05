@@ -45,7 +45,7 @@ class Admin::ImproveController < Admin::AdminController
 
     respond_to do |format|
       if @admin_improve.save
-        format.html { redirect_to admin_improve_path(@admin_improve), notice: t(:improve, scope: [:activerecord, :models])  + t(:message_success_create) }
+        format.html { redirect_to admin_improve_path(@admin_improve), notice: t(:improve, scope: [:activerecord, :ad_models])  + t(:message_success_create) }
         format.json { render json: @admin_improve, status: :created, location: @admin_improve }
       else
         format.html { render action: "new" }
@@ -59,7 +59,7 @@ class Admin::ImproveController < Admin::AdminController
   def update
     respond_to do |format|
       if @admin_improve.update(improve_params)
-        format.html { redirect_to admin_improve_path(@admin_improve), notice: t(:improve, scope: [:activerecord, :models])  + t(:message_success_update) }
+        format.html { redirect_to admin_improve_path(@admin_improve), notice: t(:improve, scope: [:activerecord, :ad_models])  + t(:message_success_update) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

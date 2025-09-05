@@ -18,7 +18,7 @@ class HomeController < ApplicationController
       @user_count=User.where.not(description: nil).count
     end
 
-    @models=Model.order('id desc').page(0).per(5)
+    @ad_models=AdModel.order('id desc').page(0).per(5)
     @reports = Report.order('id desc').page(0).per(5)
     @compliments = Compliment.order('id desc').page(0).per(5)
 

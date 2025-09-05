@@ -1,27 +1,27 @@
-<% breadcrumb :models %>
+<% breadcrumb :ad_models %>
 <section id="model_main" class="sub_main row">
   <%= render :partial => 'layouts/ad' %>
   <ul class="media-list col-12">
-    <% unless @models.empty? %>
-      <% @models.each do |model| %>
+    <% unless @ad_models.empty? %>
+      <% @ad_models.each do |model| %>
         <li class="media shadow-sm rounded" itemscope itemtype="http://schema.org/Person">
-          <%= link_to model_path(model) do %>
+          <%= link_to ad_model_path(model) do %>
             <%= image_tag model.photo.medium_thumb.url, :itemprop => "image", :class => "mr-3" %>
           <% end %>
           <div class="media-body">
-            <h4 class="media-heading" itemprop="name"><%= link_to model.title, model_path(model) %></h4>
-            <%= link_to model_path(model) do %>
+            <h4 class="media-heading" itemprop="name"><%= link_to model.title, ad_model_path(model) %></h4>
+            <%= link_to ad_model_path(model) do %>
               <p itemprop="description"><%= simple_format(model.content) %></p>
             <% end %>
             <div class="vote" data-controller="vote">
               <% if user_signed_in? %>
-                <%= link_to like_model_path(model), method: :put do %>
+                <%= link_to like_ad_model_path(model), method: :put do %>
                   <span class="material-icons
                     <% if current_user.voted_for? model %> already-vote
                     <% end %>">thumb_up</span><span class="text"> <%= model.cached_votes_up %></span>
                 <% end %>
               <% else %>
-                <%= link_to like_model_path(model), { method: :put, :class => "confirm_login" } do %>
+                <%= link_to like_ad_model_path(model), { method: :put, :class => "confirm_login" } do %>
                   <span class="material-icons"  data-vote-target="icon">thumb_up</span><span class="text" data-vote-target="count"> <%= model.cached_votes_up %></span>
                 <% end %>
               <% end %>
@@ -34,7 +34,7 @@
     <% end %>
   </ul>
   <div class="col-12">
-    <%= link_to t(:link_new), new_model_path %>
-    <%= paginate @models %>
+    <%= link_to t(:link_new), new_ad_model_path %>
+    <%= paginate @ad_models %>
   </div>
 </section>

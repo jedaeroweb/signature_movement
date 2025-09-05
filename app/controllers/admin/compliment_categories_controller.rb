@@ -45,7 +45,7 @@ class Admin::ComplimentCategoriesController < Admin::AdminController
 
     respond_to do |format|
       if @admin_compliment_category.save
-        format.html { redirect_to admin_compliment_category_path(@admin_compliment_category), notice: t(:bank, scope: [:activerecord, :models]) +t(:message_success_create)}
+        format.html { redirect_to admin_compliment_category_path(@admin_compliment_category), notice: t(:bank, scope: [:activerecord, :ad_models]) +t(:message_success_create)}
         format.json { render :json => @admin_compliment_category, :status => :created, :location => @admin_compliment_category }
       else
         format.html { render :action => "new" }
@@ -59,7 +59,7 @@ class Admin::ComplimentCategoriesController < Admin::AdminController
   def update
     respond_to do |format|
       if @admin_compliment_category.update(compliment_category_params)
-        format.html { redirect_to admin_compliment_category_path(@admin_compliment_category), notice: t(:bank, scope: [:activerecord, :models]) +t(:message_success_update)}
+        format.html { redirect_to admin_compliment_category_path(@admin_compliment_category), notice: t(:bank, scope: [:activerecord, :ad_models]) +t(:message_success_update)}
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
