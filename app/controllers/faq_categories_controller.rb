@@ -1,4 +1,4 @@
-class FaqCategoriesController < BoardController
+class FaqCategoriesController < ApplicationController
   before_action :set_faq_category, only: [:show]
 
   def initialize(*params)
