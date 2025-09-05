@@ -52,7 +52,7 @@ class AdModelsController < ApplicationController
     if @ad_model.save
       redirect_to ad_model_path(@ad_model), notice: '문의가 등록되었습니다.'
     else
-      render admin_ad_model_path, status: :unprocessable_content
+      render new_ad_model_path, status: :unprocessable_content
     end
   end
 

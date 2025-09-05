@@ -68,7 +68,6 @@ ko:
   password : '비밀번호'
   label_number : '번호'
   label_name : '작성자'
-  label_name : '작성자'
   label_title : '제목'
   label_count : '조회수'
   label_comment : '댓글수'

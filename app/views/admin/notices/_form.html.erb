@@ -1,4 +1,4 @@
-<%= form_with(ad_model: [:admin, notice], local: true) do |form| %>
+<%= form_with model: [:admin, notice] do |form| %>
 <% if notice.errors.any? %>
 <div id="error_explanation" class="alert alert-danger">
 	<a href="#" class="close" data-dismiss="alert">&times;</a>
