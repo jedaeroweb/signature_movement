@@ -14,11 +14,11 @@
   <% end %>
   <div class="form-group">
     <%= form.label :title, :class => 'form-label' %>
-    <%= form.text_field :title, :class => 'form-control form-control-lg', :required => 'required' %>
+    <%= form.text_field :title, :class => 'form-control form-control-lg',:required=>'required' %>
   </div>
   <div class="form-group">
-    <%= form.label :content, :class => 'form-label' %>
-    <%= form.text_area :content, :class => 'form-control form-control-lg', :rows => 7, :required => 'required' %>
+    <%= form.label :raw_content, :class => 'form-label' %>
+    <%= form.text_area :raw_content, :class => 'form-control form-control-lg', :rows => 7,:required=>'required' %>
   </div>
   <% if Rails.env.production? %>
     <div class="form-group">

@@ -45,6 +45,7 @@ class ImproveController < ApplicationController
   # POST /improve.json
   def create
     @improve = Improve.new(improve_params)
+    @improve.content = @improve.raw_content
 
     if Rails.env.production?
       result= verify_recaptcha(:ad_model => @improve, :message => "Oh! It's error with reCAPTCHA!") && @improve.save
@@ -52,14 +53,10 @@ class ImproveController < ApplicationController
       result=@improve.save
     end
 
-    respond_to do |format|
-      if result
-        format.html { redirect_to @improve}
-        format.json { render :json => @improve, :status => :created, :location => @guest_book }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @improve.errors, :status => :unprocessable_content }
-      end
+    if @improve.save
+      redirect_to @improve, notice: '개선안이 등록되었습니다.'
+    else
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -95,6 +92,6 @@ class ImproveController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def improve_params
-      params.require(:improve).permit(:id,:title, :content)
+      params.require(:improve).permit(:id,:title, :raw_content)
     end
 end

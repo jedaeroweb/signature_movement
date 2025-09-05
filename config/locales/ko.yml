@@ -402,7 +402,7 @@ ko:
         enable : '사용여부'
       improve :
         title : '제목'
-        content : '내용'
+        raw_content : '내용'
         enable : '사용여부'
       user :
         name : '이름'

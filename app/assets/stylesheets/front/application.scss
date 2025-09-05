@@ -1303,6 +1303,7 @@ table td.sl_registered_date {
   #faqList dt.on a {background:#ccc}
   .page-header h1, .page-header h2 {color: var(--bs-body-color)}
   header,footer,.jumbotron,.media,.card-body,aside article,#faqList dt a.title,.modal-body, .modal-footer,.sl_content_header,.thead-default th,#faqList dd,#faqList dt a.title {background-color:var(--bs-secondary-bg)}
+  nav#main-menu .active > a {color:#0cf}
 }
 
 @include color-mode(light) {

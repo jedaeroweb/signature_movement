@@ -46,7 +46,7 @@ crumb :proposes do
 end
 
 crumb :ad_models do
-  link t('activerecord.models.model'), ad_models_path
+  link t('activerecord.models.ad_model'), ad_models_path
 end
 
 crumb :ad_model do |model|
