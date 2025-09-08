@@ -5,10 +5,3 @@ import "trix"
 import "@rails/actiontext"
 import 'common'
 import "controllers"
-import { Fancybox } from "@fancyapps/ui"
-
-document.addEventListener("turbo:load", () => {
-    Fancybox.bind('[data-fancybox="gallery"]', {
-
-    })
-})
