@@ -5,7 +5,11 @@
       <article class="users media shadow-sm rounded" itemscope itemtype="http://schema.org/Person">
         <div class="media-left">
           <% if user.photo? %>
-            <%= link_to image_tag(user.photo.small_thumb.url, :alt => user.name), user.photo.large_thumb.url, :class => 'simple_image media-object mr-3', :title => user.name, :itemprop => "image" %>
+
+            <a href="big-image2.jpg">
+            <%= link_to  user.photo.large_thumb.url, :class => 'simple_image media-object mr-3', :title => user.name, :itemprop => "image", "data-fancybox"=>"gallery" do %>
+                <%=image_tag(user.photo.small_thumb.url, :alt => user.name) %>
+              <% end %>
           <% else %>
             <div  class="media-object mr-3" >
             <span class="material-icons">person</span>
@@ -16,19 +20,7 @@
           <h4 itemprop="name" class="media-heading"><%= link_to user.name, user_path(user) %></h4>
           <p itemprop="description"><%= user.description %></p>
 
-          <div class="vote" data-controller="vote">
-            <% if user_signed_in? %>
-              <%= link_to like_user_path(user), method: :put do %>
-                <span class="material-icons
-                  <% if current_user.voted_for? user %> already-vote
-                  <% end %>">thumb_up</span><span class="text"> <%= user.cached_votes_up %></span>
-              <% end %>
-            <% else %>
-              <%= link_to like_user_path(user), { method: :put, :class => "confirm_login" } do %>
-                <span class="material-icons" data-vote-target="icon">thumb_up</span><span class="text" data-vote-target="count"> <%= user.cached_votes_up %></span>
-              <% end %>
-            <% end %>
-          </div>
+          <%=render 'layouts/vote', vote_model: user  %>
         </div>
       </article>
     <% end %>

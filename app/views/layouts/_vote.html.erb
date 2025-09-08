@@ -1,0 +1,17 @@
+<div class="vote" data-controller="vote">
+  <% if user_signed_in? %>
+    <%= link_to polymorphic_path([:like, vote_model]), method: :put, data: { action: "vote#vote"} do %>
+      <span class="material-icons
+        <% if current_user.voted_for? vote_model %> already-vote
+        <% end %>">thumb_up</span>
+      <span class="text"><%= vote_model.cached_votes_up %></span>
+    <% end %>
+  <% else %>
+    <%= link_to polymorphic_path([:like, vote_model]),
+                method: :put,
+                data: { confirm: "로그인 후에 사용 가능합니다.\n지금 로그인 하시겠습니까?" } do %>
+      <span class="material-icons" data-vote-target="icon">thumb_up</span>
+      <span class="text" data-vote-target="count"><%= vote_model.cached_votes_up %></span>
+    <% end %>
+  <% end %>
+</div>

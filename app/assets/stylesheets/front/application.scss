@@ -46,6 +46,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.highlight {
+  background-color: yellow;
+  transition: background-color 2s ease;
+}
+
 
 $default-bg : #eee;
 $default-color: $body-color;

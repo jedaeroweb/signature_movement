@@ -3,11 +3,12 @@ import "@hotwired/turbo-rails"
 import "rails-ujs"
 import "trix"
 import "@rails/actiontext"
-
-import jQuery from "jquery";
-// jQuery를 전역 변수로 설정
-window.$ = window.jQuery = jQuery;
-
 import 'common'
 import "controllers"
-import 'index'
+import { Fancybox } from "@fancyapps/ui"
+
+document.addEventListener("turbo:load", () => {
+    Fancybox.bind('[data-fancybox="gallery"]', {
+
+    })
+})

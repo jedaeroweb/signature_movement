@@ -2,9 +2,12 @@ SignatureMovement::Application.routes.draw do
   root 'home#index'
 
 
-  devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks', :sessions => "users/sessions", :registrations => "users/registrations", :passwords => "users/passwords" }, :path_names => { :sign_up => 'new', :sign_in => 'login', :sign_out => 'logout' } do
-    get 'login', to: 'users::Sessions#new'
-    get 'logout', to:  'users::Sessions#destroy'
+
+  devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks', :sessions => "users/sessions", :registrations => "users/registrations", :passwords => "users/passwords" }, :path_names => { :sign_up => 'new', :sign_in => 'login', :sign_out => 'logout' }
+
+  devise_scope :user do
+    get '/login', to: 'users/sessions#new', as: :login_redirect
+    delete '/logout', to: 'users/sessions#destroy', as: :logout_redirect
   end
 
   devise_for :admins,

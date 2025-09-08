@@ -13,19 +13,7 @@
             <%= link_to ad_model_path(model) do %>
               <p itemprop="description"><%= simple_format(model.content) %></p>
             <% end %>
-            <div class="vote" data-controller="vote">
-              <% if user_signed_in? %>
-                <%= link_to like_ad_model_path(model), method: :put do %>
-                  <span class="material-icons
-                    <% if current_user.voted_for? model %> already-vote
-                    <% end %>">thumb_up</span><span class="text"> <%= model.cached_votes_up %></span>
-                <% end %>
-              <% else %>
-                <%= link_to like_ad_model_path(model), { method: :put, :class => "confirm_login" } do %>
-                  <span class="material-icons"  data-vote-target="icon">thumb_up</span><span class="text" data-vote-target="count"> <%= model.cached_votes_up %></span>
-                <% end %>
-              <% end %>
-            </div>
+            <%=render 'layouts/vote', vote_model: model  %>
           </div>
         </li>
       <% end %>
