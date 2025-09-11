@@ -1,5 +1,5 @@
 class Admin::AdminController < ApplicationController
-    before_action :require_admin
+    before_action :authenticate_admin!
     load_and_authorize_resource
 
     def resource_name
@@ -38,12 +38,4 @@ class Admin::AdminController < ApplicationController
         end
     end
 
-
-    private
-
-    def require_admin
-        unless current_user&.admin?
-            redirect_to new_admin_session_path, alert: "관리자 로그인이 필요합니다."
-        end
-    end
 end

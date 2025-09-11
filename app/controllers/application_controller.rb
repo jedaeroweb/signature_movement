@@ -65,5 +65,11 @@ class ApplicationController < ActionController::Base
     @current_admin ||= current_user if user_signed_in? && current_user.admin?
   end
 
+  def authenticate_admin!(opts = {})
+    unless current_admin
+      redirect_to new_admin_session_path, alert: "관리자 로그인이 필요합니다."
+    end
+  end
+
   helper_method :admin_signed_in?, :current_admin
 end

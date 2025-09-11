@@ -34,11 +34,14 @@
 		</tbody>
 	</table>
 	<div id="sl_bottom_menu">
-	<% if user_signed_in? %>
-	<% if current_user.admin? %>
+		<% if admin_signed_in? %>
 		<%= link_to t(:link_new), new_notice_path %>
-	<% end %>
 	<% end %>
 	<%= paginate @notices %>
 	</div>
 </div>
+<% content_for :json_ld do %>
+	<script type="application/ld+json">
+		<%= raw(JSON.pretty_generate(json_ld_for_notice_list(@notices))) %>
+	</script>
+<% end %>

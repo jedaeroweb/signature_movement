@@ -22,19 +22,19 @@ SignatureMovement::Application.routes.draw do
     delete 'admins/logout', to: 'admins/sessions#destroy', as: :destroy_admin_session
 
     # ---- Registrations ----
-    get    'admins/sign_up',    to: 'users/registrations#new',    as: :new_admin_registration
-    post   'admins',             to: 'users/registrations#create', as: :admin_registration
-    get    'admins/edit',        to: 'users/registrations#edit',   as: :edit_admin_registration
-    patch  'admins',             to: 'users/registrations#update'
-    put    'admins',             to: 'users/registrations#update'
-    delete 'admins',             to: 'users/registrations#destroy'
+    get    'admins/sign_up',    to: 'admins/registrations#new',    as: :new_admin_registration
+    post   'admins',             to: 'admins/registrations#create', as: :admin_registration
+    get    'admins/edit',        to: 'admins/registrations#edit',   as: :edit_admin_registration
+    patch  'admins',             to: 'admins/registrations#update'
+    put    'admins',             to: 'admins/registrations#update'
+    delete 'admins',             to: 'admins/registrations#destroy'
 
     # ---- Passwords ----
-    get   'admins/password/new',    to: 'users/passwords#new',    as: :new_admin_password
-    post  'admins/password',        to: 'users/passwords#create', as: :admin_password
-    get   'admins/password/edit',   to: 'users/passwords#edit',   as: :edit_admin_password
-    patch 'admins/password',        to: 'users/passwords#update'
-    put   'admins/password',        to: 'users/passwords#update'
+    get   'admins/password/new',    to: 'admins/passwords#new',    as: :new_admin_password
+    post  'admins/password',        to: 'admins/passwords#create', as: :admin_password
+    get   'admins/password/edit',   to: 'admins/passwords#edit',   as: :edit_admin_password
+    patch 'admins/password',        to: 'admins/passwords#update'
+    put   'admins/password',        to: 'admins/passwords#update'
 
     # ---- Confirmations (optional, 이메일 확인 등) ----
     get   'admins/confirmation/new',  to: 'users/confirmations#new',    as: :new_admin_confirmation

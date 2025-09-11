@@ -23,8 +23,9 @@
 <%= favicon_link_tag 'favicon.ico' %>
 <%= csrf_meta_tags %>
 <%= csp_meta_tag -%>
+<%= yield :json_ld %>
 </head>
-<body itemscope itemtype="<%= @page_itemtype %>"  data-controller="modal">
+<body>
 <%= render :partial => 'layouts/header' %>
 <div id="mom">
   <div id="main" class="container">
