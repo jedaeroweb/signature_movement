@@ -29,7 +29,7 @@
 <%= render :partial => 'layouts/header' %>
 <div id="mom">
   <div id="main" class="container">
-    <% unless current_page?(root_path) %>
+    <% unless current_page?(root_path) || current_page?(new_user_session_path)  %>
       <%= render :partial => 'layouts/page_header' %>
     <% end %>
     <%= render :partial => 'layouts/notice', :locals => { :notice => notice, :alert => alert } %>

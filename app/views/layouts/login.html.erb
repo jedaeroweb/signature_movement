@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" data-bs-theme="auto">
+<head>
+<meta charset="utf-8">
+	<%=display_meta_tags site: t(:application_name),
+											 title: @title,
+											 description: @meta_description,
+											 keywords: @meta_keywords,
+											 separator: t(:title_separator),
+											 url: t(:site_full_url),
+											 image: @meta_image,
+											 viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+											 reverse: true
+	%>
+	<%= display_meta_tags og: {
+		title: @title,
+		description: @meta_description,
+		url: t(:site_full_url),
+		image: @meta_image
+	} %>
+<meta name="author" content="Sleeping-Lion">
+<link rel="canonical" href="<%=t(:site_full_url) %>">
+<link rel="alternate" type="application/rss+xml" title="Sleeping-Lion RSS Feed" href="<%= t(:site_full_url) %>/feed?format=rss">
+	<%= stylesheet_link_tag "front/application", :media => "all", "data-turbolinks-track" => true %>
+<%= favicon_link_tag 'favicon.ico' %>
+<%= csrf_meta_tags %>
+<%= csp_meta_tag -%>
+</head>
+<body>
+<%= render :partial => 'layouts/header' %>
+<div id="mom">
+	<main id="main" class="container">
+		<div class="sub-main p-5">
+			<%= render :partial => 'layouts/notice', :locals => { :notice => notice, :alert => alert } %>
+			<%= yield %>
+		</div>
+	</main>
+</div>
+<%= render :partial => 'layouts/footer' %>
+<%= javascript_importmap_tags %>
+</body>
+</html>
