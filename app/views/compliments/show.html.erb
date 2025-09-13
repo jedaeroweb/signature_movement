@@ -1,15 +1,13 @@
 <% breadcrumb :compliment, @compliment %>
 <div id="compliment_show" class="sub_main">
   <div class="row">
-  <div class="slboard_content col-12" itemscope itemprop="article" itemtype="http://schema.org/Article">
+  <div class="slboard_content col-12">
     <div class="sl_content_header">
-      <h3 itemprop="name"><%= @compliment.title %></h3>
+      <h3><%= @compliment.title %></h3>
       <p>
         <%= t(:user_id, scope: [:activerecord, :attributes, :compliment]) %> :
-        <span itemprop="author"><%= link_to @compliment.user.name, user_path(@compliment.user) %></span>
+        <span><%= link_to @compliment.user.name, user_path(@compliment.user) %></span>
         <%= t(:label_created_at) %> : <span><%= get_dt_format(@compliment.created_at.to_date) %></span>
-        <span class="none" itemprop="dateCreated"><%= @compliment.created_at %></span>
-        <span class="none" itemprop="dateModified"><%= @compliment.updated_at %></span>
       </p>
     </div>
     <div class="sl_content_main">
@@ -30,3 +28,8 @@
     </div>
   </div>
 </div>
+<% content_for :json_ld do %>
+  <script type="application/ld+json">
+    <%= raw(JSON.pretty_generate(json_ld_for_article(@compliment))) %>
+  </script>
+<% end %>

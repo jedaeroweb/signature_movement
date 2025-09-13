@@ -8,16 +8,21 @@
 		</figure>
     <article>
 				<h3>추천사</h3>
-				<div class="sl_content_text" itemprop="text"><%=simple_format sanitize(@ad_model.description.to_s.gsub(/\n/, '<br />'), :tags => %w(br img a)) %></div>
+				<div class="sl_content_text"><%=simple_format sanitize(@ad_model.description.to_s.gsub(/\n/, '<br />'), :tags => %w(br img a)) %></div>
 			</article>
 			<article>
 				<h3>추천받은 모델의 소감</h3>
-				<div class="sl_content_text" itemprop="text"><%=simple_format sanitize(@ad_model.content.to_s.gsub(/\n/, '<br />'), :tags => %w(br img a)) %></div>
+				<div class="sl_content_text"><%=simple_format sanitize(@ad_model.content.to_s.gsub(/\n/, '<br />'), :tags => %w(br img a)) %></div>
 			</article>
 		<div class="row">
-			<div class="btn-group btn-group-lg col-12" role="group" style="margin-top:3rem">
+			<div class="btn-group btn-group-lg col-12 mt-3" role="group">
 				<%=link_to t(:link_list),ad_models_path,{class: 'btn btn-secondary btn-large btn-block'} %>
 			</div>
 		</div>
 		</div>
 </section>
+<% content_for :json_ld do %>
+	<script type="application/ld+json">
+		<%= raw(JSON.pretty_generate(json_ld_for_article(@ad_model))) %>
+	</script>
+<% end %>

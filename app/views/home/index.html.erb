@@ -92,3 +92,8 @@
   </div>
   </section>
 <% end %>
+<% content_for :json_ld do %>
+  <script type="application/ld+json">
+    <%= raw(JSON.pretty_generate(json_ld_tag())) %>
+  </script>
+<% end %>
