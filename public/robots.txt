@@ -2,6 +2,6 @@
 User-agent: *
 Allow:/
 Disallow: /admin
-Sitemap: https://www.anti-kb.site/sitemap.xml.gz
+Sitemap: https://www.anti-kb.info/sitemap.xml.gz
 
 #DaumWebMasterTool:721f49ffe5ed2b1c6211955fd63e4a845aca9438e5a16fa1b6e245294b654507:hAanBjeKjPXisHraBtijDw==
