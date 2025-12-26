@@ -1,8 +1,8 @@
 # What is signature movement
 
-[www.anti-kb.site](https://www.anti-kb.site) source
+[www.anti-kb.site](https://www.anti-kb.info) source
 
-[www.anti-kb.site](https://www.anti-kb.site) is a site anti-kb signature movement
+[www.anti-kb.site](https://www.anti-kb.info) is a site anti-kb signature movement
 
 This Application is composed of [Rails](http://rubyonrails.org/) + UI [Boostrap](http://getbootstrap.com)
 
