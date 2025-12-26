@@ -52,8 +52,8 @@ This Application is composed of [Rails](http://rubyonrails.org/) + UI [Boostrap]
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/jedaeroweb/pamphlet.git
-cd pamphlet
+git clone https://github.com/jedaeroweb/signature_movement.git
+cd signature_movement
 bundle install
 rails db:create db:migrate db:seed
 rails server
