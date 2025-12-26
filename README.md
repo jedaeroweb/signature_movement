@@ -1,3 +1,7 @@
+![Rails](https://img.shields.io/badge/Rails-7-red)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Template](https://img.shields.io/badge/Template-Repository-blue)
+
 # What is signature movement
 
 [www.anti-kb.info](https://www.anti-kb.info) source
