@@ -55,7 +55,7 @@ This Application is composed of [Rails](http://rubyonrails.org/) + UI [Boostrap]
 
 ## License
 
-MIT, All Fre
+MIT License – completely free to use and modify
 
 ## Author
 
