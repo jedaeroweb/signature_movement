@@ -29,7 +29,7 @@
     </div>
   <% end %>
   <div class="d-grid gap-2">
-    <%= form.submit :class => 'btn btn-lg btn-primary' %>
+    <%= form.submit "저장", disabled: true, id: "submit-btn", :class => 'btn btn-lg btn-primary' %>
   </div>
 <% end %>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
