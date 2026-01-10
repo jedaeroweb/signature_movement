@@ -78,6 +78,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
+  def verify_turnstile
+    token = params["cf-turnstile-response"]
+    return false if token.blank?
+
+    uri = URI("https://challenges.cloudflare.com/turnstile/v0/siteverify")
+    response = Net::HTTP.post_form(uri, {
+      "secret" => ENV["TURNSTILE_SECRET_KEY"],
+      "response" => token,
+      "remoteip" => request.remote_ip
+    })
+
+    json = JSON.parse(response.body)
+    json["success"] == true
+  end
+
   def account_update_params
     params.require(:user).permit(:name, :email, :password, :current_password, :description, :photo, :photo_cache, :description)
   end

@@ -54,13 +54,27 @@
         </div>
       </article>
       <% if Rails.env.production? %>
-        <div class="form-group">
-          <%= recaptcha_tags %>
+        <div class="cf-turnstile mt-3"
+             data-sitekey="<%= ENV['TURNSTILE_SITE_KEY'] %>"
+             data-callback="turnstileSuccess">
         </div>
       <% end %>
-      <div class="d-grid gap-2">
-        <%= f.submit t(:sign), :class => 'btn btn-lg btn-primary btn-block' %>
+      <div class="d-grid gap-2 mt-3">
+        <% disabled = Rails.env.production? %>
+
+        <%= f.submit "저장",
+                     id: "submit-btn",
+                     class: "btn btn-lg btn-primary",
+                     disabled: disabled %>
       </div>
     <% end %>
   </section>
 </div>
+<% if Rails.env.production? %>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script>
+      function turnstileSuccess() {
+          document.getElementById("submit-btn").disabled = false;
+      }
+  </script>
+<% end %>
