@@ -2,7 +2,7 @@ if Rails.env.production?
   session_url = 'redis://127.0.0.1:6379/1/session'
   secure = true
   key ='signiture_movement_app_session'
-  domain = 'www.anti-kb.site'
+  domain = 'www.anti-kb.info'
 
   Rails.application.config.session_store :redis_store,
                                          url: session_url,
