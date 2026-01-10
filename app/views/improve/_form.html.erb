@@ -21,20 +21,25 @@
     <%= form.text_area :raw_content, :class => 'form-control form-control-lg', :rows => 7,:required=>'required' %>
   </div>
   <% if Rails.env.production? %>
-    <div class="form-group">
-      <div class="cf-turnstile"
-           data-sitekey="<%= ENV['TURNSTILE_SITE_KEY'] %>"
-           data-callback="turnstileSuccess">
-      </div>
+    <div class="cf-turnstile mt-3"
+         data-sitekey="<%= ENV['TURNSTILE_SITE_KEY'] %>"
+         data-callback="turnstileSuccess">
     </div>
   <% end %>
-  <div class="d-grid gap-2">
-    <%= form.submit "저장", disabled: true, id: "submit-btn", :class => 'btn btn-lg btn-primary' %>
+  <div class="d-grid gap-2 mt-3">
+    <% disabled = Rails.env.production? %>
+
+    <%= form.submit "저장",
+                 id: "submit-btn",
+                 class: "btn btn-lg btn-primary",
+                 disabled: disabled %>
   </div>
 <% end %>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<script>
-    function turnstileSuccess() {
-        document.getElementById("submit-btn").disabled = false;
-    }
-</script>
+<% if Rails.env.production? %>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script>
+      function turnstileSuccess() {
+          document.getElementById("submit-btn").disabled = false;
+      }
+  </script>
+<% end %>
