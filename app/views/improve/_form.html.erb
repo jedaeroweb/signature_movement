@@ -22,7 +22,10 @@
   </div>
   <% if Rails.env.production? %>
     <div class="form-group">
-      <%= recaptcha_tags :display => { :theme => "clean" } %>
+      <div class="cf-turnstile"
+           data-sitekey="<%= ENV['TURNSTILE_SITE_KEY'] %>">
+      </div>
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     </div>
   <% end %>
   <div class="d-grid gap-2">

@@ -1,3 +1,7 @@
+require "net/http"
+require "uri"
+require "json"
+
 class ImproveController < ApplicationController
   before_action :set_improve, only: [:show, :edit, :update, :destroy]
 
@@ -48,9 +52,10 @@ class ImproveController < ApplicationController
     @improve.content = @improve.raw_content
 
     if Rails.env.production?
-      result= verify_recaptcha(:ad_model => @improve, :message => "Oh! It's error with reCAPTCHA!") && @improve.save
-    else
-      result=@improve.save
+      unless verify_turnstile
+        flash.now[:alert] = "로봇 차단됨"
+        render :new and return
+      end
     end
 
     if @improve.save
@@ -85,6 +90,23 @@ class ImproveController < ApplicationController
   end
 
   private
+
+
+  def verify_turnstile
+    token = params["cf-turnstile-response"]
+    return false if token.blank?
+
+    uri = URI("https://challenges.cloudflare.com/turnstile/v0/siteverify")
+    response = Net::HTTP.post_form(uri, {
+      "secret" => ENV["TURNSTILE_SECRET_KEY"],
+      "response" => token,
+      "remoteip" => request.remote_ip
+    })
+
+    json = JSON.parse(response.body)
+    json["success"] == true
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_improve
       @imporve = Improve.find(params[:id])
