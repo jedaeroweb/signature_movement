@@ -57,14 +57,14 @@
         <div id="turnstile-container" class="mt-3"></div>
       <% end %>
       <div class="d-grid gap-2 mt-3">
-        <%= f.submit "저장", id: "submit-btn", class: "btn btn-lg btn-primary disabled" %>
+        <% disabled = Rails.env.production? %>
+        <%= f.submit "저장", id: "submit-btn", class: "btn btn-lg btn-primary", disabled: disabled %>
       </div>
     <% end %>
   </section>
 </div>
 <% if Rails.env.production? %>
   <script>
-      // Turnstile 렌더
       window.turnstileLoaded = function () {
           const el = document.getElementById("turnstile-container");
           if (!el) return;
@@ -74,24 +74,10 @@
           turnstile.render(el, {
               sitekey: "<%= ENV['TURNSTILE_SITE_KEY'] %>",
               callback: function () {
-                  // Turnstile 성공 시 버튼 활성화
-                  const btn = document.getElementById("submit-btn");
-                  btn.classList.remove("disabled");
+                  document.getElementById("submit-btn").disabled = false;
               }
           });
       };
-
-      // disabled 스타일 클릭 시 안내 alert
-      document.addEventListener("DOMContentLoaded", function() {
-          const btn = document.getElementById("submit-btn");
-          btn.addEventListener("click", function(e) {
-              if (btn.classList.contains("disabled")) {
-                  e.preventDefault(); // form submit 막기
-                  alert("로봇 방지 인증을 먼저 완료해주세요.");
-                  document.getElementById("turnstile-container")?.scrollIntoView({behavior:'smooth', block:'center'});
-              }
-          });
-      });
   </script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=turnstileLoaded" async defer></script>
 <% end %>
