@@ -281,3 +281,6 @@ Notice.create!(id: 3,user_id: 1,title: 'www.anti-kb.site 도메인 추가 및 �
 content: '도메인과 서버 관련으로 또 몇일 운영을 못했던 anti-kb가 또 다시 새롭게 리뉴얼 오픈하였습니다.
 기본 서버보다 훨씬 좋은 사양과 최신버전으로 빠르게 작동하는 사이트를 완성하였습니다~~!!
 살인자-은행이 망할는 그날까지! anti-kb.site는 활동할 것입니다.')
+Notice.create!(id: 4,user_id: 1,title: 'www.anti-kb.info 도메인 추가 및 재오픈.',:created_at=>'2026-01-10 20:33:45',:updated_at=>'2026-01-10 20:33:45',
+               content: '도메인업체가 1년만 세일하고 바가지 씌우는게 정책이네, 안정화 될 때 까지 도메인이 좀 바뀌게 되어 불편을 초래하여 죄송합니다.
+살인자-은행이 망할는 그날까지! anti-kb.info는 활동할 것입니다.')
