@@ -27,15 +27,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    if Rails.env.production?
+      unless verify_turnstile
+        flash.now[:alert] = "로봇 차단됨"
+        render :new and return
+      end
+    end
+
     build_resource(resource_params)
 
-    #if Rails.env.production?
-    #  result = verify_recaptcha(:ad_model => resource) && resource.save
-    #else
-    result = resource.save
-    #end
-
-    if result
+    if resource.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)
