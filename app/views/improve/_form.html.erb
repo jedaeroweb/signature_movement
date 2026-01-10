@@ -27,21 +27,26 @@
     <% disabled = Rails.env.production? %>
 
     <%= form.submit "저장",
-                 id: "submit-btn",
-                 class: "btn btn-lg btn-primary",
-                 disabled: disabled %>
+                    id: "submit-btn",
+                    class: "btn btn-lg btn-primary",
+                    disabled: disabled %>
   </div>
 <% end %>
 <% if Rails.env.production? %>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script>
-      function turnstileLoaded() {
-          turnstile.render('#turnstile-container', {
+      window.turnstileLoaded = function () {
+          const el = document.getElementById("turnstile-container");
+          if (!el) return;
+
+          el.innerHTML = '';
+
+          turnstile.render(el, {
               sitekey: "<%= ENV['TURNSTILE_SITE_KEY'] %>",
               callback: function () {
                   document.getElementById("submit-btn").disabled = false;
               }
           });
-      }
+      };
   </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=turnstileLoaded" async defer></script>
 <% end %>
