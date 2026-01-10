@@ -23,12 +23,18 @@
   <% if Rails.env.production? %>
     <div class="form-group">
       <div class="cf-turnstile"
-           data-sitekey="<%= ENV['TURNSTILE_SITE_KEY'] %>">
+           data-sitekey="<%= ENV['TURNSTILE_SITE_KEY'] %>"
+           data-callback="turnstileSuccess">
       </div>
-      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     </div>
   <% end %>
   <div class="d-grid gap-2">
     <%= form.submit :class => 'btn btn-lg btn-primary' %>
   </div>
 <% end %>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+    function turnstileSuccess() {
+        document.getElementById("submit-btn").disabled = false;
+    }
+</script>
