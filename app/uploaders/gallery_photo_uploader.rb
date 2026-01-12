@@ -75,24 +75,6 @@ class GalleryPhotoUploader < CarrierWave::Uploader::Base
     )
   end
 
-  def filename
-    return unless original_filename
-
-    @safe_filename ||= begin
-                         ext = File.extname(original_filename)
-                         base = File.basename(original_filename, ext)
-
-                         normalized =
-                           base
-                             .unicode_normalize(:nfkd)
-                             .encode("ASCII", replace: "", undef: :replace)
-                             .gsub(/[^a-zA-Z0-9_-]/, "_")
-                             .downcase
-
-                         "#{normalized}_#{secure_token}#{ext}"
-                       end
-  end
-
   protected
 
   def secure_token
