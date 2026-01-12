@@ -89,6 +89,7 @@ class UserUploader < CarrierWave::Uploader::Base
   private
 
   def sync_db_filename(file)
+    # file.filename은 Fog/File 모두에서 동일하게 동작
     model.update_column(mounted_as, file.filename)
   end
 end
