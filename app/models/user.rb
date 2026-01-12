@@ -15,8 +15,6 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :user_authentications, allow_destroy: true
 
-  mount_uploader :photo, UserUploader
-
   def self.create_from_omniauth(params)
     self.__send__(params.provider, params)
   end
