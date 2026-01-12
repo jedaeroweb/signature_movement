@@ -7,7 +7,7 @@
 	<% @users.each do |user| %>
 	<article class="user_info" itemscope itemtype="http://schema.org/Person">
 		<% if user.photo? %>
-			<%=link_to image_tag(user.photo.small_thumb,:alt=>user.name),user.photo.large_thumb.url,:class=>'simple_image',:title=>user.name,:itemprop=>"image" %>		
+			<%=link_to image_tag(CGI.escape(user.photo.small_thumb),:alt=>user.name),CGI.escape(user.photo.large_thumb.url),:class=>'simple_image',:title=>user.name,:itemprop=>"image" %>
 		<% else %>
 			<%=image_tag 'anon.png',:alt=>user.name,:itemprop=>"image" %>
 		<% end %>

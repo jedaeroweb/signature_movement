@@ -8,7 +8,7 @@
 
             <a href="big-image2.jpg">
             <%= link_to  user.photo.large_thumb.url, :class => 'simple_image media-object mr-3', :title => user.name, :itemprop => "image", "data-fancybox"=>"gallery" do %>
-                <%=image_tag(user.photo.small_thumb.url, :alt => user.name) %>
+                <%=image_tag(CGI.escape(user.photo.small_thumb.url), :alt => user.name) %>
               <% end %>
           <% else %>
             <div  class="media-object mr-3" >
