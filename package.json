@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build:css": "sass ./app/assets/stylesheets:./app/assets/builds --no-source-map --load-path=node_modules",
+    "build:css:watch": "yarn build:css --watch"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "sass": "^1.97.2"
+  }
+}
