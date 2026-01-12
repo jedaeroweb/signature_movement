@@ -2,6 +2,7 @@ class UserPictureUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
   #include CarrierWave::MiniMagick
+  before :cache, :filename
 
   if Rails.env.production?
     storage :fog
@@ -55,6 +56,7 @@ class UserPictureUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
+
 
   def filename
     return unless original_filename
