@@ -2,7 +2,7 @@ class UserPictureUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
   #include CarrierWave::MiniMagick
-  before :cache, :filename
+  before :cache, :normalize_filename
 
   if Rails.env.production?
     storage :fog
@@ -55,6 +55,25 @@ class UserPictureUploader < CarrierWave::Uploader::Base
   # For images you might use something like this:
   def extension_white_list
     %w(jpg jpeg gif png)
+  end
+
+  def normalize_filename(file)
+    return unless file && file.original_filename
+
+    ext = File.extname(file.original_filename)
+    base = File.basename(file.original_filename, ext)
+
+    normalized =
+      base
+        .unicode_normalize(:nfkd)
+        .encode("ASCII", replace: "", undef: :replace)
+        .gsub(/[^a-zA-Z0-9_-]/, "_")
+        .downcase
+
+    file.instance_variable_set(
+      :@original_filename,
+      "#{normalized}_#{secure_token}#{ext}"
+    )
   end
 
 
