@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :user_authentications, dependent: :destroy
 
   accepts_nested_attributes_for :user_authentications, allow_destroy: true
-  before_save :normalize_image_filename
+  after_save :sync_photo_filename
   mount_uploader :photo, UserUploader
 
   def self.create_from_omniauth(params)
@@ -31,10 +31,11 @@ class User < ApplicationRecord
 
   private
 
-  def normalize_image_filename
+  def sync_photo_filename
     return unless photo.present? && photo.file
 
-    self[:photo] = photo.file.filename
+    # DB 컬럼에 실제 저장된 파일명 반영
+    update_column(:photo, photo.file.filename)
   end
   
   def default_values
