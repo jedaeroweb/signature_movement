@@ -31,14 +31,13 @@
     </div>
   </div>
 
-
   <div class="row">
-    <div  id="sl_content_bottom_menu" class="col-12">
-    <%= link_to t(:link_list), users_path %>
+    <div class="btn-group btn-group-lg col-12 mt-3" role="group" >
+      <%=link_to t(:link_list),reports_path,{class: 'btn btn-secondary btn-large btn-block'} %>
+    </div>
     <% if can? :update, @user and @user.id == current_user.id %>
       &nbsp; | &nbsp;
       <%= link_to t(:link_edit), edit_user_path(@user) %>
     <% end %>
     </div>
-  </div>
 </section>

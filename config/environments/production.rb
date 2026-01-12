@@ -21,7 +21,8 @@ Rails.application.configure do
   # config.require_master_key = true
 
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
-  # config.public_file_server.enabled = false
+  config.public_file_server.enabled = true
+  config.assets.digest = true
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
@@ -94,4 +95,5 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  config.assets.paths << Rails.root.join("app/assets/builds")
 end

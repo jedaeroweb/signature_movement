@@ -46,7 +46,6 @@ module JsonLdHelper
                  "name":  options[:org_name] || 'Jedaeroweb',
                  "logo": {
                    "@type": "ImageObject",
-                   "url": options[:logo_url] || image_url("favicon.ico")
                  }
                }
              }
@@ -126,7 +125,6 @@ module JsonLdHelper
         "@type": "Person",
         "name": "정진규",
         "url": t(:site_full_url),
-        "image": asset_url('intro.jpg'),
         "jobTitle": "은퇴자",
         "birthDate": "1953-11-02"
       }
@@ -170,7 +168,6 @@ module JsonLdHelper
         "name": "MySite",
         "logo": {
           "@type": "ImageObject",
-          "url": asset_url("favicon.ico")
         }
       },
       "url": notice_url(notice),

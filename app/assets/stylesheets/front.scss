@@ -14,12 +14,12 @@
 
 @charset "utf-8";
 
-@import "bootstrap";
-@import "../fancybox";
+@use "bootstrap/scss/bootstrap" as *;
+@use "fancybox";
 
 @font-face {
   font-family: 'Nanum Gothic';
-  src: local('☺'),url('NanumGothic-Regular.eot?#iefix') format('embedded-opentype'),url('NanumGothic-Regular.woff') format('woff');
+  src: local('☺'),url('../fonts/NanumGothic-Regular.eot?#iefix') format('embedded-opentype'),url('../fonts/NanumGothic-Regular.woff') format('woff');
   font-display: swap;
 }
 
@@ -27,7 +27,7 @@
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src:  url('material-icon.woff2') format('woff2');
+  src:  url('../fonts/material-icon.woff2') format('woff2');
 }
 
 .material-icons {
@@ -762,7 +762,7 @@ footer ul {
 .kakao-b-icon,.naver-b-icon,.google-b-icon,.apple-b-icon,.facebook-b-icon,.twitter-b-icon,.github-b-icon {width:60px;height:60px;border-radius:35px;display:inline-block;line-height:60px;text-align:center}
 .kakao-b-icon {
   text-indent:-9999px;
-  background-image:url('btn_kakao.png');
+  background-image:url('../images/btn_kakao.png');
   background-position:center center;
   background-repeat: no-repeat;
   background-color:#fee500;
@@ -770,13 +770,13 @@ footer ul {
 .naver-b-icon {
   margin-left:15px;
   text-indent:-9999px;
-  background-image:url('btn_naver.png');
+  background-image:url('../images/btn_naver.png');
   background-position:center center;
 }
 .apple-b-icon {
   text-indent:-9999px;
   margin-left:15px;
-  background-image:url('btn_apple.png');
+  background-image:url('../images/btn_apple.png');
   background-position:center center;
   background-color:#000;
   background-repeat: no-repeat;
@@ -786,7 +786,7 @@ footer ul {
   text-indent:-9999px;
   margin-left:15px;
   background-color:#fff;
-  background-image:url('btn_google.png');
+  background-image:url('../images/btn_google.png');
   background-position:center center;
   background-repeat:no-repeat;
 }
@@ -795,7 +795,7 @@ footer ul {
   text-indent:-9999px;
   margin-left:15px;
   background-color:#fff;
-  background-image:url('btn_facebook.png');
+  background-image:url('../images/btn_facebook.png');
   background-position:center center;
   background-repeat:no-repeat;
 }
@@ -804,14 +804,14 @@ footer ul {
   text-indent:-9999px;
   margin-left:15px;
   background-color:#fff;
-  background-image:url('btn_twitter.png');
+  background-image:url('../images/btn_twitter.png');
   background-position:center center;
   background-repeat:no-repeat;
 }
 .github-b-icon {
   margin-left:15px;
   text-indent:-9999px;
-  background-image:url('btn_github.png');
+  background-image:url('../images/btn_github.png');
   background-position:center center;
   background-color:#fff;
 }
@@ -1308,24 +1308,4 @@ table td.sl_registered_date {
   .page-header h1, .page-header h2 {color: var(--bs-body-color)}
   header,footer,.jumbotron,.media,.card-body,aside article,#faqList dt a.title,.modal-body, .modal-footer,.sl_content_header,.thead-default th,#faqList dd,#faqList dt a.title {background-color:var(--bs-secondary-bg)}
   nav#main-menu .active > a {color:#0cf}
-}
-
-@include color-mode(light) {
-  a {
-    color: #666
-  }
-  a:hover {
-    color: #333
-  }
-  a:visited {
-    color: #999
-  }
-  a:active {
-    color: #000
-  }
-
-  .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link,.nav-tabs {border-color:#ccc}
-  .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {border-bottom-color:#f1f1f1}
-  a.btn-primary,a.btn-primary:visited {color:#fff}
-  aside a,aside a:visited {color:#fff}
 }

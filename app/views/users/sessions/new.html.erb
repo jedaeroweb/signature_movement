@@ -2,13 +2,13 @@
   <div class="row">
     <section class="col-12 col-lg-8 p-3 mx-auto" data-controller="login">
       <%=render 'users/sns' %>
-
       <div class="text-center" style="margin-top:30px;padding-top:30px;border-top:1px solid #ccc" data-login-target="noSnsIdParent">
-      <button class="btn btn-primary" data-login-target="noSnsId" data-action="click->login#toggle">SNS계정 없음</button>
+        <button class="btn btn-primary" data-login-target="noSnsId" data-action="click->login#toggle">SNS계정 없음</button>
       </div>
       <div class="d-none mt-2" data-login-target="noSnsLogin">
         <h2><%= t(:service_name) %> <%= t(:login_title) %></h2>
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-horizontal", :id => "sl_login_form", :role => "form" }) do |f| %>
+          <%= render "users/shared/error_messages", resource: resource %>
           <div class="card mb-3">
             <div class="card-body p-3">
 
@@ -35,7 +35,7 @@
           </div>
 
           <div class="d-grid gap-2 mb-3">
-              <button type="submit" class="btn btn-primary btn-lg"><%= t(:login) %></button>
+            <button type="submit" class="btn btn-primary btn-lg"><%= t(:login) %></button>
           </div>
         <% end %>
         <div class="row">

@@ -57,20 +57,23 @@
     <% end %>
   </div>
 </div>
-<hr/>
+<hr class="mt-3 mb-4">
 <div class="row">
   <% if params[:tab].present? %>
     <% if params[:tab] == 'default' %>
       <%= render :partial => 'ad_models/index' %>
     <% end %>
     <% if params[:tab] == 'article' %>
-      <article class="col-12 col-lg-6">
+      <div class="col-12 col-lg-6">
+      <article class="bg-body rounded-3 p-3">
         <h3>횡령,횡포엔 1등,업무엔 꼴등</h3>
         <p style="margin-top:20px">엄마나~~ 역시 규모는 최고구만 직원이 2만 2천명이야??<br/> 그래서 능률은 다른은행에 비해 그
           정도였구만=><%= link_to 'KB는 꼴찌', 'http://www.newspim.com/view.jsp?newsId=20131107000999', :target => '_blank' %>
         </p>
       </article>
-      <article class="col-12 col-lg-6">
+      </div>
+      <div class="col-12 col-lg-6">
+      <article class="bg-body rounded-3 p-3">
         <h3>KB가 망할날이 오는가보네요</h3>
         <p>일본에서도 사고내고, 카자흐스탄에서는 최대부실 적자, 직원은 100억 횡령= 뭐 평상시에도 있던 일이지만 이번에 터지네요<br/>
           <%= link_to '불법대출,비리 사과문', 'https://omoney.kbstar.com/quics?page=C018592&bbsMode=view&articleId=8580', :target => '_blank' %>
@@ -78,10 +81,15 @@
           <%= link_to '고객정보유출 사과문', 'https://otalk.kbstar.com/quics?page=C019391&bbsMode=view&articleId=6709', :target => '_blank' %>
         </p>
       </article>
+      </div>
     <% end %>
     <% if params[:tab] == 'notice' %>
+      <div class="col-12 col-lg-6">
       <%= render :partial => 'reports/index' %>
+      </div>
+      <div class="col-12 col-lg-6">
       <%= render :partial => 'compliments/index' %>
+      </div>
     <% end %>
   <% else %>
       <%= render :partial => 'ad_models/index' %>
