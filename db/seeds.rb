@@ -249,19 +249,19 @@ Faq.create!(:id=>8,:faq_category_id=>3,:title=>'왜 강매를 시키나요?',:co
 
 
 AdModel.create!(id: 1, :user_id=>1, :title=>'미친개', :description=>'역시 살인자-은행하면 미친개가 떠오르지 않나요??
-살인자-은행의 상징이되면 좋을 미친개 입니다', :photo=>File.open(Rails.root.join("app", "assets", "images", "lovely_dog.jpg")),
+살인자-은행의 상징이되면 좋을 미친개 입니다', :photo=>File.open(Rails.root.join("public", "images", "lovely_dog.jpg")),
                 content: '으르릉 컹컹~~
 내가 아무리 미친개라도 저런 개같은 은행의 모델은 억만금을 줘도 안해!!!
 돈에 미치면 개만도 못한다더니 이승기,김연아는 바로 모델하더구만
 에이 퉤퉤~~!!!')
 
 AdModel.create!(id: 2, :user_id=>1, :title=>'前 대통령님', :description=>'사대강 살리기로 대한민국의 역사를 다시 쓴 샐러리맨의 신화인 前 대통령님
-하여간 왠지 KB와 너무나 잘 어울리는 얼굴과 행동들이 KB의 CEO같은 이명박 前 대통령님', :photo=>File.open(Rails.root.join("app", "assets", "images", "mrpre.jpg")),
+하여간 왠지 KB와 너무나 잘 어울리는 얼굴과 행동들이 KB의 CEO같은 이명박 前 대통령님', :photo=>File.open(Rails.root.join("public", "images", "mrpre.jpg")),
                 content: '네 제가 모델이라고요? 제가 모델 해봐서 아는데 이거 영광입니다.
   KB모델 하면 뭐 떨어지는거 있나요? 저의 <code>혐오스럽지</code> 않은 얼굴로 KB를 알리는데 노력하겠습니다.')
 
 AdModel.create!(id: 3, :user_id=>1, :title=>'순실이', :description=>'국민은행하면 횡령,횡포 횡령,횡포하면 바로 순시리지요?
-우리가 찾던 완벽히 어울리는 모델입니다!!!', :photo=>File.open(Rails.root.join("app", "assets", "images", "sunsiry.jpg")),
+우리가 찾던 완벽히 어울리는 모델입니다!!!', :photo=>File.open(Rails.root.join("public", "images", "sunsiry.jpg")),
                 content:  '내가 이런거나 하게 생겼어!!
 나 이대 짤린 딸 가진 엄마야~
 하긴 국민은행의 횡령 횡포는 나와 우열을 가릴 수 없긴 하지')
