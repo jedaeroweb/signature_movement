@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :user_authentications, dependent: :destroy
 
   accepts_nested_attributes_for :user_authentications, allow_destroy: true
-
+  before_save :normalize_image_filename
   mount_uploader :photo, UserUploader
 
   def self.create_from_omniauth(params)
@@ -30,6 +30,12 @@ class User < ApplicationRecord
   end
 
   private
+
+  def normalize_image_filename
+    return unless photo.present? && photo.file
+
+    self[:photo] = photo.file.filename
+  end
   
   def default_values
     self.name ||= '#'+SecureRandom.uuid
