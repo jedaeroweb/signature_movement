@@ -32,10 +32,11 @@ class User < ApplicationRecord
   private
 
   def sync_photo_filename
-    return unless photo.present? && photo.file
+    return unless photo.present?
 
-    # DB 컬럼에 실제 저장된 파일명 반영
-    update_column(:photo, photo.file.filename)
+    # 실제 저장된 이름
+    safe_name = photo.file.basename + photo.file.extension_with_delimiter
+    update_column(:photo, safe_name)
   end
   
   def default_values

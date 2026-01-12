@@ -3,6 +3,7 @@ class UserUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   #include CarrierWave::MiniMagick
   before :cache, :normalize_filename
+  after :store, :sync_db_filename
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
@@ -83,5 +84,11 @@ class UserUploader < CarrierWave::Uploader::Base
         :"@#{mounted_as}_secure_token",
         SecureRandom.hex(8)
       )
+  end
+
+  private
+
+  def sync_db_filename(file)
+    model.update_column(mounted_as, file.filename)
   end
 end
