@@ -32,7 +32,7 @@
 	<%= f.label :photo,:class=>'form-label' %>
 	<div>
 		<% if user.photo? %>
-		<%= image_tag(CGI.escape(user.photo.small_thumb)) %>
+		<%= image_tag(user.photo.small_thumb) %>
 		<% end %>
 		<%= f.file_field :photo %>
 		<%= f.hidden_field :photo_cache %>
