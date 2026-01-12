@@ -57,6 +57,7 @@ class UserUploader < CarrierWave::Uploader::Base
   %w(jpg jpeg gif png)
   end
 
+
   def normalize_filename(file)
     return unless file && file.original_filename
 
@@ -70,10 +71,12 @@ class UserUploader < CarrierWave::Uploader::Base
         .gsub(/[^a-zA-Z0-9_-]/, "_")
         .downcase
 
-    file.instance_variable_set(
-      :@original_filename,
-      "#{normalized}_#{secure_token}#{ext}"
-    )
+    normalized = "file" if normalized.blank?
+
+    new_name = "#{normalized}_#{secure_token}#{ext}"
+
+    file.instance_variable_set(:@original_filename, new_name)
+    file.instance_variable_set(:@filename, new_name)
   end
 
   protected
@@ -88,8 +91,10 @@ class UserUploader < CarrierWave::Uploader::Base
 
   private
 
-  def sync_db_filename(file)
-    # file.filename은 Fog/File 모두에서 동일하게 동작
-    model.update_column(mounted_as, file.filename)
+  def sync_db_filename(_file = nil)
+    return unless model && model.photo&.file
+
+    # 여기서 file.filename 대신 model.photo.file.filename 사용
+    model.update_column(mounted_as, model.photo.file.filename)
   end
 end
