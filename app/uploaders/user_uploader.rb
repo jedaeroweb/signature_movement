@@ -73,7 +73,11 @@ class UserUploader < CarrierWave::Uploader::Base
 
     normalized = "file" if normalized.blank?
 
-    new_name = "#{normalized}_#{secure_token}#{ext}"
+    if Rails.env.production?
+      new_name = "#{normalized}_#{secure_token}#{ext}"
+    else
+      new_name = "#{normalized}#{ext}"
+    end
 
     file.instance_variable_set(:@original_filename, new_name)
     file.instance_variable_set(:@filename, new_name)
