@@ -2,8 +2,6 @@ class BankPhotoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
   #include CarrierWave::MiniMagick
-  before :cache, :normalize_filename
-  after :store, :sync_db_filename
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
@@ -58,47 +56,10 @@ class BankPhotoUploader < CarrierWave::Uploader::Base
   end
 
 
-  def normalize_filename(file)
-    return unless file && file.original_filename
-
-    ext = File.extname(file.original_filename)
-    base = File.basename(file.original_filename, ext)
-
-    normalized =
-      base
-        .unicode_normalize(:nfkd)
-        .encode("ASCII", replace: "", undef: :replace)
-        .gsub(/[^a-zA-Z0-9_-]/, "_")
-        .downcase
-
-    normalized = "file" if normalized.blank?
-
-    if Rails.env.production?
-      new_name = "#{normalized}_#{secure_token}#{ext}"
-    else
-      new_name = "#{normalized}#{ext}"
-    end
-
-    file.instance_variable_set(:@original_filename, new_name)
-    file.instance_variable_set(:@filename, new_name)
-  end
-
-  protected
-
-  def secure_token
-    model.instance_variable_get(:"@#{mounted_as}_secure_token") ||
-      model.instance_variable_set(
-        :"@#{mounted_as}_secure_token",
-        SecureRandom.hex(8)
-      )
-  end
-
-  private
-
-  def sync_db_filename(_file = nil)
-    return unless model && model.photo&.file
-
-    # 여기서 file.filename 대신 model.photo.file.filename 사용
-    model.update_column(mounted_as, model.photo.file.filename)
+  # Override the filename of the uploaded files:
+  # Avoid using model.id or version_name here, see uploader/store.rb for details.
+  # def filename
+  #   "something.jpg" if original_filename
+  # endel.update_column(mounted_as, model.photo.file.filename)
   end
 end
