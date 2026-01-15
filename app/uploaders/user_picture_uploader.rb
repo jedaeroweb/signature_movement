@@ -12,12 +12,11 @@ class UserPictureUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    upload_dir="#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    unless Rails.env.production?
-      upload_dir='uploads/'+upload_dir
+    if Rails.env.production?
+      return "#{model.class.to_s.underscore}/#{model.id}"
+    else
+      return "uploads/#{model.class.to_s.underscore}/#{model.id}"
     end
-
-    return upload_dir
   end
 
   def size_range
@@ -56,9 +55,34 @@ class UserPictureUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    return unless original_filename
+
+    @safe_filename ||= begin
+                         ext  = File.extname(original_filename)
+                         base = File.basename(original_filename, ext)
+
+                         normalized =
+                           base
+                             .unicode_normalize(:nfkd)
+                             .encode("ASCII", replace: "", undef: :replace)
+                             .gsub(/[^a-zA-Z0-9_-]/, "_")
+                             .downcase
+
+                         normalized = "file" if normalized.blank?
+
+                         if Rails.env.production?
+                           "#{normalized}_#{secure_token}#{ext}"
+                         else
+                           "#{base}#{ext}" # 로컬은 한글 그대로
+                         end
+                       end
+  end
+
+  protected
+
+  def secure_token
+    model.instance_variable_get(:"@#{mounted_as}_secure_token") ||
+      model.instance_variable_set(:"@#{mounted_as}_secure_token", SecureRandom.hex(10))
+  end
 end
