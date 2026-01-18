@@ -3,6 +3,7 @@
     <%= form_for resource,
                  as: resource_name,
                  url: registration_path(resource_name),
+                 html: { multipart: true },
                  data: { controller: "user-form", action: "submit->user-form#submit", turbo: false } do |f|  %>
       <%= render "users/shared/error_messages", resource: resource %>
       <article>
@@ -33,15 +34,38 @@
         <div class="card">
           <div class="card-body">
             <div class="form-group col-12">
-              <%= f.label :photo, :class => 'form-label' %>
-              <% if resource.photo? %>
-                <%= image_tag resource.photo.small_thumb.url %>
+              <%= f.fields_for :user_pictures do |pp| %>
+                <div
+                  class="user-picture mb-3"
+                  data-controller="picture"
+                >
+                  <% if pp.object.persisted? && pp.object.picture? %>
+                    <img
+                      src="<%= pp.object.picture.url %>"
+                      class="preview img-thumbnail mb-2"
+                      width="120"
+                      data-picture-target="image"
+                    >
+
+                    <div class="form-check mt-1">
+                      <%= pp.check_box :_destroy,
+                                       class: "form-check-input",
+                                       data: { action: "change->picture#toggleDelete" } %>
+                      <%= pp.label :_destroy, "삭제", class: "form-check-label" %>
+                    </div>
+                  <% else %>
+                    <img
+                      class="preview img-thumbnail mb-2"
+                      width="120"
+                      style="display:none"
+                      data-picture-target="image"
+                    >
+                  <% end %>
+
+                  <%= pp.file_field :picture,
+                                    data: { action: "change->picture#preview" } %>
+                </div>
               <% end %>
-              <div class="custom-file">
-                <%= f.file_field :photo, class: "custom-file-input", data: { "user-form-target": "photo" } %>
-                <label class="form-control-lg custom-file-label" for="customFile" data-browse="<%=t(:browse) %>"><%=t(:choose_file) %></label>
-              </div>
-              <%= f.hidden_field :photo_cache %>
             </div>
             <div class="form-group col-12">
               <%= f.label :url, :class => 'form-label' %>

@@ -19,11 +19,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  # GET /resource/sign_up
-  #  def new
-  #    resource = build_resource({})
-  #    respond_with resource
-  #  end
+  def new
+    self.resource = build_resource({})
+    resource.user_pictures.build if resource.user_pictures.empty?
+    respond_with resource
+  end
+
+  def edit
+    resource.user_pictures.build if resource.user_pictures.empty?
+  end
 
   # POST /resource
   def create
@@ -79,6 +83,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
+
   def verify_turnstile
     token = params["cf-turnstile-response"]
     return false if token.blank?
@@ -95,12 +100,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def account_update_params
-    params.require(:user).permit(:name, :email, :password, :current_password, :description, :photo, :photo_cache, :description)
+    params.require(:user).permit(:name, :email, :password, :current_password, :description, user_pictures_attributes: [:id, :picture, :_destroy])
   end
 
   private
 
   def resource_params
-    params.require(:user).permit(:name, :email, :password, :current_password, :description, :photo, :photo_cache, :description)
+    params.require(:user).permit(:name, :email, :password, :current_password, :description, user_pictures_attributes: [:id, :picture, :_destroy])
   end
 end

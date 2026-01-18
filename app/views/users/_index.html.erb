@@ -2,13 +2,12 @@
   <h2 class="text-hide">KB망하게 하기 서명 목록</h2>
   <% unless @users.empty? %>
     <% @users.each do |user| %>
-      <article class="users media shadow-sm rounded" itemscope itemtype="http://schema.org/Person">
+      <article class="users media shadow-sm rounded">
         <div class="media-left">
-          <% if user.photo? %>
-
+          <% if user.user_pictures.exists? %>
             <a href="big-image2.jpg">
-            <%= link_to  user.photo.large_thumb.url, :class => 'simple_image media-object mr-3', :title => user.name, :itemprop => "image", "data-fancybox"=>"gallery" do %>
-                <%=image_tag(user.photo.small_thumb.url, :alt => user.name) %>
+            <%= link_to  user.user_pictures[0].picture.url, :class => 'simple_image media-object mr-3', :title => user.name, "data-fancybox"=>"gallery" do %>
+                <%=image_tag(user.user_pictures[0].picture.small_thumb.url, :alt => user.name) %>
               <% end %>
           <% else %>
             <div  class="media-object mr-3" >

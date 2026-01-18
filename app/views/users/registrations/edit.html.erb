@@ -49,12 +49,39 @@
 
 	<div class="form-group">
 		<%= f.label :photo ,:class => 'form-label' %>
-		<% if resource.photo? %>
-			<%= image_tag(resource.photo.small_thumb.url) %>
-		<% end %>
 		<br />
-		<%= f.file_field :photo %>
-		<%= f.hidden_field :photo_cache %>
+		<%= f.fields_for :user_pictures do |pp| %>
+			<div
+				class="user-picture mb-3"
+				data-controller="picture"
+			>
+				<% if pp.object.persisted? && pp.object.picture? %>
+					<img
+						src="<%= pp.object.picture.url %>"
+						class="preview img-thumbnail mb-2"
+						width="120"
+						data-picture-target="image"
+					>
+
+					<div class="form-check mt-1">
+						<%= pp.check_box :_destroy,
+														 class: "form-check-input",
+														 data: { action: "change->picture#toggleDelete" } %>
+						<%= pp.label :_destroy, "삭제", class: "form-check-label" %>
+					</div>
+				<% else %>
+					<img
+						class="preview img-thumbnail mb-2"
+						width="120"
+						style="display:none"
+						data-picture-target="image"
+					>
+				<% end %>
+
+				<%= pp.file_field :picture,
+													data: { action: "change->picture#preview" } %>
+			</div>
+		<% end %>
 	</div>
 	<div class="form-group">
   	<%= f.label :url ,:class => 'form-label' %>

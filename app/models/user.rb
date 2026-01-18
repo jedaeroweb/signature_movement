@@ -12,9 +12,10 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
   validates :password,confirmation: true, presence: true, length: { minimum: 6 }, allow_nil: true, allow_blank: true
   has_many :user_authentications, dependent: :destroy
+  has_many :user_pictures, dependent: :destroy
 
   accepts_nested_attributes_for :user_authentications, allow_destroy: true
-  mount_uploader :photo, UserUploader
+  accepts_nested_attributes_for :user_pictures, :allow_destroy => true
 
   def self.create_from_omniauth(params)
     self.__send__(params.provider, params)

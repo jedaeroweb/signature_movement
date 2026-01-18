@@ -18,9 +18,21 @@
     <% end %>
   <% end %>
         </div>
-  <% if @user.photo? %>
-    <%= link_to image_tag(@user.photo.medium_thumb.url, :alt => @user.name), @user.photo.large_thumb.url, :class => 'simple_image media-object', :title => @user.name, :itemprop => "image" %>
-  <% end %>
+        <% if @user.user_pictures.any? %>
+          <div class="user-pictures d-flex flex-wrap gap-3">
+            <% @user.user_pictures.each do |picture| %>
+              <% next unless picture.picture? %>
+
+              <div class="user-picture">
+                <%= image_tag picture.picture.url,
+                              class: "img-thumbnail",
+                              width: 160 %>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <p class="text-muted">등록된 이미지가 없습니다.</p>
+        <% end %>
       </div>
     </div>
   </div>

@@ -37,7 +37,7 @@ class UserPictureUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :tiny_thumb do
-    process resize_to_fill: [30, 30]
+    process resize_to_fill: [50, 50]
   end
 
   # Create different versions of your uploaded files:
