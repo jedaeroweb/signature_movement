@@ -11,7 +11,7 @@
       </p>
     </div>
     <div class="sl_content_main">
-      <div class="sl_content_text" itemprop="text"><%= @compliment.content %></div>
+      <div class="sl_content_text" itemprop="text"><%=simple_format @compliment.content %></div>
       <%=render 'layouts/vote', vote_model: @compliment %>
       </div>
     </div>

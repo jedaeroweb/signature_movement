@@ -266,6 +266,12 @@ AdModel.create!(id: 3, :user_id=>1, :title=>'순실이', :description=>'국민�
 나 이대 짤린 딸 가진 엄마야~
 하긴 국민은행의 횡령 횡포는 나와 우열을 가릴 수 없긴 하지')
 
+AdModel.create!(id: 4, :user_id=>1, :title=>'석열이', :description=>'국민은행하면 바보, 미친짓이지요?
+그야말로 국민은행의 모델', :photo=>File.open(Rails.root.join("public", "images", "ysy.jpg")),
+                content:  '띠리리리링~~ 몰라, 나 술 퍼먹을꺼야
+그러다가 기분 나쁘면 계엄이야 계엄~~!!')
+
+
 
 Notice.create!(id: 1,user_id: 1,title: 'www.anti-kb.net이 새롭게 태어났습니다.',:created_at=>'2014-08-04 18:51:23',:updated_at=>'2014-08-04 18:51:23',
 content: '그 동안 관리되지 못했던 anti-kb가 새롭게 리뉴얼 되어서 오픈하였습니다.
