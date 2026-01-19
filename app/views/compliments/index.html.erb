@@ -27,7 +27,7 @@
         <tbody>
         <% unless @compliments.empty? %>
           <% @compliments.each do |compliment| %>
-            <tr>
+            <tr data-controller="click-redirect" data-action="click->click-redirect#mediaClick">
               <td><%= compliment.user.name %></td>
               <td><%= compliment.bank.title %></td>
               <td><%= compliment.compliment_category.title %></td>

@@ -25,7 +25,7 @@
         <tbody>
         <% unless @reports.empty? %>
           <% @reports.each do |report| %>
-            <tr>
+            <tr data-controller="click-redirect" data-action="click->click-redirect#mediaClick">
               <td><%= report.user.name %></td>
               <td><%= report.report_category.title %></td>
               <td><%= link_to report.title.truncate(25), report %></td>
