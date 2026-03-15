@@ -13,9 +13,6 @@ class ApplicationController < ActionController::Base
     @meta_keywords    = t(:meta_keywords)
     @meta_image       = t(:meta_image)
     @meta_url         = t(:meta_url)
-
-    @aside_blog_categories = BlogCategory.where(:enable=>true)
-    @tags = Blog.tag_counts_on(:tags, :limit => 20, :order => "taggings_count desc")
   end
 
   def prepare_default_meta_tags
