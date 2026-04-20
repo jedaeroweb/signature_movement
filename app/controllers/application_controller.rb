@@ -48,19 +48,17 @@ class ApplicationController < ActionController::Base
     }
   end
 
-  def current_ability
-    @current_ability ||= UserAbility.new(current_user)
-  end
+  # 내부 링크에 locale 유지
+  # 단, 기본 언어는 URL에 붙이지 않음
+  def default_url_options(options = {})
+    opts = options ? options.dup : {}
 
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to new_user_session_path, :notice => t(:unauthenticated,scope:[:devise,:failure])
-  end
+    locale = I18n.locale.to_s
+    if locale != I18n.default_locale.to_s
+      opts[:locale] ||= locale
+    end
 
-  def set_locale
-    I18n.locale = params[:locale] || session[:locale] || I18n.default_locale
-    session[:locale] = I18n.locale
-
-    @language={t(:korean)=>'ko',t(:english)=>'en',t(:chineses)=>'zh-CN'}
+    opts
   end
 
   def layout
@@ -74,6 +72,8 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+
 
   protected
 
@@ -139,4 +139,47 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :admin_signed_in?, :current_admin
+
+
+  # canonical에는 locale(비기본 언어만) + page(2 이상만)만 허용
+  # 나머지 sort/filter/q 등은 제거
+  def canonical_url_for_current_page
+    allowed = {}
+
+    page = params[:page].to_i
+    allowed[:page] = page if page > 1
+
+    locale = params[:locale].presence&.to_s
+    if locale.present? && locale != I18n.default_locale.to_s
+      allowed[:locale] = locale
+    end
+
+    uri = URI.parse(request.base_url + request.path)
+    uri.query = allowed.to_query.presence
+    uri.to_s
+  end
+
+  def current_ability
+    @current_ability ||= UserAbility.new(current_user)
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to new_user_session_path, :notice => t(:login_first)
+  end
+
+
+  def verify_turnstile
+    token = params["cf-turnstile-response"]
+    return false if token.blank?
+
+    uri = URI("https://challenges.cloudflare.com/turnstile/v0/siteverify")
+    response = Net::HTTP.post_form(uri, {
+      "secret" => ENV["TURNSTILE_SECRET_KEY"],
+      "response" => token,
+      "remoteip" => request.remote_ip
+    })
+
+    json = JSON.parse(response.body)
+    json["success"] == true
+  end
 end
