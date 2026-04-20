@@ -47,6 +47,8 @@ ko:
   browse: '찾기'
   new_user : '회원가입'
 
+  login_first : "먼저 로그인 해주세요"
+
   login_page : '로그인 페이지'
   login_title : '로그인'
   login_p_id : '아이디를 입력하세요'

@@ -2,15 +2,10 @@ class ApplicationController < ActionController::Base
   layout :layout
 
   before_action :normalize_seo_query_params
-  before_action :before_init
   helper_method :default_meta_tags, :seo_noindex?
-  before_action :set_locale
+  #before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def before_init
-    @aside_blog_categories = BlogCategory.where(enable: true)
-    @tags = Blog.tag_counts_on(:tags, limit: 20, order: "taggings_count desc")
-  end
 
   def default_meta_tags
     meta_title       = @title.presence || t(:default_title)
