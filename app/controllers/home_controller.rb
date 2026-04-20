@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
+    set_meta_tags canonical: root_url
+
     if params[:tab]
       if params[:tab]=='default'
         @users = User.where.not(description: nil).order('id desc').page(params[:page]).per(12)

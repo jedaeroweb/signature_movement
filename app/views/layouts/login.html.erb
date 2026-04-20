@@ -2,22 +2,7 @@
 <html lang="<%= I18n.locale %>" data-bs-theme="auto">
 <head>
 <meta charset="utf-8">
-	<%=display_meta_tags site: t(:application_name),
-											 title: @title,
-											 description: @meta_description,
-											 keywords: @meta_keywords,
-											 separator: t(:title_separator),
-											 url: t(:site_full_url),
-											 image: @meta_image,
-											 viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
-											 reverse: true
-	%>
-	<%= display_meta_tags og: {
-		title: @title,
-		description: @meta_description,
-		url: t(:site_full_url),
-		image: @meta_image
-	} %>
+	<%= display_meta_tags(default_meta_tags) %>
 <meta name="author" content="Sleeping-Lion">
 <link rel="canonical" href="<%=t(:site_full_url) %>">
 <link rel="alternate" type="application/rss+xml" title="Sleeping-Lion RSS Feed" href="<%= t(:site_full_url) %>/feed?format=rss">
